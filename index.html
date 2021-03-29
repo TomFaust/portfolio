@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Tom Faust</title>
+  <meta charset="UTF-8" />
+  <link rel="stylesheet" type="text/css" href="https://unpkg.com/98.css" />
+  <link rel="stylesheet" type="text/css" href="style.css"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" href="assets/windows.ico"/>
+</head>
+
+<body>
+
+  <div id="turn">
+    <div class="window">
+      <div class="title-bar">
+        <div class="title-bar-text">
+          Warning
+        </div>
+      </div>
+
+      <img src="assets/warning.png">
+
+      <h1>Warning!</h1>
+
+      <p>This website requires your device to be in landscape mode. Please rotate your device.</p>
+
+      <button disabled>Sorry for the inconveniece</button>
+
+    </div>
+  </div>
+
+  <div id="container">
+    <icons>
+        <div class="icon" id="about_me">
+            <img id="tableBanner" src="assets/me.png">
+            <label>About me</label>
+        </div>
+
+        <div class="icon" id="past_work">
+            <img src="assets/work.png">
+            <label>Past work</label>
+        </div>
+
+        <div class="icon" id="cv">
+            <img src="assets/cv.png">
+            <label>CV</label>
+        </div>  
+
+        <div class="icon" id="social_media">
+            <img src="assets/social_media.png">
+            <label>Social media</label>
+        </div>
+        
+        <div class="icon" id="contact">
+            <img src="assets/contact.png">
+            <label>Contact</label>
+        </div>
+
+    </icons>
+
+    <div class="window canClose" id="welcome">
+        <div class="title-bar">
+            
+          <div class="title-bar-text">
+            Welcome!
+          </div>
+  
+          <div class="title-bar-controls">
+            <button aria-label="Close" id="welcome_close"></button>
+          </div>
+
+        </div>
+
+        <div class="window-body">
+            <img id="face" src="assets/windows.png">
+            <p>Hello visitor, and welcome to my online porfolio.</p>
+            <p>Feel free to look around, but do remember that this site is partially WIP, so things are subject to change.</p>
+          <section class="field-row" style="justify-content: flex-end">
+            <button id="welcome_ok">OK</button>
+          </section>
+        </div>
+      </div>
+
+      
+        <img id="me" src="assets/face.png">
+        <div id="speech">Fun fact:<br></div>
+      
+
+    <div class="window" id="taskbar">
+      <tabs>
+        <ul class="dropdown">
+          <li><a href="#"></a>
+            
+              <ul class="window" id="mainMenu">
+                <div id="menuSideBar"><p>Windows98</p></div>
+                  <li><a href="#"><img src="assets/color.png" class="subImg">Placeholder</a></li>
+                  <li><a href="#"><img src="assets/color.png" class="subImg">Placeholder</a></li>
+                  <li><a href="#"><img src="assets/color.png" class="subImg">Placeholder</a></li>
+                  <li><a href="#"><img src="assets/W98Cursor/normal.cur" class="subImg">Cursor</a>
+                    
+                      <ul class="window">
+                        <li><a class="cursorOptions" id="Mario"><img class="subImg" src="assets/MarioCursor/normal.cur">Mario</a></li>
+                        <li><a class="cursorOptions" id="RA"><img class="subImg" src="assets/RACursor/normal.cur">Runescape</a></li>
+                        <li><a class="cursorOptions" id="MC"><img class="subImg" src="assets/MCCursor/normal.cur">Minecraft</a></li>
+                        <li><a class="cursorOptions" id="W98"><img class="subImg" src="assets/W98Cursor/normal.cur">Windows98</a></li>
+                        <li><a class="cursorOptions"><img src="assets/remove.png" class="subImg">Reset cursor</a></li>
+                      </ul>
+                    </li>
+                    <li><a href="#"><img src="assets/background.png" class="subImg">Background</a>
+                      <ul class="window">
+                        <li id="openImgUpload"><a><img src="assets/upload.png" class="subImg">Upload image <input type="file" id="file"></a></li>
+                        <li id="removeBackground"><a><img src="assets/remove.png" class="subImg">Reset background</a></li>
+                      </ul>
+                    </li>
+                    
+                </li>
+              </ul>
+          </li>
+      </ul>
+      </tabs> 
+      
+
+      <fieldset id="clock"></fieldset>
+  
+    </div>
+
+
+    <script src="js/script.js"></script>
+    <script src="js/customization.js"></script>
+  </div>
+</body>
+</html>

@@ -1,0 +1,418 @@
+body, html{
+    background-color:#008080;
+    background-size:cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding:0;
+    margin:0;
+    height:100vh;
+    width:100vw;
+    overflow:hidden;
+}   
+
+body{
+    cursor:default
+}
+
+*{
+    font-size:3vh !important;
+}
+
+#welcome{
+    width:20vw;
+    left:40vw;
+    position:absolute;
+    top:10vh;
+}
+
+#me{
+    position: absolute;
+    top:60vh;
+    right:0;
+    width:35vh;
+    height:35vh;
+}
+
+#speech{
+    background-image: url("assets/speechBubble.png");
+    background-size: 100% 100%;
+    width:20vw;
+    height:20vh;
+    position: absolute;
+    left:72vw;
+    top:50vh;
+    text-align: center;
+    padding:1vh;
+}
+
+#face{
+    width:100%;
+    padding-left: 25%;
+    padding-right:25% ;
+}
+
+#taskbar{
+    width:100vw;
+    left:0;
+    position:absolute;
+    top:95vh;
+    padding:0;
+    margin:0;
+    height:5vh;
+    z-index:20;
+}
+
+#taskbar fieldset{
+    position:absolute;
+    right: 0.5vw;
+    width:5vw;
+    height:3vh;
+    margin-top:1vh;
+    padding:0vh;
+    padding-top:0.5vh;
+    text-align: center;
+    font-size:2vh !important;
+}
+
+#taskbar #start{
+    cursor:pointer;
+    width:100%;
+    height:5vh;
+}
+
+.cursorOptions{
+    cursor: pointer;
+}
+
+icons{
+    height:95vh;
+    top:0;
+    position:absolute;
+    display:grid;
+    grid-template-rows: 20% 20% 20% 20% 20%;
+    padding:2vh;
+}
+
+.icon label{
+    display: block;
+    
+}
+
+.icon *{
+    cursor: pointer;
+}
+
+.icon{
+    color:white;
+    width:10vh;
+    text-align: center;
+}
+
+
+.icon img{
+    width:8vh;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+tabs{
+    left:0vw;
+    height:5vh;
+    position:absolute;
+    width:80%;
+    display: grid;
+    grid-template-columns: 6vw 15vw 15vw 15vw 15vw 15vw 15vw;
+}
+
+.tab{
+    padding-left:5px;
+    font-size: 80% !important;
+    margin-bottom:1vh;
+    margin-top:0.5vh;
+    padding-right:0.5vw;
+    height: 4vh;
+    background:#dfdfdf !important ;
+    cursor:pointer;
+}
+
+.tab .title-bar-controls{
+    float:right;
+}
+
+.displayWindow{
+    z-index:12;
+    position:absolute;
+    overflow: hidden;
+}
+
+.windowArea{
+    width:100%;
+    padding:1vw;
+    height:calc(100% - 30px);
+}
+
+#contact_window .windowArea{
+    background-image: url(assets/contactPage.png);
+    background-size: 100% 100%;
+}
+
+#contactForm{
+   /* display: grid;*/
+    display: none;
+    
+}
+
+#contactForm textarea{
+    resize:vertical;
+}
+
+#social_media_window .windowArea, #past_work_window .windowArea{
+    display:grid;
+    grid-template-rows: 12vh auto;
+}
+
+#social_media_window pre, #past_work_window pre{
+    display:grid;
+    grid-template-columns: auto auto;
+    grid-auto-rows:20vh;
+    height:100%;
+    text-align: center;
+    overflow-y:scroll;
+    cursor:pointer;
+}
+
+#social_media_window pre p, #past_work_window pre p{
+    margin:0 !important;
+}
+
+#social_media_window pre div, #past_work_window pre div{
+    display:grid;
+    grid-template-rows: auto auto;
+}
+
+#social_media_window pre img, #past_work_window pre img{
+    width:8vh;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#topSocials{
+    width:100%;
+    height:100%;
+}
+
+#meArea{
+    display:grid;
+    grid-template-columns: 22% 78%;
+    height:60vh;
+}
+#meArea img{
+ height:100%;
+ width:95%;
+}
+
+
+#about_me_window h1{
+    font-size: 1rem !important;
+}
+
+#about_me_window button{
+    float: right;
+}
+
+#slides{
+    overflow-y: scroll;
+}
+
+#slides p{
+    font-size: 0.9rem !important;
+}
+
+#slides ul{
+    width:100%;
+    height:100%;
+}
+
+#contactTree{
+    position: absolute;
+    left:29.5%;
+    top:34.7%;
+    width:65%;
+    height:40%;
+}
+
+#contact_window ul{
+    width:100%;
+    height:100%;
+    font-size: 110% !important;
+    box-shadow: none !important;
+    background-color: transparent !important;
+}
+
+@media only screen and (orientation:landscape){
+    #turn{ display:none; }
+    #container{ display:block; }
+  }
+  @media only screen and (orientation:portrait){
+    #turn{ display:block; }
+    #container{ display:none; }
+  }
+
+#turn .window, #altCV{
+    position:absolute;
+    left:10%;
+    top:10%;
+    width: 80%;
+    height:80%;
+    text-align:center;
+}
+
+button {
+    cursor:pointer;
+}
+
+#turn button{
+    padding: 3%;
+}
+
+#turn p{
+    padding-left: 5%;
+    padding-right: 5%;
+}
+
+#turn img{
+    width:30%;
+    padding-top:30%;
+}
+
+#altCV{
+    padding-top: 20%;
+}
+
+.openTab{
+    box-shadow: inset -1px -1px #fff, inset 1px 1px grey, inset -2px -2px #dfdfdf, inset 2px 2px #0a0a0a;
+    background-color: rgb(233, 233, 233);   
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+}
+
+body {
+  font-family: sans-serif;
+  margin: 0;
+  padding: 10px;
+}
+
+.dropdown {
+  margin: 2px;
+  padding: 0;
+  list-style: none;
+  width: 5vw;
+  height:calc(100% - 4px);
+  background-image: url(assets/start.png);
+  background-size: 100% 100%;
+  box-shadow: inset -1px -1px #504d4d, inset 1px 1px #dfdfdf, inset -2px -2px grey, inset 2px 2px #fff;
+}
+
+.dropdown li {
+  position: relative;
+  height:100%;
+}
+
+.dropdown li a {
+  color: black;
+  text-align: center;
+  text-decoration: none;
+  display: block;
+  padding: 10px;
+  height:100%;
+}
+
+.dropdown li ul {
+  position: absolute;
+  bottom: 100%;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: none;
+  line-height: normal;
+}
+
+.dropdown li ul li a {
+  text-align: left;
+  color: black;
+  font-size: 3vh;
+  padding-bottom: 2vh;
+  display: block;
+  white-space: nowrap;
+  height:8vh;
+}
+
+
+.dropdown li ul li a:hover {
+  color: #ffffff;
+  background-color:navy ;
+}
+
+.dropdown li ul li ul {
+  left: 100%;
+  bottom: 0;
+}
+
+.dropdown li ul li:hover>a {
+  color: #ffffff !important;
+  background-color:navy ;
+}
+
+ul li:hover>ul {
+  display: block;
+}
+
+#mainMenu img{
+    padding-right: 1vh !important;
+}
+  
+#mainMenu{
+    padding:0.5vh 0.5vh 0.5vh 5vh!important;
+}
+
+#menuSideBar{
+    height:calc(100% - 1vh);
+    background: linear-gradient(0deg,navy,#1084d0);
+    width:5vh;
+    position:absolute;
+    left:0.5vh;
+    color:white;
+    font-size:4vh !important;
+}
+
+#menuSideBar p{
+    padding:0;
+    bottom:0;
+    text-orientation: mixed;
+    writing-mode: vertical-lr;
+    transform: rotate(180deg);
+    position: absolute;
+    margin-left:1vh;
+    margin-bottom:1vh;
+}
+
+#mainMenu .subImg{
+    height:4vh;
+    margin-bottom: -1vh;
+}
+
+#mainMenu .mainImg{
+    height:5vh;
+    margin-bottom: -1.5vh;
+}
+
+#file{
+    display:none;
+}
