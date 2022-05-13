@@ -1,3 +1,6 @@
+let style = document.createElement("style")
+document.getElementsByTagName("body")[0].appendChild(style)
+
 var myVar = setInterval(function() {
     myTimer();
   }, 1000);
@@ -122,6 +125,10 @@ function createWindow(windowName){
               height = "80"
               width = "60"
               break;
+            case 'color_picker':
+              height = "60"
+              width = "30"
+              break;
           }
 
           window.style.height = height + "vh"
@@ -136,6 +143,22 @@ function createWindow(windowName){
           //add slideshow to about me
           if(windowName.substring(0, windowName.length - 4) == "about_me"){
             showSlides(slideIndex)
+          }
+
+          if(windowName.substring(0, windowName.length - 4) == "color_picker"){
+            let sliders = document.getElementsByClassName("range")
+
+            for (let index = 0; index < sliders.length; index++) {
+              sliders[index].addEventListener("input",colorSlider)
+            }
+
+            let RGBNumbers = document.getElementsByClassName("RGBInput")
+
+            for (let index = 0; index < RGBNumbers.length; index++) {
+              RGBNumbers[index].addEventListener("input",colorInput)
+            }
+
+            document.getElementById("setColor").addEventListener("click",colorFromButton)
           }
 
           //set custom cursor for new window
@@ -185,8 +208,13 @@ function toggleWindow(windowName){
 
 function closeTab(tab,window){
 
+  if(document.getElementById(tab)){
     document.getElementById(tab).remove()
+  }
+  if(document.getElementById(window)){
     document.getElementById(window).remove()
+  }  
+    
 }
 
 function clickTab(e){
@@ -279,24 +307,20 @@ function showSlides(n) {
 }
 
 function funFact(){
-    let facts = [
-      "I own more than 500 Transformers actionfigures",
-      "I built most of this website in like a day",
-      "I listen to metal music",
-      "I do origami for fun",
-      "I watch anime",
-      "My hair is quite long",
-      "As you can see, i have long hair",
-      "I know how to braid my hair",
-      "I have eyes",
-      "I am more than just a torso",
-      "It looks like you're trying to do something. Would you like help?",
-      "Despite what you see here, i do have legs"
-    ]
+    
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
 
-    let randomFact =  Math.floor(Math.random() * Math.floor(facts.length))
+      let facts = JSON.parse(this.responseText)
 
-    document.getElementById("speech").innerHTML += facts[randomFact]
+      document.getElementById("speech").innerHTML +=  facts["facts"][Math.floor(Math.random() * facts["facts"].length)];
+    }
+  };
+  xhttp.open("POST", "js/facts.json", true);
+  xhttp.send();
+
+  
 }
 
 funFact()
