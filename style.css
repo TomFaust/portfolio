@@ -54,25 +54,37 @@ body{
 }
 
 #taskbar{
-    width:100vw;
+    width:100%;
     left:0;
     position:absolute;
-    top:95vh;
-    padding:0;
+    bottom:0%;
+    padding:5px;
     margin:0;
-    height:5vh;
+    height:35px;
     z-index:20;
+    display: flex;
 }
 
 #taskbar fieldset{
     position:absolute;
     right: 0.5vw;
-    padding:0.4%;
     min-width:60px;
-    height:20px;
-    margin-top:5px;
+    height: calc(100% - 10px);
     text-align: center;
     font-size:10px !important;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items:center;
+    justify-content:center;
+}
+
+
+
+.window2 {
+    background: silver;
+    box-shadow: inset -1% -1vh #0a0a0a, inset 1vh 1vh #dfdfdf, inset -2vh -2vh grey, inset 2vh 2vh #fff;
+    padding: 3px;
 }
 
 .cursorOptions{
@@ -109,19 +121,19 @@ icons img{
 
 tabs{
     left:0vw;
-    height:100%;
+    height:calc(100% - 10px);
     position:absolute;
     width:80%;
     display: grid;
-    grid-template-columns: 5.5vw 15vw 15vw 15vw 15vw 15vw 15vw;
+    grid-template-columns: auto 15vw 15vw 15vw 15vw 15vw 15vw;
+    grid-template-rows: 100%;
 }
 
 .tab{
     padding-left:5px;
     font-size: 80% !important;
-    margin-top:0.5vh;
     padding-right:0.5vw;
-    height: 4vh;
+    height: 100%;
     background:#dfdfdf !important ;
     cursor:pointer;
 }
@@ -290,11 +302,14 @@ body {
 }
 
 .dropdown {
-  margin: 2px;
-  padding: 0;
+  margin: 0;
+  padding:0;
+  margin-left: 5px;
+  margin-right: 5px;
+  aspect-ratio: 0.24/0.1;
   list-style: none;
-  width: 5vw;
-  height:calc(100% - 4px);
+  width: auto;
+  height:100%;
   background-image: url(assets/start.png);
   background-size: 100% 100%;
   box-shadow: inset -1px -1px #504d4d, inset 1px 1px #dfdfdf, inset -2px -2px grey, inset 2px 2px #fff;
