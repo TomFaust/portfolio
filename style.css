@@ -60,7 +60,7 @@ body{
     bottom:0%;
     padding:5px;
     margin:0;
-    height:35px;
+    height:45px;
     z-index:20;
     display: flex;
 }
@@ -68,10 +68,10 @@ body{
 #taskbar fieldset{
     position:absolute;
     right: 0.5vw;
-    min-width:60px;
+    min-width:70px;
     height: calc(100% - 10px);
     text-align: center;
-    font-size:10px !important;
+    font-size:13px !important;
     margin: 0;
     padding: 0;
     display: flex;
@@ -125,7 +125,7 @@ tabs{
     position:absolute;
     width:80%;
     display: grid;
-    grid-template-columns: auto 15vw 15vw 15vw 15vw 15vw 15vw;
+    grid-template-columns: auto 16% 16% 16% 16% 16% 16%;
     grid-template-rows: 100%;
 }
 
@@ -306,7 +306,7 @@ body {
   padding:0;
   margin-left: 5px;
   margin-right: 5px;
-  aspect-ratio: 0.24/0.1;
+  aspect-ratio: 0.27/0.1;
   list-style: none;
   width: auto;
   height:100%;
