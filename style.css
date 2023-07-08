@@ -132,6 +132,10 @@ tabs{
     grid-template-rows: 100%;
 }
 
+.silver{
+    background-color: silver;
+}
+
 .tab{
     padding-left:5px;
     font-size: 100% !important;
@@ -383,10 +387,6 @@ ul li:hover>ul {
 
 #mainMenu img{
     padding-right: 1vh !important;
-}
-
-#mainMenu li{
-    background-color: silver;
 }
   
 #mainMenu{
