@@ -135,6 +135,7 @@ function createWindow(windowName){
           window.style.width = width + "vw"
           window.style.top = Math.floor(Math.random() * Math.floor(95 - height)) + "vh"
           window.style.left = (5 + Math.floor(Math.random() * Math.floor(95 - width))) + "vw"
+          window.style.resize = "both"
 
           window.appendChild(windowArea)
 
