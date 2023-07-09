@@ -307,25 +307,6 @@ function showSlides(n) {
   
 }
 
-function funFact(){
-    
-  var xhttp = new XMLHttpRequest();
-  xhttp.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) {
-
-      let facts = JSON.parse(this.responseText)
-
-      document.getElementById("speech").innerHTML +=  facts["facts"][Math.floor(Math.random() * facts["facts"].length)];
-    }
-  };
-  xhttp.open("POST", "js/facts.json", true);
-  xhttp.send();
-
-  
-}
-
-funFact()
-
 let cursors = document.getElementsByClassName("cursorOptions")
 
 for (let index = 0; index < cursors.length; index++) {
