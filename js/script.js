@@ -105,36 +105,39 @@ function createWindow(windowName){
     
           window.addEventListener("click",clickTab)
 
-          let height = "70"
-          let width = "40"
+          let height = "70%"
+          let width = "40%"
+          let aspect_ratio = "";
 
           switch(windowName.substring(0, windowName.length - 4)){
             case 'contact':
-              height = "60"
-              width = "40"
+              height = "60%"
+              width = "40%"
               break;
             case 'cv':
-              height = "90"
-              width = "50"
+              height = "80%"
+              width = "50%"
+              aspect_ratio = " 1/1.41"
               break;
             case 'social_media':
-              height = "60"
-              width = "30"
+              height = "60%"
+              width = "30%"
               break;
             case 'about_me':
-              height = "80"
-              width = "60"
+              height = "80%"
+              width = "60%"
               break;
             case 'color_picker':
-              height = "60"
-              width = "30"
+              height = "60%"
+              width = "30%"
               break;
           }
 
-          window.style.height = height + "vh"
-          window.style.width = width + "vw"
-          window.style.top = Math.floor(Math.random() * Math.floor(95 - height)) + "vh"
-          window.style.left = (5 + Math.floor(Math.random() * Math.floor(95 - width))) + "vw"
+          window.style.height = height 
+          window.style.width = width
+          window.style.aspectRatio = aspect_ratio
+          window.style.top = Math.floor(Math.random() * Math.floor(95 - height)) + "%"
+          window.style.left = (5 + Math.floor(Math.random() * Math.floor(95 - width))) + "%"
           window.style.resize = "both"
 
           window.appendChild(windowArea)
