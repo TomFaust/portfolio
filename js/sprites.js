@@ -1,5 +1,16 @@
 let me = document.getElementById('me');
 let speech = document.getElementById('speech');
+
+let facts = [
+  "Press the left mouse button to click on icons.",
+  "I am not a real person, just an image.",
+  "Press the right mouse button for nothing. Why would i make the right mouse button do something special?",
+  "Hover your mouse over the start button for some fun features!",
+  "You can minimize tabs using the minimize button, try it!",
+  "Don't worry, this isn't actually a Windows 98 desktop. I'm just that good at making websites!",
+  "Feel free to look around, but try not to break anything. I live here!",
+  "No, i don't go away."
+]
   
 const myObject = {
     group1: {
@@ -63,21 +74,8 @@ const myObject = {
   }
 
   function startSpeech(){
-
-    var xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function() {
-      if (this.readyState == 4 && this.status == 200) {
-  
-        let facts = JSON.parse(this.responseText)
-  
-        speech.innerHTML = "Fun fact:<br>" + facts["facts"][Math.floor(Math.random() * facts["facts"].length)];    
-        speech.style.visibility = 'visible';
-      }
-    };
-    xhttp.open("POST", "js/facts.json", true);
-    xhttp.send();
-
-
+    speech.innerHTML = "<p>" + facts[Math.floor(Math.random() * facts.length)] + "</p>";    
+    speech.style.visibility = 'visible';
   }
 
   function endSpeech(){
