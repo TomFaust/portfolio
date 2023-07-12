@@ -49,7 +49,7 @@ function openMe(event){
         div.classList.add("title-bar-controls")
         div.appendChild(close)
 
-        tab.innerHTML += event.target.closest("div").id
+        tab.innerHTML += "<span>" + event.target.closest("div").id + "</span>"
         tab.appendChild(div)
         
         document.getElementsByTagName("tabs")[0].appendChild(tab)
