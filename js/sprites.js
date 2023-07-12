@@ -9,7 +9,8 @@ let facts = [
   "You can minimize tabs using the minimize button, try it!",
   "Don't worry, this isn't actually a Windows 98 desktop. I'm just that good at making websites!",
   "Feel free to look around, but try not to break anything. I live here!",
-  "No, i don't go away."
+  "No, i don't go away.",
+  "I have a bachelor's degree in Creative Media and Game Technologies"
 ]
   
 const myObject = {

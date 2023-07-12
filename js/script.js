@@ -15,7 +15,9 @@ dragElement(document.getElementById("welcome"))
 let icons = document.getElementsByClassName("icon")
 
 for (let index = 0; index < icons.length; index++) {
-    icons[index].addEventListener("click",openMe)
+  if(icons[index].id){
+    icons[index].addEventListener("click",openMe);
+  }
 }
 
 
