@@ -47,14 +47,14 @@ body{
     z-index:2;
 }
 
-#welcome{
+#welcome_window{
     width:250px;
     left: calc(50% - 125px);
     position:absolute;
     top:20%;
 }
 
-#welcome p, #welcome button{
+#welcome_window p, #welcome_window button{
     font-size: 15px;
 }
 
@@ -204,8 +204,8 @@ tabs{
 
 .windowArea{
     width:100%;
-    padding:1vw;
-    height:calc(100% - 30px);
+    padding: 10px;
+    height:100%;
 }
 
 #contact_window .windowArea{
@@ -227,10 +227,15 @@ tabs{
     display:grid;
     grid-template-columns: auto auto;
     grid-auto-rows:auto;
-    height:100%;
+    height: calc( 100% - 20px);
     text-align: center;
     overflow-y:scroll;
     cursor:pointer;
+}
+
+#cv_window{
+    height: calc(100% - 20px);
+    width:100%;eight: calc(100% - 20px);
 }
 
 #social_media_window pre p, #past_work_window pre p{
@@ -251,12 +256,11 @@ tabs{
 
 #meArea{
     display:grid;
-    grid-template-columns: 22% 78%;
+    grid-template-columns: auto auto;
     height:60vh;
 }
 #meArea img{
  height:100%;
- width:95%;
 }
 
 
@@ -545,4 +549,5 @@ ul li:hover>ul {
         grid-auto-columns: "" ;
         width:100%;
     }
+
 }

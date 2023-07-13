@@ -1,5 +1,7 @@
 let style = document.createElement("style")
 document.getElementsByTagName("body")[0].appendChild(style)
+createTab('welcome');
+dragElement(document.getElementById("welcome_window"))
 
 var myVar = setInterval(function() {
     myTimer();
@@ -10,8 +12,6 @@ var myVar = setInterval(function() {
     document.getElementById("clock").innerHTML = d.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
 }
 
-dragElement(document.getElementById("welcome"))
-
 let icons = document.getElementsByClassName("icon")
 
 for (let index = 0; index < icons.length; index++) {
@@ -20,45 +20,46 @@ for (let index = 0; index < icons.length; index++) {
   }
 }
 
-
-document.getElementById("welcome_close").addEventListener("click",() => closeTab("welcome","welcome"))
-document.getElementById("welcome_ok").addEventListener("click",() => closeTab("welcome","welcome"))
-
+document.getElementById("welcome_close").addEventListener("click",() => closeTab("welcome_tab","welcome_window"))
+document.getElementById("welcome_ok").addEventListener("click",() => closeTab("welcome_tab","welcome_window"))
 
 function openMe(event){
 
-    let element =  document.getElementById(event.target.closest("div").id + "_tab")
+    let element = document.getElementById(event.target.closest("div").id + "_tab")
 
     if (element && document.getElementById(event.target.closest("div").id + "_window").style.display == "none"){
 
       toggleWindow(event.target.closest("div").id);
 
     } else if(!element){
-
-        let tab = document.createElement("div")
-        tab.classList.add("window")
-        tab.id = event.target.closest("div").id + "_tab"
-        tab.classList.add("tab")
-        tab.classList.add("openTab")
-        tab.classList.add("title-bar")
-        tab.addEventListener("click",() => toggleWindow(event.target.closest("div").id))
-
-        let close = document.createElement("button")
-        close.setAttribute("aria-label","Close")
-        close.addEventListener("click",() => closeTab(event.target.closest("div").id + "_tab", event.target.closest("div").id + "_window"))
-        
-        let div = document.createElement("div")
-        div.classList.add("title-bar-controls")
-        div.appendChild(close)
-
-        tab.innerHTML += "<span>" + event.target.closest("div").id + "</span>"
-        tab.appendChild(div)
-        
-        document.getElementsByTagName("tabs")[0].appendChild(tab)
-
+        createTab(event.target.closest("div").id)
         createWindow(event.target.closest("div").id + "_tab")
-        
     }
+}
+
+function createTab(tab_id){
+  let tab = document.createElement("div")
+  tab.classList.add("window")
+  tab.id = tab_id + "_tab"
+  tab.classList.add("tab")
+  tab.classList.add("openTab")
+  tab.classList.add("title-bar")
+  tab.addEventListener("click",() => toggleWindow(tab_id))
+
+  let close = document.createElement("button")
+  close.setAttribute("aria-label","Close")
+  console.log(tab_id + "_tab")
+  console.log(tab_id + "_window")
+  close.addEventListener("click",() => closeTab(tab_id + "_tab", tab_id + "_window"))
+  
+  let div = document.createElement("div")
+  div.classList.add("title-bar-controls")
+  div.appendChild(close)
+
+  tab.innerHTML += "<span>" + tab_id + "</span>"
+  tab.appendChild(div)
+  
+  document.getElementsByTagName("tabs")[0].appendChild(tab)
 }
 
 function createWindow(windowName){
@@ -107,39 +108,41 @@ function createWindow(windowName){
     
           window.addEventListener("click",clickTab)
 
-          let height = "70%"
-          let width = "40%"
+          let height = "70"
+          let width = "40"
           let aspect_ratio = "";
 
           switch(windowName.substring(0, windowName.length - 4)){
             case 'contact':
-              height = "60%"
-              width = "40%"
+              height = "60"
+              width = "40"
               break;
             case 'cv':
-              height = "80%"
-              width = "50%"
+              height = "80"
+              width = "50"
               aspect_ratio = " 1/1.41"
               break;
             case 'social_media':
-              height = "60%"
-              width = "30%"
+              height = "60"
+              width = "30"
               break;
             case 'about_me':
-              height = "80%"
-              width = "60%"
+              height = "80"
+              width = "60"
               break;
             case 'color_picker':
-              height = "60%"
-              width = "30%"
+              height = "60"
+              width = "30"
               break;
           }
 
-          window.style.height = height 
-          window.style.width = width
+          window.style.height = height + "%"
+          window.style.width = width + "%"
           window.style.aspectRatio = aspect_ratio
+
           window.style.top = Math.floor(Math.random() * Math.floor(95 - height)) + "%"
           window.style.left = (5 + Math.floor(Math.random() * Math.floor(95 - width))) + "%"
+
           window.style.resize = "both"
 
           window.appendChild(windowArea)
@@ -185,30 +188,35 @@ function createWindow(windowName){
 
 function toggleWindow(windowName){
 
-    if(document.getElementById(windowName + "_window").style.display == "none"){
-      //tab is closed, open it
-        document.getElementById(windowName + "_window").style.display = "inline"
+  let window = document.getElementById(windowName + "_window");
+  let tab = document.getElementById(windowName + "_tab");
 
-        let windows = document.getElementsByClassName("displayWindow")
+  if(window){
 
-        for (let index = 0; index < windows.length; index++) {
-          windows[index].style.zIndex = 10
-        }
+    if(window.style.display == "none"){
+        //tab is closed, open it
+      window.style.display = "inline";
 
-        document.getElementById(windowName + "_window").style.zIndex  = 11
+      let windows = document.getElementsByClassName("displayWindow")
 
-        document.getElementById(windowName + "_tab").classList.remove("closedTab")
-        document.getElementById(windowName + "_tab").classList.add("openTab")
+      for (let index = 0; index < windows.length; index++) {
+        windows[index].style.zIndex = 10;
+      }
+
+      window.style.zIndex  = 11;
+
+      tab.classList.remove("closedTab");
+      tab.classList.add("openTab");
         
 
     }else{
         //tab is open, close it
-        document.getElementById(windowName + "_window").style.display = "none"
+        window.style.display = "none";
         
-        document.getElementById(windowName + "_tab").classList.remove("openTab")
-        document.getElementById(windowName + "_tab").classList.add("closedTab")
-      
+        tab.classList.remove("openTab");
+        tab.classList.add("closedTab");
     }
+  }
 
 }
 
@@ -235,7 +243,7 @@ function clickTab(e){
 
 
 function dragElement(elmnt) {
-    var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+  var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
   if (document.getElementById(elmnt.id + "header")) {
     /* if present, the header is where you move the DIV from:*/
     document.getElementById(elmnt.id + "header").onmousedown = dragMouseDown;
