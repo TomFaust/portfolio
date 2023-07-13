@@ -71,7 +71,7 @@ body{
     background-size: 100% 100%;
     position: absolute;
     text-align: center;
-    padding:5px;
+    padding:5px 10px 5px 10px;
     word-break: break-word;
     font-family: "Pixelated MS Sans Serif";
     display: inline-block;
@@ -193,7 +193,7 @@ tabs{
 
 .tab .title-bar-controls{
     float:right;
-    width: 20px;
+    width: 18px;
 }
 
 .displayWindow{
@@ -399,18 +399,31 @@ body {
   bottom: 100%;
   margin: 0;
   padding: 0;
+  left:-3px;
   list-style: none;
   display: none;
   line-height: normal;
 }
 
+arrow{
+    clip-path: polygon(0 0,100% 50%,100% 50%,0 100%);
+    background-color: black;
+    height:5px;
+    width: 5px;
+    display:block;
+    position: absolute;
+    right:5px;
+    bottom:20px;
+}
+
 .dropdown li ul li a {
-  text-align: left;
-  color: black;
-  font-size: 3vh;
-  padding-bottom: 2vh;
-  display: block;
-  white-space: nowrap;
+    text-align: left;
+    color: black;
+    font-size: 3vh;
+    padding-bottom: 15px;
+    padding-right: 23px;
+    display: block;
+    white-space: nowrap;
 }
 
 
