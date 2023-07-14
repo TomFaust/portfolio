@@ -36,7 +36,6 @@ document.getElementById('file').addEventListener('change', (e) => {
       // convert file to base64 String
       const base64String = reader.result.replace('data:', '').replace(/^.+,/, '');
       // store file
-      console.log(base64String.length)
       localStorage.setItem('wallpaper', base64String);
       // display image
       document.body.style.backgroundImage = `url(data:image/png;base64,${base64String})`;

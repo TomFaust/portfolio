@@ -1,5 +1,5 @@
 let me = document.getElementById('me');
-let speech = document.getElementById('speech');
+let speech = document.getElementById('speechBubble');
 
 let facts = [
   "Press the left mouse button to click on icons.",
@@ -75,7 +75,9 @@ const myObject = {
   }
 
   function startSpeech(){
-    speech.innerHTML = "<p>" + facts[Math.floor(Math.random() * facts.length)] + "</p>";    
+    let middle = document.getElementById('middle');
+
+    middle.innerHTML = facts[Math.floor(Math.random() * facts.length)];    
     speech.style.visibility = 'visible';
   }
 

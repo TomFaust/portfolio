@@ -65,22 +65,6 @@ body{
     right:2%;
 }
 
-#speech{
-    background-image: url("assets/speechBubble.png");
-    visibility: hidden;
-    background-size: 100% 100%;
-    position: absolute;
-    text-align: center;
-    padding:5px 10px 5px 10px;
-    word-break: break-word;
-    font-family: "Pixelated MS Sans Serif";
-    display: inline-block;
-}
-
-#speech p{
-    display: inline-block;
-    vertical-align: middle;
-}
 
 #face{
     width:100%;
@@ -532,7 +516,18 @@ ul li:hover>ul {
         font-size:20px !important;
     }
 
-    #speech p{
+    #speechBubble{
+        right: 90px;
+        bottom:220px;
+        width:250px;
+        font-size:20px !important;
+    }
+
+    #speechBubble #middle{
+        padding:5px 20px 7px 20px;
+    }
+
+    #speech span{
         margin-bottom: 50px;
     }
 
@@ -554,7 +549,18 @@ ul li:hover>ul {
         font-size:10px !important;
     }
 
-    #speech p{
+    #speechBubble{
+        right: 45px;
+        bottom:120px;
+        width:125px;
+        font-size:10px !important;
+    }
+
+    #speechBubble #middle{
+        padding:3px 10px 3px 10px;
+    }
+
+    #speech span{
         margin-bottom: 25px;
     }
 
@@ -563,4 +569,35 @@ ul li:hover>ul {
         width:100%;
     }
 
+}
+
+#speechBubble{
+    position:absolute;
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: auto 1fr auto;
+    visibility: hidden;
+}
+
+#speechBubble #top{
+    height: 7px;
+    width:100%;
+    top:0;
+    background-image: url("assets/speech_bubble/top.png");
+    background-size: 100% 100%;
+}
+
+#speechBubble #middle{
+    width:100%;
+    background-image: url("assets/speech_bubble/middle.png");
+    background-size: 100% 100%;
+    font-family: "Pixelated MS Sans Serif";
+    text-align: center;
+}
+
+#speechBubble #bottom{
+    height: 20px;
+    width:100%;
+    background-image: url("assets/speech_bubble/bottom.png");
+    background-size: 100% 100%;
 }

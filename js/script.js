@@ -48,8 +48,6 @@ function createTab(tab_id){
 
   let close = document.createElement("button")
   close.setAttribute("aria-label","Close")
-  console.log(tab_id + "_tab")
-  console.log(tab_id + "_window")
   close.addEventListener("click",() => closeTab(tab_id + "_tab", tab_id + "_window"))
   
   let div = document.createElement("div")
