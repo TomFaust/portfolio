@@ -154,9 +154,8 @@ icons img{
 tabs{
     height:100%;
     width:100%;
-    display: grid;
-    grid-template-columns: repeat(6,1fr);
-    grid-template-rows: 100%;
+    display: flex;
+    flex-wrap: nowrap;
 }
 
 .silver{
@@ -171,6 +170,9 @@ tabs{
     background:#dfdfdf !important ;
     cursor:pointer;
     cursor: pointer;
+    flex-grow: 1;
+    max-width:150px;
+    flex-basis: 0;
     display: grid;
     grid-template-columns: 1fr auto;
 }
