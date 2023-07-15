@@ -33,7 +33,7 @@ function openMe(event){
 
     } else if(!element){
         createTab(event.target.closest("div").id)
-        createWindow(event.target.closest("div").id + "_tab")
+        createWindow(event.target.closest("div"))
     }
 }
 
@@ -60,20 +60,21 @@ function createTab(tab_id){
   document.getElementsByTagName("tabs")[0].appendChild(tab)
 }
 
-function createWindow(windowName){
+function createWindow(target){
 
-  let fileName = "pages/" + windowName.substring(0, windowName.length - 4) + ".html"
+  let windowName = target.id + "_tab"
+  let fileName = "pages/" + target.id + ".html"
 
   var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
 
           let tabName = windowName.substring(0, windowName.length - 4) + "_window"
-          let window = document.createElement("div")
+          let windowDiv = document.createElement("div")
             
-          window.id = tabName
-          window.classList.add("window")
-          window.classList.add("displayWindow")
+          windowDiv.id = tabName
+          windowDiv.classList.add("window")
+          windowDiv.classList.add("displayWindow")
 
           let titleBar = document.createElement("div")
           titleBar.classList.add("title-bar")
@@ -89,7 +90,7 @@ function createWindow(windowName){
           titleBarControls.classList.add("title-bar-controls")
           let minimize = document.createElement("button")
           minimize.setAttribute("aria-label","Minimize")
-          minimize.addEventListener("click",() => toggleWindow(windowName.substring(0, windowName.length - 4)))
+          minimize.addEventListener("click",() => toggleWindow(target.id))
 
           let close = document.createElement("button")
           close.setAttribute("aria-label","Close")
@@ -98,27 +99,23 @@ function createWindow(windowName){
           titleBarControls.appendChild(minimize)
           titleBarControls.appendChild(close)
           titleBar.appendChild(titleBarControls) 
-          window.appendChild(titleBar);
+          windowDiv.appendChild(titleBar);
 
           let windowArea = document.createElement("div")
           windowArea.classList.add("windowArea")
           windowArea.insertAdjacentHTML('beforeend',this.responseText)
     
-          window.addEventListener("click",clickTab)
+          windowDiv.addEventListener("click",clickTab)
 
-          let height = "70"
-          let width = "40"
+
+          let height = target.dataset.height;
+          let width = target.dataset.width;
           let aspect_ratio = "";
 
-          switch(windowName.substring(0, windowName.length - 4)){
+          switch(target){
             case 'contact':
               height = "60"
               width = "40"
-              break;
-            case 'cv':
-              height = "80"
-              width = "50"
-              aspect_ratio = " 1/1.41"
               break;
             case 'social_media':
               height = "60"
@@ -134,18 +131,17 @@ function createWindow(windowName){
               break;
           }
 
-          window.style.height = height + "%"
-          window.style.width = width + "%"
-          window.style.aspectRatio = aspect_ratio
+          windowDiv.style.height = height + "px"
+          windowDiv.style.width = width + "px"
 
-          window.style.top = Math.floor(Math.random() * Math.floor(95 - height)) + "%"
-          window.style.left = (5 + Math.floor(Math.random() * Math.floor(95 - width))) + "%"
+          windowDiv.style.top = Math.abs(Math.floor(Math.random() * (window.innerHeight - height))) - 10 + "px"
+          windowDiv.style.left = Math.abs(Math.floor(Math.random() * (window.innerWidth - width))) + "px"
 
-          window.style.resize = "both"
+          windowDiv.style.resize = "both"
 
-          window.appendChild(windowArea)
+          windowDiv.appendChild(windowArea)
 
-          document.getElementById("container").appendChild(window)
+          document.getElementById("container").appendChild(windowDiv)
 
           //add slideshow to about me
           if(windowName.substring(0, windowName.length - 4) == "about_me"){
@@ -174,7 +170,7 @@ function createWindow(windowName){
           }
 
           //make window dragable
-          dragElement(window)
+          dragElement(windowDiv)
         }
       };
 

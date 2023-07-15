@@ -4,12 +4,12 @@ let speech = document.getElementById('speechBubble');
 let facts = [
   "Press the left mouse button to click on icons.",
   "I am not a real person, just an image.",
-  "Press the right mouse button for nothing. Why would i make the right mouse button do something special?",
+  "Press the right mouse button...for nothing. Why would i make the right mouse button do something special?",
   "Hover your mouse over the start button for some fun features!",
   "You can minimize tabs using the minimize button, try it!",
   "Don't worry, this isn't actually a Windows 98 desktop. I'm just that good at making websites!",
   "Feel free to look around, but try not to break anything. I live here!",
-  "No, i don't go away.",
+  "No, i don't go away!",
   "I have a bachelor's degree in Creative Media and Game Technologies"
 ]
   
@@ -33,10 +33,16 @@ const myObject = {
         },
         obj7: { 
             sprite: 'Me_talk.gif', 
-            delayRange: [10000, 20000],
+            delayRange: [10000, 15000],
             startFunction: startSpeech,
             endFunction: endSpeech 
         },
+    },
+    group4: {
+      obj8:{
+        sprite: 'Me_yoyo.gif',
+        delayRange: [13500,13500],
+      }
     }
   };
   
@@ -55,6 +61,18 @@ const myObject = {
       
       for (const objectKey of objectKeys) {
         const entry = selectedGroup[objectKey];
+
+        if (document.hidden) {
+          await new Promise(resolve => {
+            document.addEventListener('visibilitychange', function handler() {
+              if (!document.hidden) {
+                document.removeEventListener('visibilitychange', handler);
+                resolve();
+              }
+            });
+          });
+        }
+
         me.setAttribute("src","assets/Sprites/" + entry.sprite)
         
         if (entry.startFunction && typeof entry.startFunction === 'function') {
@@ -74,11 +92,18 @@ const myObject = {
     }
   }
 
-  function startSpeech(){
+  async function startSpeech(){
     let middle = document.getElementById('middle');
-
-    middle.innerHTML = facts[Math.floor(Math.random() * facts.length)];    
     speech.style.visibility = 'visible';
+    middle.innerHTML = ""; 
+    let fact = facts[Math.floor(Math.random() * facts.length)];    
+    let factArray = fact.split("")
+    for (const letter of factArray) {
+
+      middle.innerHTML += letter;
+
+      await new Promise(resolve => setTimeout(resolve, 40));
+    }
   }
 
   function endSpeech(){
@@ -87,3 +112,5 @@ const myObject = {
   
   // Usage
   iterateObjectWithDelay(myObject);
+
+

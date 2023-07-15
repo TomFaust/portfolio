@@ -187,7 +187,6 @@ tabs{
 
 .tab .title-bar-controls{
     float:right;
-    width: 18px;
 }
 
 .displayWindow{
@@ -199,7 +198,7 @@ tabs{
 .windowArea{
     width:100%;
     padding: 10px;
-    height:100%;
+    height:calc( 100% - 20px);
 }
 
 #contact_window .windowArea{
@@ -221,15 +220,15 @@ tabs{
     display:grid;
     grid-template-columns: auto auto;
     grid-auto-rows:auto;
-    height: calc( 100% - 20px);
+    height: 100%;
     text-align: center;
     overflow-y:scroll;
     cursor:pointer;
 }
 
-#cv_window{
-    height: calc(100% - 20px);
-    width:100%;eight: calc(100% - 20px);
+#cv_window object{
+    height: 100%;
+    width:100%;
 }
 
 #social_media_window pre p, #past_work_window pre p{
@@ -545,8 +544,12 @@ ul li:hover>ul {
         grid-auto-columns: 100px;
     }
 
+    .tab .title-bar-controls{
+        width: 18px;
+    }
+
 }
-@media only screen and (orientation:portrait){
+@media only screen and (orientation:portrait), (pointer: coarse){
 
     #me{
         width:100px;
@@ -575,10 +578,68 @@ ul li:hover>ul {
     }
 
     icons{
-        grid-auto-columns: "" ;
+        grid-auto-columns: "";
         width:100%;
     }
 
+    #cv_window{
+        width:90% !important;
+        left:5% !important;
+        height:calc(95% - 30px) !important;
+        top: calc(50% - 15px) !important;
+        transform: translate(0%, -50%);
+    } 
+
+    #i_wont_forget_hue_window, #oh_bees_window{
+        width:90% !important;
+        left:5% !important;
+        top: 50% !important;
+        transform: translate(0%, -50%);
+    } 
+
+    #oh_bees_window{
+        height:190px !important;
+    }
+
+    #i_wont_forget_hue_window{
+         height:170px !important;
+    }
+
+    iframe {
+        width: 142% !important;
+        height: 142% !important;
+        -webkit-transform: scale(0.7);
+        transform: scale(0.7);
+        -webkit-transform-origin: 0 0;
+        transform-origin: 0 0;
+      }
+
+    .tab .title-bar-controls{
+        width: 20px;
+    }
+
+    #altCV h1{
+        font-size: 50px;
+    }
+
+    #altCV p{
+        font-size: 15px;
+    }
+
+    #altCV img{
+        height:70px
+    }
+
+    #altCV button{
+        scale:1.3;
+    }
+
+}
+
+#i_wont_forget_hue_window iframe{
+    height:100%;
+    width:100%;
+    background-color: #282e39;
 }
 
 #speechBubble{
