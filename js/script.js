@@ -1,7 +1,5 @@
 let style = document.createElement("style")
 document.getElementsByTagName("body")[0].appendChild(style)
-createTab('welcome');
-dragElement(document.getElementById("welcome_window"))
 
 var myVar = setInterval(function() {
     myTimer();
@@ -20,20 +18,23 @@ for (let index = 0; index < icons.length; index++) {
   }
 }
 
-document.getElementById("welcome_close").addEventListener("click",() => closeTab("welcome_tab","welcome_window"))
-document.getElementById("welcome_ok").addEventListener("click",() => closeTab("welcome_tab","welcome_window"))
+if(!localStorage.hasOwnProperty('ok_welcome')){
+  createTab('welcome');
+  createWindow('welcome',"","",function(){
+      document.getElementById("welcome_ok").addEventListener("click",function(){
+      closeTab("welcome_tab","welcome_window")
+      localStorage.setItem('ok_welcome',1)
+    })
+  })
+}
 
 function openMe(event){
-
     let element = document.getElementById(event.target.closest("div").id + "_tab")
-
     if (element && document.getElementById(event.target.closest("div").id + "_window").style.display == "none"){
-
       toggleWindow(event.target.closest("div").id);
-
     } else if(!element){
         createTab(event.target.closest("div").id)
-        createWindow(event.target.closest("div"))
+        createWindow(event.target.closest("div").id,event.target.closest("div").dataset.height,event.target.closest("div").dataset.width,"")
     }
 }
 
@@ -60,10 +61,9 @@ function createTab(tab_id){
   document.getElementsByTagName("tabs")[0].appendChild(tab)
 }
 
-function createWindow(target){
-
-  let windowName = target.id + "_tab"
-  let fileName = "pages/" + target.id + ".html"
+function createWindow(target,height,width,done){
+  let windowName = target + "_tab"
+  let fileName = "pages/" + target + ".html"
 
   var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
@@ -90,7 +90,7 @@ function createWindow(target){
           titleBarControls.classList.add("title-bar-controls")
           let minimize = document.createElement("button")
           minimize.setAttribute("aria-label","Minimize")
-          minimize.addEventListener("click",() => toggleWindow(target.id))
+          minimize.addEventListener("click",() => toggleWindow(target))
 
           let close = document.createElement("button")
           close.setAttribute("aria-label","Close")
@@ -107,35 +107,16 @@ function createWindow(target){
     
           windowDiv.addEventListener("click",clickTab)
 
-
-          let height = target.dataset.height;
-          let width = target.dataset.width;
-          let aspect_ratio = "";
-
-          switch(target){
-            case 'contact':
-              height = "60"
-              width = "40"
-              break;
-            case 'social_media':
-              height = "60"
-              width = "30"
-              break;
-            case 'about_me':
-              height = "80"
-              width = "60"
-              break;
-            case 'color_picker':
-              height = "60"
-              width = "30"
-              break;
-          }
-
           windowDiv.style.height = height + "px"
           windowDiv.style.width = width + "px"
 
-          windowDiv.style.top = Math.abs(Math.floor(Math.random() * (window.innerHeight - height))) - 10 + "px"
-          windowDiv.style.left = Math.abs(Math.floor(Math.random() * (window.innerWidth - width))) + "px"
+          let top = Math.floor(Math.random() * (window.innerHeight - height)) - 30
+          if(top < 0){
+            top = top * -1
+          }
+
+          windowDiv.style.top = top + "px"
+          windowDiv.style.left = Math.floor(Math.random() * (window.innerWidth - width)) + "px"
 
           windowDiv.style.resize = "both"
 
@@ -171,14 +152,14 @@ function createWindow(target){
 
           //make window dragable
           dragElement(windowDiv)
+          if(done){
+            done();
+          }
         }
-      };
-
-      
+      };  
     xhttp.open("GET", fileName, true);
     xhttp.send();
 }
-
 
 function toggleWindow(windowName){
 

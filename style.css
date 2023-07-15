@@ -49,9 +49,10 @@ body{
 
 #welcome_window{
     width:250px;
-    left: calc(50% - 125px);
     position:absolute;
-    top:20%;
+    top:50% !important;
+    left:50% !important;
+    transform: translate(-50%,-60%);
 }
 
 #welcome_window p, #welcome_window button{
@@ -598,7 +599,7 @@ ul li:hover>ul {
     } 
 
     #oh_bees_window{
-        height:190px !important;
+        height:150px !important;
     }
 
     #i_wont_forget_hue_window{
