@@ -63,7 +63,7 @@ body{
     position: absolute;
     z-index: 0;
     bottom:30px;
-    right:2%;
+    right:0;
 }
 
 
@@ -513,10 +513,20 @@ ul li:hover>ul {
     grid-template-columns: 5% 80% 15%;
 }
 
+#plane_flight{
+    position: absolute;
+    bottom:30px;
+}
+
 @media only screen and (orientation:landscape){
 
     #me{
         width:200px;
+    }
+
+    #plane_flight{
+        right:200px;
+        width:2000px;
     }
 
     #speech{
@@ -554,6 +564,11 @@ ul li:hover>ul {
 
     #me{
         width:100px;
+    }
+
+    #plane_flight{
+        right:100px;
+        width:1000px;
     }
 
     #speech{

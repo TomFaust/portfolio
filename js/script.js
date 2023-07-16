@@ -110,6 +110,8 @@ function createWindow(target,height,width,done){
           windowDiv.style.height = height + "px"
           windowDiv.style.width = width + "px"
 
+          
+
           let top = Math.floor(Math.random() * (window.innerHeight - height)) - 30
           if(top < 0){
             top = top * -1

@@ -14,36 +14,42 @@ let facts = [
 ]
   
 const myObject = {
-    group1: {
-        obj1: { 
+    idle1: {
+        idle_left: { 
             sprite: 'Me_idle_left.gif', 
             delayRange: [2000, 10000] 
         }
     },
-    group2: {
-        obj1: { 
+    idle2: {
+        idle_right: { 
             sprite: 'Me_idle_right.gif', 
             delayRange: [2000, 10000] 
         }
     },
-    group3: {
-        obj6: { 
+    talk: {
+        alert: { 
             sprite: 'Me_alert.gif', 
             delayRange: [2000, 2000] 
         },
-        obj7: { 
+        talk: { 
             sprite: 'Me_talk.gif', 
             delayRange: [10000, 15000],
             startFunction: startSpeech,
             endFunction: endSpeech 
         },
     },
-    group4: {
-      obj8:{
+    yoyo: {
+      yoyo:{
         sprite: 'Me_yoyo.gif',
         delayRange: [13500,13500],
       }
-    }
+    },
+    // paper_plane:{
+    //   plan:{
+    //     sprite: 'Me_paper_airplane.gif',
+    //     delayRange: [14500,14500],
+    //   }
+    // }
   };
   
   function getRandomDelay(min, max) {
