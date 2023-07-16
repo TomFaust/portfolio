@@ -295,55 +295,25 @@ tabs{
     background-color: transparent !important;
 }
 
-/* @media only screen and (orientation:landscape){
-    #turn{ display:none; }
-    #container{ display:block; }
-  }
-@media only screen and (orientation:portrait){
-    #turn{ display:block; }
-    #container{ display:none; }
-} */
-
-#turn h1{
-    font-size: 40px;
-}
-
-#turn p{
-    font-size: 17px;
-}
-
-#turn .window, #altCV{
+#altCV{
     position:absolute;
     left:10%;
     top:10%;
     width: 80%;
     height:80%;
     text-align:center;
+    display:grid;
+    
 }
 
 button {
     cursor:pointer;
 }
 
-#turn button{
-    padding: 5%;
-    font-size:20px;
-}
-
-
-#turn p{
-    padding-left: 5%;
-    padding-right: 5%;
-}
-
-#turn img{
-    width:30%;
-    padding-top:30%;
-}
-
-#altCV{
-    padding-top: 20%;
-}
+/* .icon{
+    min-width: 100px;
+    width: fit-content;
+} */
 
 .openTab{
     box-shadow: inset -1px -1px #fff, inset 1px 1px grey, inset -2px -2px #dfdfdf, inset 2px 2px #0a0a0a;
@@ -632,22 +602,6 @@ ul li:hover>ul {
 
     .tab .title-bar-controls{
         width: 20px;
-    }
-
-    #altCV h1{
-        font-size: 50px;
-    }
-
-    #altCV p{
-        font-size: 15px;
-    }
-
-    #altCV img{
-        height:70px
-    }
-
-    #altCV button{
-        scale:1.3;
     }
 
 }
