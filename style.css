@@ -303,17 +303,30 @@ tabs{
     height:80%;
     text-align:center;
     display:grid;
-    
+    grid-template-rows: 40% 7% 12% 10%;
+}
+
+#altCV #cvWarning{
+    font-size: 40px;
+    font-weight: bold;
+}
+
+#altCV p{
+    font-size: 16px;
+}
+
+
+
+#altCV button{
+    font-size: 15px;
+    height:70%;
+    width:70%;
+    margin-left:15%;
 }
 
 button {
     cursor:pointer;
 }
-
-/* .icon{
-    min-width: 100px;
-    width: fit-content;
-} */
 
 .openTab{
     box-shadow: inset -1px -1px #fff, inset 1px 1px grey, inset -2px -2px #dfdfdf, inset 2px 2px #0a0a0a;
@@ -488,8 +501,19 @@ ul li:hover>ul {
     bottom:30px;
 }
 
+@media only screen and ((max-width: 600px) or (max-height:600px))    {
+    icons img {
+        width: 25px;
+    }
+    
+    icons{
+        grid-template-rows: repeat(auto-fill, 73px);
+    }
+}
+
 @media only screen and (orientation:landscape){
 
+    
     #me{
         width:200px;
     }
