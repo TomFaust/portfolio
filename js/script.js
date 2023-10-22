@@ -61,106 +61,102 @@ function createTab(tab_id){
   document.getElementsByTagName("tabs")[0].appendChild(tab)
 }
 
-function createWindow(target,height,width,done){
-  let windowName = target + "_tab"
-  let fileName = "pages/" + target + ".html"
+function createWindow(target,height,width,done,layoutName = "default"){
+
+  layoutName = "pages/layouts/" + layoutName + ".html";
 
   var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
+      if (this.readyState == 4 && this.status == 200) {
 
-          let tabName = windowName.substring(0, windowName.length - 4) + "_window"
-          let windowDiv = document.createElement("div")
-            
-          windowDiv.id = tabName
-          windowDiv.classList.add("window")
-          windowDiv.classList.add("displayWindow")
+        let windowDiv = document.createElement('div');
+        windowDiv.innerHTML = this.responseText;
+        windowDiv = windowDiv.childNodes[0];
+        let windowArea = windowDiv.getElementsByClassName("windowArea")[0];
 
-          let titleBar = document.createElement("div")
-          titleBar.classList.add("title-bar")
-          titleBar.id = tabName + "header"
+        let windowName = target + "_tab"
+        let fileName = "pages/" + target + ".html"
 
-          let titleBarText = document.createElement("div")
-          titleBarText.classList.add("title-bar-text")
-          let name = windowName.substring(0, windowName.length - 4)
-          titleBarText.innerHTML = name
-          titleBar.appendChild(titleBarText)
+        var xhttp = new XMLHttpRequest();
+          xhttp.onreadystatechange = function() {
+              if (this.readyState == 4 && this.status == 200) {
 
-          let titleBarControls = document.createElement("div")
-          titleBarControls.classList.add("title-bar-controls")
-          let minimize = document.createElement("button")
-          minimize.setAttribute("aria-label","Minimize")
-          minimize.addEventListener("click",() => toggleWindow(target))
+                let tabName = windowName.substring(0, windowName.length - 4) + "_window"
 
-          let close = document.createElement("button")
-          close.setAttribute("aria-label","Close")
-          close.addEventListener("click", () => closeTab(windowName,tabName))
+                windowDiv.id = tabName
 
-          titleBarControls.appendChild(minimize)
-          titleBarControls.appendChild(close)
-          titleBar.appendChild(titleBarControls) 
-          windowDiv.appendChild(titleBar);
+                let titleBar = windowDiv.getElementsByClassName('title-bar')[0]
+                titleBar.id = tabName + "header"
 
-          let windowArea = document.createElement("div")
-          windowArea.classList.add("windowArea")
-          windowArea.insertAdjacentHTML('beforeend',this.responseText)
-    
-          windowDiv.addEventListener("click",clickTab)
+                let titleBarText = windowDiv.getElementsByClassName("title-bar-text")[0]
+                let name = windowName.substring(0, windowName.length - 4)
+                titleBarText.innerHTML = name
 
-          windowDiv.style.height = height + "px"
-          windowDiv.style.width = width + "px"
+                let minimize = windowDiv.getElementsByClassName("controls-minimize")[0]
+                minimize.addEventListener("click",() => toggleWindow(target))
 
+                let close = windowDiv.getElementsByClassName("controls-close")[0]
+                close.addEventListener("click", () => closeTab(windowName,tabName))
+
+                windowArea.insertAdjacentHTML('beforeend',this.responseText)
           
+                windowDiv.addEventListener("click",clickTab)
+                windowDiv.style.height = height + "px"
+                windowDiv.style.width = width + "px"
 
-          let top = Math.floor(Math.random() * (window.innerHeight - height)) - 30
-          if(top < 0){
-            top = top * -1
-          }
+                let top = Math.floor(Math.random() * (window.innerHeight - height)) - 30
+                if(top < 0){
+                  top = top * -1
+                }
 
-          windowDiv.style.top = top + "px"
-          windowDiv.style.left = Math.floor(Math.random() * (window.innerWidth - width)) + "px"
+                windowDiv.style.top = top + "px"
+                windowDiv.style.left = Math.floor(Math.random() * (window.innerWidth - width)) + "px"
 
-          windowDiv.style.resize = "both"
+                windowDiv.style.resize = "both"
 
-          windowDiv.appendChild(windowArea)
+                windowDiv.appendChild(windowArea)
 
-          document.getElementById("container").appendChild(windowDiv)
+                document.getElementById("container").appendChild(windowDiv)
 
-          //add slideshow to about me
-          if(windowName.substring(0, windowName.length - 4) == "about_me"){
-            showSlides(slideIndex)
-          }
+                //add slideshow to about me
+                if(windowName.substring(0, windowName.length - 4) == "about_me"){
+                  showSlides(slideIndex)
+                }
 
-          if(windowName.substring(0, windowName.length - 4) == "color_picker"){
-            let sliders = document.getElementsByClassName("range")
+                if(windowName.substring(0, windowName.length - 4) == "color_picker"){
+                  let sliders = document.getElementsByClassName("range")
 
-            for (let index = 0; index < sliders.length; index++) {
-              sliders[index].addEventListener("input",colorSlider)
-            }
+                  for (let index = 0; index < sliders.length; index++) {
+                    sliders[index].addEventListener("input",colorSlider)
+                  }
 
-            let RGBNumbers = document.getElementsByClassName("RGBInput")
+                  let RGBNumbers = document.getElementsByClassName("RGBInput")
 
-            for (let index = 0; index < RGBNumbers.length; index++) {
-              RGBNumbers[index].addEventListener("input",colorInput)
-            }
+                  for (let index = 0; index < RGBNumbers.length; index++) {
+                    RGBNumbers[index].addEventListener("input",colorInput)
+                  }
 
-            document.getElementById("setColor").addEventListener("click",colorFromButton)
-          }
+                  document.getElementById("setColor").addEventListener("click",colorFromButton)
+                }
 
-          //set custom cursor for new window
-          if(localStorage.hasOwnProperty("cursor")){
-            switchCursors(localStorage.getItem("cursor"))
-          }
+                //set custom cursor for new window
+                if(localStorage.hasOwnProperty("cursor")){
+                  switchCursors(localStorage.getItem("cursor"))
+                }
 
-          //make window dragable
-          dragElement(windowDiv)
-          if(done){
-            done();
-          }
-        }
-      };  
-    xhttp.open("GET", fileName, true);
-    xhttp.send();
+                //make window dragable
+                dragElement(windowDiv)
+                if(done){
+                  done();
+                }
+              }
+            };  
+          xhttp.open("GET", fileName, true);
+          xhttp.send();
+      }
+    };  
+  xhttp.open("GET", layoutName, true);
+  xhttp.send();
 }
 
 function toggleWindow(windowName){
