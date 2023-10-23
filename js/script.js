@@ -30,11 +30,13 @@ if(!localStorage.hasOwnProperty('ok_welcome')){
 
 function openMe(event){
     let element = document.getElementById(event.target.closest("div").id + "_tab")
-    if (element && document.getElementById(event.target.closest("div").id + "_window").style.display == "none"){
-      toggleWindow(event.target.closest("div").id);
+    let closestDiv = event.target.closest("div");
+
+    if (element && document.getElementById(closestDiv.id + "_window").style.display == "none"){
+      toggleWindow(closestDiv.id);
     } else if(!element){
-        createTab(event.target.closest("div").id)
-        createWindow(event.target.closest("div").id,event.target.closest("div").dataset.height,event.target.closest("div").dataset.width,"")
+        createTab(closestDiv.id)
+        createWindow(closestDiv.id,closestDiv.dataset.height,closestDiv.dataset.width,"",closestDiv.dataset.window)
     }
 }
 
@@ -90,7 +92,7 @@ function createWindow(target,height,width,done,layoutName = "default"){
 
                 let titleBarText = windowDiv.getElementsByClassName("title-bar-text")[0]
                 let name = windowName.substring(0, windowName.length - 4)
-                titleBarText.innerHTML = name
+                titleBarText.innerHTML += name
 
                 let minimize = windowDiv.getElementsByClassName("controls-minimize")[0]
                 minimize.addEventListener("click",() => toggleWindow(target))
