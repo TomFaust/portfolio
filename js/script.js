@@ -113,7 +113,6 @@ function createWindow(target,height,width,done,layoutName = "default"){
 
                 windowDiv.style.top = top + "px"
                 windowDiv.style.left = Math.floor(Math.random() * (window.innerWidth - width)) + "px"
-
                 windowDiv.style.resize = "both"
 
                 windowDiv.appendChild(windowArea)
@@ -170,7 +169,7 @@ function toggleWindow(windowName){
 
     if(window.style.display == "none"){
         //tab is closed, open it
-      window.style.display = "inline";
+      window.style.display = "";
 
       let windows = document.getElementsByClassName("displayWindow")
 
