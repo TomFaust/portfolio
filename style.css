@@ -86,12 +86,27 @@ body{
     grid-template-columns: 64px 7px auto 80px;
 }
 
-#taskbar pre{
+.v-line-in{
     width:0 !important;
     padding: 0px 1.3px;
     margin-right:4px;
     margin-top:1px;
     margin-bottom:1px;
+}
+
+.v-line-out{
+    background: #fff;
+    display: block;
+    margin: 0;
+    padding: 12px 8px;
+    background: #f2f2f2;
+    box-shadow: 1px 1px 0 #818181;
+
+    width: 0 !important;
+    padding: 0px 1px;
+    margin-right: 2px;
+    margin-top: 0.2rem;
+    margin-bottom:  0.2rem;
 }
 
 #taskbar fieldset{
@@ -133,7 +148,7 @@ icons{
     left:0;
     
     grid-auto-flow: column;
-    grid-template-rows: repeat(auto-fill, 100px);
+    grid-template-rows: repeat(auto-fill, 95px);
 }
 
 .icon label{
@@ -193,18 +208,14 @@ tabs{
     float:right;
 }
 
-.title-bar{
-    margin-bottom: 2px;
-}
-
 .displayWindow{
     z-index:12;
     position:absolute;
     overflow: hidden;
     display: flex;
     flex-direction: column;
-    min-height: 150px;
-    min-width: 150px;
+    min-height: 200px;
+    min-width: 200px;
 }
 
 .windowArea{
@@ -212,6 +223,7 @@ tabs{
     height:calc(100% - 1px);
     padding:1px;
     overflow: hidden;
+    margin-top: 2px;
 }
 
 #contact_window .windowArea{
@@ -229,7 +241,7 @@ tabs{
     resize:vertical;
 }
 
-#social_media_window pre, #past_work_window pre{
+#social_media_window .windowArea pre, #past_work_window .windowArea pre{
     display:grid;
     grid-template-columns: auto auto;
     grid-auto-rows:auto;
@@ -415,6 +427,44 @@ arrow{
     white-space: nowrap;
 }
 
+.line {
+    box-shadow: 0 2px #808280, 0 4px white;
+}
+
+.window-options select{
+    width:100%;
+}
+
+.options {
+    display: flex;
+    padding: 0rem 0.2rem 0rem 0.2rem;
+    position: relative;
+}
+
+.options .float-right {
+    position: absolute;
+    right: 0;
+    height: 100%;
+}
+
+.options .browser-bar-image{
+    position: absolute;
+    right: 0;
+    height:100%;
+}
+
+.options .item{
+    padding: 0.3rem 0.5rem 0.3rem 0.5rem;
+}
+
+.op05{
+    opacity: 0.5;
+}
+
+.window-options hr{
+    margin-top:0;
+    margin-bottom:0.1rem;
+}
 
 .dropdown li ul li a:hover {
   color: #ffffff;

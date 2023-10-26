@@ -113,7 +113,6 @@ function createWindow(target,height,width,done,layoutName = "default"){
 
                 windowDiv.style.top = top + "px"
                 windowDiv.style.left = Math.floor(Math.random() * (window.innerWidth - width)) + "px"
-                windowDiv.style.resize = "both"
 
                 windowDiv.appendChild(windowArea)
 
