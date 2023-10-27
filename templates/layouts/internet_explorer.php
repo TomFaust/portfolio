@@ -27,13 +27,15 @@
         <div class="options">
             <pre class="v-line-out"></pre>
             <div class="item">Address</div>
-            <select id="address_select">
+            <select class="address_select">
             </select>
         </div>
     </div>
     <div class="windowArea">
-
+        <?php
+            include '../pages/' . $_POST['content'] . '.html';
+        ?>
     </div>
     
-    <script src="js/browser_windows.js"></script>
+    <script src="src/js/browser_windows.js"></script>
 </div>

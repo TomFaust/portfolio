@@ -227,7 +227,7 @@ tabs{
 }
 
 #contact_window .windowArea{
-    background-image: url(assets/contactPage.png);
+    background-image: url(../../assets/contactPage.png);
     background-size: 100% 100%;
 }
 
@@ -403,7 +403,7 @@ body {
   list-style: none;
   width: 60px;
   height:24px;
-  background-image: url(assets/start.png);
+  background-image: url(../../assets/start.png);
   background-size: 100% 100%;
   box-shadow: inset -1px -1px #504d4d, inset 1px 1px #dfdfdf, inset -2px -2px grey, inset 2px 2px #fff;
 }
@@ -746,13 +746,13 @@ ul li:hover>ul {
     height: 7px;
     width:100%;
     top:0;
-    background-image: url("assets/speech_bubble/top.png");
+    background-image: url("../../assets/speech_bubble/top.png");
     background-size: 100% 100%;
 }
 
 #speechBubble #middle{
     width:100%;
-    background-image: url("assets/speech_bubble/middle.png");
+    background-image: url("../../assets/speech_bubble/middle.png");
     background-size: 100% 100%;
     font-family: "Pixelated MS Sans Serif";
     text-align: center;
@@ -761,6 +761,6 @@ ul li:hover>ul {
 #speechBubble #bottom{
     height: 20px;
     width:100%;
-    background-image: url("assets/speech_bubble/bottom.png");
+    background-image: url("../../assets/speech_bubble/bottom.png");
     background-size: 100% 100%;
 }

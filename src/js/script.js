@@ -62,7 +62,7 @@ function createTab(tab_id){
 
 function createWindow(target,height,width,done,layoutName = "default"){
 
-  layoutName = "pages/layouts/" + layoutName + ".html";
+  layoutName = "templates/layouts/" + layoutName + ".php";
 
   var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
@@ -71,105 +71,81 @@ function createWindow(target,height,width,done,layoutName = "default"){
         let windowDiv = document.createElement('div');
         windowDiv.innerHTML = this.responseText;
         windowDiv = windowDiv.childNodes[0];
-        
-        let scripts = windowDiv.querySelectorAll("script");
-
-        scripts.forEach(scriptTag=>{
-
-          console.log(document.querySelectorAll('[src="' + scriptTag.src +'"]'));
-
-          if(!document.querySelectorAll('[src="' + scriptTag.src +'"]').length){
-            var script = document.createElement('script');
-            script.src = scriptTag.src; 
-            script.onload = function() {
-                console.log('External script has been loaded and executed.');
-            };
-            document.head.appendChild(script);
-          }
-        })
 
         let windowArea = windowDiv.getElementsByClassName("windowArea")[0];
         let windowName = target + "_tab"
         let fileName = "pages/" + target + ".html"
+        let tabName = windowName.substring(0, windowName.length - 4) + "_window"
 
-        var xhttp = new XMLHttpRequest();
-          xhttp.onreadystatechange = function() {
-              if (this.readyState == 4 && this.status == 200) {
+        windowDiv.id = tabName
 
-                let tabName = windowName.substring(0, windowName.length - 4) + "_window"
+        let titleBar = windowDiv.getElementsByClassName('title-bar')[0]
+        titleBar.id = tabName + "header"
 
-                windowDiv.id = tabName
+        let titleBarText = windowDiv.getElementsByClassName("title-bar-text")[0]
+        let name = windowName.substring(0, windowName.length - 4)
+        titleBarText.innerHTML += name
 
-                let titleBar = windowDiv.getElementsByClassName('title-bar')[0]
-                titleBar.id = tabName + "header"
+        let minimize = windowDiv.getElementsByClassName("controls-minimize")[0]
+        minimize.addEventListener("click",() => toggleWindow(target))
 
-                let titleBarText = windowDiv.getElementsByClassName("title-bar-text")[0]
-                let name = windowName.substring(0, windowName.length - 4)
-                titleBarText.innerHTML += name
+        let close = windowDiv.getElementsByClassName("controls-close")[0]
+        close.addEventListener("click", () => closeTab(windowName,tabName))
 
-                let minimize = windowDiv.getElementsByClassName("controls-minimize")[0]
-                minimize.addEventListener("click",() => toggleWindow(target))
+  
+        windowDiv.addEventListener("click",clickTab)
+        windowDiv.style.height = height + "px"
+        windowDiv.style.width = width + "px"
 
-                let close = windowDiv.getElementsByClassName("controls-close")[0]
-                close.addEventListener("click", () => closeTab(windowName,tabName))
+        let top = Math.floor(Math.random() * (window.innerHeight - height)) - 30
+        if(top < 0){
+          top = top * -1
+        }
 
-                windowArea.insertAdjacentHTML('beforeend',this.responseText)
-          
-                windowDiv.addEventListener("click",clickTab)
-                windowDiv.style.height = height + "px"
-                windowDiv.style.width = width + "px"
+        windowDiv.style.top = top + "px"
+        windowDiv.style.left = Math.floor(Math.random() * (window.innerWidth - width)) + "px"
 
-                let top = Math.floor(Math.random() * (window.innerHeight - height)) - 30
-                if(top < 0){
-                  top = top * -1
-                }
+        //windowDiv.appendChild(windowArea)
 
-                windowDiv.style.top = top + "px"
-                windowDiv.style.left = Math.floor(Math.random() * (window.innerWidth - width)) + "px"
+        document.getElementById("container").appendChild(windowDiv)
 
-                windowDiv.appendChild(windowArea)
+        //add slideshow to about me
+        if(windowName.substring(0, windowName.length - 4) == "about_me"){
+          showSlides(slideIndex)
+        }
 
-                document.getElementById("container").appendChild(windowDiv)
+        if(windowName.substring(0, windowName.length - 4) == "color_picker"){
+          let sliders = document.getElementsByClassName("range")
 
-                //add slideshow to about me
-                if(windowName.substring(0, windowName.length - 4) == "about_me"){
-                  showSlides(slideIndex)
-                }
+          for (let index = 0; index < sliders.length; index++) {
+            sliders[index].addEventListener("input",colorSlider)
+          }
 
-                if(windowName.substring(0, windowName.length - 4) == "color_picker"){
-                  let sliders = document.getElementsByClassName("range")
+          let RGBNumbers = document.getElementsByClassName("RGBInput")
 
-                  for (let index = 0; index < sliders.length; index++) {
-                    sliders[index].addEventListener("input",colorSlider)
-                  }
+          for (let index = 0; index < RGBNumbers.length; index++) {
+            RGBNumbers[index].addEventListener("input",colorInput)
+          }
 
-                  let RGBNumbers = document.getElementsByClassName("RGBInput")
+          document.getElementById("setColor").addEventListener("click",colorFromButton)
+        }
 
-                  for (let index = 0; index < RGBNumbers.length; index++) {
-                    RGBNumbers[index].addEventListener("input",colorInput)
-                  }
+        //set custom cursor for new window
+        if(localStorage.hasOwnProperty("cursor")){
+          switchCursors(localStorage.getItem("cursor"))
+        }
 
-                  document.getElementById("setColor").addEventListener("click",colorFromButton)
-                }
-
-                //set custom cursor for new window
-                if(localStorage.hasOwnProperty("cursor")){
-                  switchCursors(localStorage.getItem("cursor"))
-                }
-
-                //make window dragable
-                dragElement(windowDiv)
-                if(done){
-                  done();
-                }
-              }
-            };  
-          xhttp.open("GET", fileName, true);
-          xhttp.send();
+        //make window dragable
+        dragElement(windowDiv)
+        browserSwitch(target + "_window");
+        if(done){
+          done();
+        }     
       }
     };  
-  xhttp.open("GET", layoutName, true);
-  xhttp.send();
+  xhttp.open("POST", layoutName, true);
+  xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+  xhttp.send("content=" + target);
 }
 
 function toggleWindow(windowName){

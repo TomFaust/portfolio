@@ -11,6 +11,8 @@
         </div>
     </div>
     <div class="windowArea">
-
+    <?php
+            include '../pages/' . $_POST['content'] . '.html';
+        ?>
     </div>
 </div>
