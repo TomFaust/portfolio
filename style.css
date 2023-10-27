@@ -241,7 +241,7 @@ tabs{
     resize:vertical;
 }
 
-#social_media_window .windowArea pre, #past_work_window .windowArea pre{
+#past_work_window .windowArea pre{
     display:grid;
     grid-template-columns: auto auto;
     grid-auto-rows:auto;
@@ -251,21 +251,48 @@ tabs{
     cursor:pointer;
 }
 
+#social_media_window .windowArea pre{
+    height: 100%;
+    position: relative;
+    cursor:pointer;
+}
+
+.pre_inset{
+    height: calc( 100% - 5px);
+    width: calc( 100% - 5px);
+    margin: 2.5px;
+    position: absolute;
+    top:0;
+    left:0;
+    overflow-y: scroll;
+}
+
+.d-none{
+    display:none;
+}
+
+#social_media_window .windowArea pre img{
+    width:100%;
+    position: absolute;
+    left:0;
+    top: 0;
+}
+
 #cv_window object{
     height: 100%;
     width:100%;
 }
 
-#social_media_window pre p, #past_work_window pre p{
+#past_work_window pre p{
     margin:0 !important;
 }
 
-#social_media_window pre div, #past_work_window pre div{
+#past_work_window pre div{
     display:grid;
     grid-template-rows: auto auto;
 }
 
-#social_media_window pre img, #past_work_window pre img{
+ #past_work_window pre img{
     width:8vh;
     display: block;
     margin-left: auto;

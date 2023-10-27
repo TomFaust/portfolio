@@ -1,6 +1,3 @@
-let style = document.createElement("style")
-document.getElementsByTagName("body")[0].appendChild(style)
-
 var myVar = setInterval(function() {
     myTimer();
   }, 1000);
@@ -74,8 +71,24 @@ function createWindow(target,height,width,done,layoutName = "default"){
         let windowDiv = document.createElement('div');
         windowDiv.innerHTML = this.responseText;
         windowDiv = windowDiv.childNodes[0];
-        let windowArea = windowDiv.getElementsByClassName("windowArea")[0];
+        
+        let scripts = windowDiv.querySelectorAll("script");
 
+        scripts.forEach(scriptTag=>{
+
+          console.log(document.querySelectorAll('[src="' + scriptTag.src +'"]'));
+
+          if(!document.querySelectorAll('[src="' + scriptTag.src +'"]').length){
+            var script = document.createElement('script');
+            script.src = scriptTag.src; 
+            script.onload = function() {
+                console.log('External script has been loaded and executed.');
+            };
+            document.head.appendChild(script);
+          }
+        })
+
+        let windowArea = windowDiv.getElementsByClassName("windowArea")[0];
         let windowName = target + "_tab"
         let fileName = "pages/" + target + ".html"
 
