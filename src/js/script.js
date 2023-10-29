@@ -1,11 +1,4 @@
-var myVar = setInterval(function() {
-    myTimer();
-  }, 1000);
-  
-  function myTimer() {
-    var d = new Date();
-    document.getElementById("clock").innerHTML = d.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
-}
+import {browserSwitch} from "./browser_windows.js";
 
 let icons = document.getElementsByClassName("icon")
 
@@ -137,7 +130,7 @@ function createWindow(target,height,width,done,layoutName = "default"){
 
         //make window dragable
         dragElement(windowDiv)
-        browserSwitch(target + "_window");
+        new browserSwitch(target + "_window");
         if(done){
           done();
         }     
@@ -252,6 +245,10 @@ function dragElement(elmnt) {
     document.onmousemove = null;
   }
 }
+
+
+
+
 
 
 var slideIndex = 1;

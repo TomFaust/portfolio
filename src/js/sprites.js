@@ -2,30 +2,32 @@ let me = document.getElementById('me');
 let speech = document.getElementById('speechBubble');
 
 let facts = [
-  "Press the left mouse button to click on icons.",
-  "I am not a real person, just an image.",
-  "Press the right mouse button...for nothing. Why would i make the right mouse button do something special?",
-  "Hover your mouse over the start button for some fun features!",
-  "You can minimize tabs using the minimize button, try it!",
-  "Don't worry, this isn't actually a Windows 98 desktop. I'm just that good at making websites!",
-  "Feel free to look around, but try not to break anything. I live here!",
-  "No, i don't go away!",
-  "I have a bachelor's degree in Creative Media and Game Technologies"
+    "Press the left mouse button to click on icons.",
+    "I am not a real person, just an image.",
+    "Press the right mouse button...for nothing. Why would i make the right mouse button do something special?",
+    "Hover your mouse over the start button for some fun features!",
+    "You can minimize tabs using the minimize button, try it!",
+    "Don't worry, this isn't actually a Windows 98 desktop. I'm just that good at making websites!",
+    "Feel free to look around, but try not to break anything. I live here!",
+    "No, i don't go away!",
+    "I have a bachelor's degree in Creative Media and Game Technologies",
+    "If you ever need help finding something... i hope you get it.",
+    "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAGGGGGGGGGHHHHHHH!!!!!!"
 ]
   
 const myObject = {
     idle1: {
       weight:1,
-      idle_left: { 
-          sprite: 'Me_idle_left.gif', 
-          delayRange: [2000, 10000] 
+      idle_left: {
+          sprite: 'Me_idle_left.gif',
+          delayRange: [2000, 10000]
       }
     },
     idle2: {
       weight:1,
-      idle_right: { 
-          sprite: 'Me_idle_right.gif', 
-          delayRange: [2000, 10000] 
+      idle_right: {
+          sprite: 'Me_idle_right.gif',
+          delayRange: [2000, 10000]
       }
     },
     talk: {

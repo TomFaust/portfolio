@@ -756,6 +756,7 @@ ul li:hover>ul {
     background-size: 100% 100%;
     font-family: "Pixelated MS Sans Serif";
     text-align: center;
+    word-break: break-all;
 }
 
 #speechBubble #bottom{

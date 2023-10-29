@@ -1,4 +1,4 @@
-function browserSwitch(windowName){
+export function browserSwitch(windowName){
     let root = document.getElementById(windowName);
     if(root){
 
