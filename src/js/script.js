@@ -1,12 +1,15 @@
 import {browserSwitch} from "./browser_windows.js";
 
-let icons = document.getElementsByClassName("icon")
+let iconContainer = document.querySelector('icons');
+let icons = iconContainer.querySelectorAll(".icon")
 
-for (let index = 0; index < icons.length; index++) {
-  if(icons[index].id){
-    icons[index].addEventListener("click",openMe);
-  }
-}
+icons.forEach((icon)=>{
+    let clickable = icon.getElementsByClassName('clickable')[0];
+    console.log(icon);
+    if(clickable && clickable.id){
+      clickable.addEventListener("click",openMe);
+    }
+})
 
 if(!localStorage.hasOwnProperty('ok_welcome')){
   createTab('welcome');
@@ -103,11 +106,19 @@ function createWindow(target,height,width,done,layoutName = "default"){
         document.getElementById("container").appendChild(windowDiv)
 
         //add slideshow to about me
-        if(windowName.substring(0, windowName.length - 4) == "about_me"){
+        if(windowName.substring(0, windowName.length - 4) === "about_me"){
           showSlides(slideIndex)
+
+          windowDiv.getElementsByClassName('next-slide')[0].addEventListener('click',()=>{
+            showSlides(1)
+          })
+
+          windowDiv.getElementsByClassName('previous-slide')[0].addEventListener('click',()=>{
+            showSlides(-1)
+          })
         }
 
-        if(windowName.substring(0, windowName.length - 4) == "color_picker"){
+        if(windowName.substring(0, windowName.length - 4) === "color_picker"){
           let sliders = document.getElementsByClassName("range")
 
           for (let index = 0; index < sliders.length; index++) {
@@ -121,11 +132,6 @@ function createWindow(target,height,width,done,layoutName = "default"){
           }
 
           document.getElementById("setColor").addEventListener("click",colorFromButton)
-        }
-
-        //set custom cursor for new window
-        if(localStorage.hasOwnProperty("cursor")){
-          switchCursors(localStorage.getItem("cursor"))
         }
 
         //make window dragable
@@ -246,22 +252,7 @@ function dragElement(elmnt) {
   }
 }
 
-
-
-
-
-
 var slideIndex = 1;
-
-// Next/previous controls
-function plusSlides(n) {
-  showSlides(slideIndex += n);
-}
-
-// Thumbnail image controls
-function currentSlide(n) {
-  showSlides(slideIndex = n);
-}
 
 function showSlides(n) {
   var i;
@@ -277,14 +268,4 @@ function showSlides(n) {
   }
   slides[slideIndex-1].style.display = "block";
   
-}
-
-let cursors = document.getElementsByClassName("cursorOptions")
-
-for (let index = 0; index < cursors.length; index++) {
-    cursors[index].addEventListener("click",fromMenu)
-}
-
-function fromMenu(event){
-  switchCursors(event.target.closest("a").id)
 }

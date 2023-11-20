@@ -22,8 +22,10 @@ export function browserSwitch(windowName){
             select.addEventListener('change',(e)=>{
                 let tagret = e.target;
 
+                console.log(slides);
+
                 slides.forEach(slide => {
-                    if(slide.dataset.subject == e.target.value){
+                    if(slide.dataset.subject === e.target.value){
                         slide.classList.remove('d-none');
                     }else{
                         slide.classList.add('d-none');

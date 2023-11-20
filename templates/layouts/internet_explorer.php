@@ -4,9 +4,9 @@
             <img class="title-bar-icon" src="assets/icons/internet_explorer.png">
         </div>
         <div class="title-bar-controls">
-            <button class="controls-minimize" aria-label="Minimize">
+            <button class="controls-minimize pointer" aria-label="Minimize">
             </button>
-            <button class="controls-close" aria-label="Close">
+            <button class="controls-close pointer" aria-label="Close">
             </button>
         </div>
     </div>
@@ -27,7 +27,7 @@
         <div class="options">
             <pre class="v-line-out"></pre>
             <div class="item">Address</div>
-            <select class="address_select">
+            <select class="address_select pointer">
             </select>
         </div>
     </div>

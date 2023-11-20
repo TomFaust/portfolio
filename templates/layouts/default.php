@@ -4,9 +4,9 @@
             
         </div>
         <div class="title-bar-controls">
-            <button class="controls-minimize" aria-label="Minimize">
+            <button class="controls-minimize pointer" aria-label="Minimize">
             </button>
-            <button class="controls-close" aria-label="Close">
+            <button class="controls-close pointer" aria-label="Close">
             </button>
         </div>
     </div>

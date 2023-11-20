@@ -2,31 +2,41 @@ if(localStorage.hasOwnProperty("cursor")){
     switchCursors(localStorage.getItem("cursor"))
 }
 
+let cursors = document.getElementsByClassName("cursorOptions")
+
+for (let index = 0; index < cursors.length; index++) {
+    cursors[index].addEventListener("click",fromMenu)
+}
+
+function fromMenu(event){
+    switchCursors(event.target.closest("a").id)
+}
+
 function switchCursors(cursor){
   
     localStorage.setItem("cursor", cursor)
-  
-    let normal = ""
-    let pointer = "pointer"
 
-    if(cursor == ""){
-        
-    }else{
-        normal = "url(assets/"+ cursor +"Cursor/normal.cur),default"
-        pointer = "url(assets/"+ cursor +"Cursor/pointer.cur),pointer"
-    }
-        document.getElementsByTagName("body")[0].style.cursor = normal;
-
-        var elms = document.getElementsByTagName("*");
-        var n = elms.length;
-        for(var i = 0; i < n; i ++) {
-
-            if(window.getComputedStyle(elms[i]).cursor.includes("pointer")) {
-                elms[i].style.cursor = pointer;
-            }
-
+    if(cursor){
+        // Create or update the style tag
+        var styleTag = document.getElementById('customCursorStyle');
+        if (!styleTag) {
+            styleTag = document.createElement('style');
+            styleTag.id = 'customCursorStyle';
+            document.head.appendChild(styleTag);
         }
+
+        // Set the custom cursor styles
+        styleTag.textContent = `
+            body {
+              cursor: url('assets/${cursor}Cursor/normal.cur'), auto !important;
+            }
     
+            .pointer {
+              cursor: url('assets/${cursor}Cursor/pointer.cur'), pointer !important;
+            }
+        `;
+    }
+
 }
 
 document.getElementById('file').addEventListener('change', (e) => {
