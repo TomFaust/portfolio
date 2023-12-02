@@ -5,7 +5,6 @@ let icons = iconContainer.querySelectorAll(".icon")
 
 icons.forEach((icon)=>{
     let clickable = icon.getElementsByClassName('clickable')[0];
-    console.log(icon);
     if(clickable && clickable.id){
       clickable.addEventListener("click",openMe);
     }
@@ -56,7 +55,7 @@ function createTab(tab_id){
   document.getElementsByTagName("tabs")[0].appendChild(tab)
 }
 
-function createWindow(target,height,width,done,layoutName = "default"){
+function createWindow(target,height,width,done = null,layoutName = "default"){
 
   layoutName = "templates/layouts/" + layoutName + ".php";
 
@@ -137,9 +136,11 @@ function createWindow(target,height,width,done,layoutName = "default"){
         //make window dragable
         dragElement(windowDiv)
         new browserSwitch(target + "_window");
+
         if(done){
           done();
         }     
+
       }
     };  
   xhttp.open("POST", layoutName, true);
@@ -207,6 +208,7 @@ function dragElement(elmnt) {
   var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
   if (document.getElementById(elmnt.id + "header")) {
     /* if present, the header is where you move the DIV from:*/
+    console.log(document.getElementById(elmnt.id + "header"));
     document.getElementById(elmnt.id + "header").onmousedown = dragMouseDown;
   } else {
     /* otherwise, move the DIV from anywhere inside the DIV:*/
@@ -229,7 +231,7 @@ function dragElement(elmnt) {
       windows[index].style.zIndex = 10
     }
     
-    e.target.closest(".window").style.zIndex = 11
+    e.target.closest(".window").style.zIndex = 11;
   }
 
   function elementDrag(e) {
@@ -241,6 +243,8 @@ function dragElement(elmnt) {
     pos3 = e.clientX;
     pos4 = e.clientY;
     // set the element's new position:
+
+
     elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
     elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
   }
