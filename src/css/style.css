@@ -60,6 +60,7 @@ a:link {
     z-index: 0;
     bottom:30px;
     right:0;
+    width:200px;
 }
 
 #face{
@@ -347,7 +348,7 @@ tabs{
 }
 
 #altCV p{
-    font-size: 16px;
+    font-size: 15px;
 }
 
 
@@ -580,28 +581,115 @@ ul li:hover>ul {
     width:100%;
 }
 
+
 @media only screen and ((max-width: 600px) or (max-height:600px))    {
-    icons img {
-        width: 25px;
+
+    @media only screen and (orientation:landscape){
+
+        .icon label{
+            display: block;
+            font-size: 12px !important;
+        }
+
+        icons{
+            grid-template-rows: repeat(auto-fill, 65px);
+        }
+
+        icons img {
+            width: 40px !important;
+        }
+        #me{
+            width:200px;
+        }
+
+        #plane_flight{
+            right:200px;
+            width:2000px;
+        }
+
+        icons{
+            grid-auto-columns: 100px;
+            padding-left:0;
+        }
+
+        .tab .title-bar-controls{
+            width: 18px;
+        }
+
+        .icon label{
+            display: block;
+            font-size: 15px !important;
+        }
+
     }
-    
-    icons{
-        grid-template-rows: repeat(auto-fill, 73px);
+    @media only screen and (orientation:portrait), (pointer: coarse){
+
+        .icon label{
+            display: block;
+            font-size: 15px !important;
+        }
+
+        icons{
+            grid-template-rows: repeat(auto-fill, 95px);
+        }
+
+        icons img {
+            width: 50px;
+        }
+
+        #me{
+            width:100px;
+        }
+
+        #plane_flight{
+            right:100px;
+            width:1000px;
+        }
+
+        icons{
+            column-gap:0;
+            width:100%;
+        }
+
+        #cv_window{
+            width:90% !important;
+            left:5% !important;
+            height:calc(95% - 30px) !important;
+            top: calc(50% - 15px) !important;
+            transform: translate(0%, -50%);
+        } 
+
+        #i_wont_forget_hue_window, #oh_bees_window{
+            width:90% !important;
+            left:5% !important;
+            top: 50% !important;
+            transform: translate(0%, -50%);
+        } 
+
+        #oh_bees_window{
+            height:150px !important;
+        }
+
+        #i_wont_forget_hue_window{
+            height:170px !important;
+        }
+
+        iframe {
+            width: 142% !important;
+            height: 142% !important;
+            -webkit-transform: scale(0.7);
+            transform: scale(0.7);
+            -webkit-transform-origin: 0 0;
+            transform-origin: 0 0;
+        }
+
+        .tab .title-bar-controls{
+            width: 20px;
+        }
+
     }
 }
-
-@media only screen and (orientation:landscape){
-
-    
-    #me{
-        width:200px;
-    }
-
-    #plane_flight{
-        right:200px;
-        width:2000px;
-    }
-
+@media only screen and (orientation:landscape), (pointer: coarse){
     #speech{
         width:250px;
         right: 90px;
@@ -623,26 +711,9 @@ ul li:hover>ul {
     #speech span{
         margin-bottom: 50px;
     }
-
-    icons{
-        grid-auto-columns: 100px;
-    }
-
-    .tab .title-bar-controls{
-        width: 18px;
-    }
-
 }
+
 @media only screen and (orientation:portrait), (pointer: coarse){
-
-    #me{
-        width:100px;
-    }
-
-    #plane_flight{
-        right:100px;
-        width:1000px;
-    }
 
     #speech{
         width:125px;
@@ -665,49 +736,8 @@ ul li:hover>ul {
     #speech span{
         margin-bottom: 25px;
     }
-
-    icons{
-        grid-auto-columns: 0;
-        width:100%;
-    }
-
-    #cv_window{
-        width:90% !important;
-        left:5% !important;
-        height:calc(95% - 30px) !important;
-        top: calc(50% - 15px) !important;
-        transform: translate(0%, -50%);
-    } 
-
-    #i_wont_forget_hue_window, #oh_bees_window{
-        width:90% !important;
-        left:5% !important;
-        top: 50% !important;
-        transform: translate(0%, -50%);
-    } 
-
-    #oh_bees_window{
-        height:150px !important;
-    }
-
-    #i_wont_forget_hue_window{
-         height:170px !important;
-    }
-
-    iframe {
-        width: 142% !important;
-        height: 142% !important;
-        -webkit-transform: scale(0.7);
-        transform: scale(0.7);
-        -webkit-transform-origin: 0 0;
-        transform-origin: 0 0;
-      }
-
-    .tab .title-bar-controls{
-        width: 20px;
-    }
-
 }
+
 
 #i_wont_forget_hue_window iframe{
     height:100%;
@@ -737,7 +767,7 @@ ul li:hover>ul {
     background-size: 100% 100%;
     font-family: "Pixelated MS Sans Serif";
     text-align: center;
-    word-break: break-all;
+    word-break: break-word;
 }
 
 #speechBubble #bottom{
