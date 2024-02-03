@@ -81,13 +81,15 @@ function createWindow(target,height,width,done = null,layoutName = "default"){
         let name = windowName.substring(0, windowName.length - 4)
         titleBarText.innerHTML += name
 
+        //title bar controls
         let minimize = windowDiv.getElementsByClassName("controls-minimize")[0]
         minimize.addEventListener("click",() => toggleWindow(target))
-
         let close = windowDiv.getElementsByClassName("controls-close")[0]
         close.addEventListener("click", () => closeTab(windowName,tabName))
+        let maximize = windowDiv.getElementsByClassName("controls-maximize")[0]
+        maximize.addEventListener("click", () => maximizeWindow(target))
 
-  
+        
         windowDiv.addEventListener("click",clickTab)
         windowDiv.style.height = height + "px"
         windowDiv.style.width = width + "px"
@@ -148,9 +150,39 @@ function createWindow(target,height,width,done = null,layoutName = "default"){
   xhttp.send("content=" + target);
 }
 
-function toggleWindow(windowName){
+function maximizeWindow(windowName){
 
   let window = document.getElementById(windowName + "_window");
+  let bar = window.getElementsByClassName('title-bar')[0]
+
+  if(bar.classList.contains("maximized")){
+
+    bar.classList.remove("maximized");
+
+    window.style.width = window.dataset.width;
+    window.style.height = window.dataset.height;
+    window.style.top = window.dataset.top;
+    window.style.left = window.dataset.left;
+  }else{
+    bar.classList.add("maximized");
+
+    window.dataset.width = window.style.width;
+    window.dataset.height = window.style.height;
+    window.dataset.top = window.style.top;
+    window.dataset.left = window.style.left;
+
+    window.style.width = "100%";
+    window.style.height = "calc(100% - 30px)";
+    window.style.top = 0;
+    window.style.left = 0;
+
+  }
+
+}
+
+function toggleWindow(windowName){
+
+  
   let tab = document.getElementById(windowName + "_tab");
 
   if(window){
@@ -205,6 +237,7 @@ function clickTab(e){
 
 
 function dragElement(elmnt) {
+
   var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
   if (document.getElementById(elmnt.id + "header")) {
     /* if present, the header is where you move the DIV from:*/
@@ -216,22 +249,25 @@ function dragElement(elmnt) {
   }
 
   function dragMouseDown(e) {
-    e = e || window.event;
-    e.preventDefault();
-    // get the mouse cursor position at startup:
-    pos3 = e.clientX;
-    pos4 = e.clientY;
-    document.onmouseup = closeDragElement;
-    // call a function whenever the cursor moves:
-    document.onmousemove = elementDrag;
 
-    let windows = document.getElementsByClassName("displayWindow")
+    if(!e.target.classList.contains('maximized')){
+      e = e || window.event;
+      e.preventDefault();
+      // get the mouse cursor position at startup:
+      pos3 = e.clientX;
+      pos4 = e.clientY;
+      document.onmouseup = closeDragElement;
+      // call a function whenever the cursor moves:
+      document.onmousemove = elementDrag;
 
-    for (let index = 0; index < windows.length; index++) {
-      windows[index].style.zIndex = 10
+      let windows = document.getElementsByClassName("displayWindow")
+
+      for (let index = 0; index < windows.length; index++) {
+        windows[index].style.zIndex = 10
+      }
+      
+      e.target.closest(".window").style.zIndex = 11;
     }
-    
-    e.target.closest(".window").style.zIndex = 11;
   }
 
   function elementDrag(e) {
@@ -254,6 +290,7 @@ function dragElement(elmnt) {
     document.onmouseup = null;
     document.onmousemove = null;
   }
+  
 }
 
 var slideIndex = 1;

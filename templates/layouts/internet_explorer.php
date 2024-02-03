@@ -6,6 +6,8 @@
         <div class="title-bar-controls">
             <button class="controls-minimize pointer" aria-label="Minimize">
             </button>
+            <button class="controls-maximize pointer" aria-label="Maximize">
+            </button>
             <button class="controls-close pointer" aria-label="Close">
             </button>
         </div>
@@ -24,7 +26,7 @@
             </div>
         </div>
         <hr>
-        <div class="options">
+        <div class="options overflow-hidden">
             <pre class="v-line-out"></pre>
 
             <div class="toolbar-button-wrapper">

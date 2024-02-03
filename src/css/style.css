@@ -268,6 +268,10 @@ tabs{
     
 }
 
+.overflow-hidden{
+    overflow: hidden;
+}
+
 #contactForm textarea{
     resize:vertical;
 }

@@ -6,6 +6,8 @@
         <div class="title-bar-controls">
             <button class="controls-minimize pointer" aria-label="Minimize">
             </button>
+            <button class="controls-maximize pointer" aria-label="Maximize">
+            </button>
             <button class="controls-close pointer" aria-label="Close">
             </button>
         </div>
