@@ -26,6 +26,89 @@
         <hr>
         <div class="options">
             <pre class="v-line-out"></pre>
+
+            <div class="toolbar-button-wrapper">
+                <div class="toolbar-button op05">
+                    <div class="icon"></div>
+                    <span class="label-text">Back</span>
+                </div>
+                <div class="svg-wrapper">
+                    <svg width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" style="display:inline-block;vertical-align:middle">
+                        <path style="transform:rotate(90deg);transform-origin:center" d="m6 4 4 4-4 4z">
+                        </path>
+                    </svg>
+                </div>
+            </div>
+
+            <div class="toolbar-button-wrapper">
+                <div class="toolbar-button op05">
+                    <div class="icon" style="background-position: -20px 0px"></div>
+                    <span class="label-text">Foreward</span>
+                </div>
+                <div class="svg-wrapper">
+                    <svg width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" style="display:inline-block;vertical-align:middle">
+                        <path style="transform:rotate(90deg);transform-origin:center" d="m6 4 4 4-4 4z">
+                        </path>
+                    </svg>
+                </div>
+            </div>
+
+            <div class="toolbar-button-wrapper">
+                <div class="toolbar-button">
+                    <div class="icon" style="background-position: -40px 0px"></div>
+                    <span class="label-text">Stop</span>
+                </div>
+            </div>
+
+            <div class="toolbar-button-wrapper">
+                <div class="toolbar-button ">
+                    <div class="icon" style="background-position: -60px 0px"></div>
+                    <span class="label-text">Refresh</span>
+                </div>
+            </div>
+
+            <div class="toolbar-button-wrapper">
+                <div class="toolbar-button ">
+                    <div class="icon" style="background-position: -80px 0px"></div>
+                    <span class="label-text">Home</span>
+                </div>
+            </div>
+
+            <pre class="v-line-in-small"></pre>
+
+            <div class="toolbar-button-wrapper">
+                <div class="toolbar-button ">
+                    <div class="icon" style="background-position: -100px 0px"></div>
+                    <span class="label-text">Search</span>
+                </div>
+            </div>
+
+            <div class="toolbar-button-wrapper">
+                <div class="toolbar-button ">
+                    <div class="icon" style="background-position: -120px 0px"></div>
+                    <span class="label-text">Favorites</span>
+                </div>
+            </div>
+
+            <div class="toolbar-button-wrapper">
+                <div class="toolbar-button ">
+                    <div class="icon" style="background-position: -140px 0px"></div>
+                    <span class="label-text">History</span>
+                </div>
+            </div>
+
+            <pre class="v-line-in-small"></pre>
+
+            <div class="toolbar-button-wrapper">
+                <div class="toolbar-button ">
+                    <div class="icon" style="background-position: -240px 0px"></div>
+                    <span class="label-text">Print</span>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <div class="options">
+            <pre class="v-line-out"></pre>
             <div class="item">Address</div>
             <select class="address_select pointer">
             </select>
