@@ -182,7 +182,7 @@ function maximizeWindow(windowName){
 
 function toggleWindow(windowName){
 
-  
+  let window = document.getElementById(windowName + "_window");
   let tab = document.getElementById(windowName + "_tab");
 
   if(window){
