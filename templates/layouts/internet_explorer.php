@@ -17,7 +17,8 @@
             <pre class="v-line-out"></pre>
             <div class="item op05">File</div>
             <div class="item op05">Edit</div>
-            <div class="item op05">Views</div>
+            <div class="item op05">View</div>
+            <div class="item op05">Go</div>
             <div class="item op05">Favorites</div>
             <div class="item op05">Tools</div>
             <div class="item op05">Help</div>
