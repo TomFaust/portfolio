@@ -707,21 +707,6 @@ ul li:hover>ul {
             transform: translate(0%, -50%);
         } 
 
-        #i_wont_forget_hue_window, #oh_bees_window{
-            width:90% !important;
-            left:5% !important;
-            top: 50% !important;
-            transform: translate(0%, -50%);
-        } 
-
-        #oh_bees_window{
-            height:150px !important;
-        }
-
-        #i_wont_forget_hue_window{
-            height:170px !important;
-        }
-
         iframe {
             width: 142% !important;
             height: 142% !important;

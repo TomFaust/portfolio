@@ -12,7 +12,7 @@ icons.forEach((icon)=>{
 
 if(!localStorage.hasOwnProperty('ok_welcome')){
   createTab('welcome');
-  createWindow('welcome',"","",function(){
+  createWindow('welcome',function(){
       document.getElementById("welcome_ok").addEventListener("click",function(){
       closeTab("welcome_tab","welcome_window")
       localStorage.setItem('ok_welcome',1)
@@ -28,7 +28,7 @@ function openMe(event){
       toggleWindow(closestDiv.id);
     } else if(!element){
         createTab(closestDiv.id)
-        createWindow(closestDiv.id,closestDiv.dataset.height,closestDiv.dataset.width,"",closestDiv.dataset.window)
+        createWindow(closestDiv.id,"",closestDiv.dataset.window)
     }
 }
 
@@ -55,7 +55,7 @@ function createTab(tab_id){
   document.getElementsByTagName("tabs")[0].appendChild(tab)
 }
 
-function createWindow(target,height,width,done = null,layoutName = "default"){
+function createWindow(target,done = null,layoutName = "default"){
 
   layoutName = "templates/layouts/" + layoutName + ".php";
 
@@ -89,22 +89,17 @@ function createWindow(target,height,width,done = null,layoutName = "default"){
         let maximize = windowDiv.getElementsByClassName("controls-maximize")[0]
         maximize.addEventListener("click", () => maximizeWindow(target))
 
-        
         windowDiv.addEventListener("click",clickTab)
-        windowDiv.style.height = height + "px"
-        windowDiv.style.width = width + "px"
-
-        let top = Math.floor(Math.random() * (window.innerHeight - height)) - 30
-        if(top < 0){
-          top = top * -1
-        }
-
-        windowDiv.style.top = top + "px"
-        windowDiv.style.left = Math.floor(Math.random() * (window.innerWidth - width)) + "px"
-
-        //windowDiv.appendChild(windowArea)
 
         document.getElementById("container").appendChild(windowDiv)
+
+        var randomPercentage = Math.floor(Math.random() * 100) + 1;
+        var topPosition = (window.innerHeight - windowDiv.clientHeight) * (randomPercentage / 100);
+        windowDiv.style.top = "calc(" + (topPosition / window.innerHeight * 100) + "% - 30px)";
+
+        randomPercentage = Math.floor(Math.random() * 100);
+        var leftPosition = (window.innerWidth - windowDiv.clientWidth) * (randomPercentage / 100);
+        windowDiv.style.left = leftPosition / window.innerWidth * 100 + "%";
 
         //add slideshow to about me
         if(windowName.substring(0, windowName.length - 4) === "about_me"){
@@ -273,16 +268,24 @@ function dragElement(elmnt) {
   function elementDrag(e) {
     e = e || window.event;
     e.preventDefault();
-    // calculate the new cursor position:
+
+    // Get the dimensions of the container
+    var containerWidth = elmnt.parentElement.clientWidth;
+    var containerHeight = elmnt.parentElement.clientHeight;
+
+    // Calculate the new cursor position
     pos1 = pos3 - e.clientX;
     pos2 = pos4 - e.clientY;
     pos3 = e.clientX;
     pos4 = e.clientY;
-    // set the element's new position:
 
+    // Calculate the new position in percentages
+    var topPercentage = ((elmnt.offsetTop - pos2) / containerHeight) * 100;
+    var leftPercentage = ((elmnt.offsetLeft - pos1) / containerWidth) * 100;
 
-    elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
-    elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+    // Set the element's new position
+    elmnt.style.top = topPercentage + "%";
+    elmnt.style.left = leftPercentage + "%";
   }
 
   function closeDragElement() {

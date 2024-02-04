@@ -1,0 +1,53 @@
+#social_media_window{
+    height:75%;
+    width:40%;
+}
+
+#i_wont_forget_hue_window{
+    height:35%;
+    width:60%;
+}
+
+#oh_bees_window{
+    height:35%;
+    width:60%;
+}
+
+@media only screen and ((max-width: 600px) or (max-height:600px))    {
+
+    @media only screen and (orientation:landscape){
+        #social_media_window{
+            height:75%;
+            width:60%;
+        }
+
+        #i_wont_forget_hue_window{
+            height:35%;
+            width:60%;
+        }      
+        
+        #oh_bees_window{
+            height:35%;
+            width:60%;
+        }
+    }
+
+    @media only screen and (orientation:portrait){
+        #social_media_window{
+            height:75%;
+            width:90%;
+        }
+
+        #i_wont_forget_hue_window{
+            height:20%;
+            width:90%;
+        }
+
+        #oh_bees_window{
+            height:20%;
+            width:90%;
+        }
+    }
+
+
+}
