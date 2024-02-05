@@ -198,6 +198,7 @@ icons img{
     display: block;
     margin-left: auto;
     margin-right: auto;
+    margin-bottom:5px;
 }
 
 tabs{
@@ -245,8 +246,32 @@ tabs{
     overflow: hidden;
     display: flex;
     flex-direction: column;
-    min-height: 200px;
-    min-width: 200px;
+    min-height: 300px;
+    min-width: 300px;
+    resize:both;
+}
+
+.infoArea pre{
+    background-color: #c0c0c0;
+    padding: 2px 2px;
+    font-family: "Pixelated MS Sans Serif",Arial;
+    box-shadow: -0.5px -0.5px #fff, inset 0.5px 0.5px grey, inset -1px -1px #dfdfdf, inset 1px 1px #0a0a0a;
+    grid-template-columns: auto auto;
+    display: flex;
+}
+
+.infoArea pre img{
+    height: 0.8rem;
+    margin: 0.1rem 0.4rem 0.1rem 0.1rem
+}
+
+.infoArea pre span{
+    margin-top: 0.1rem;
+}
+
+.infoArea{
+    display: grid;
+    grid-template-columns: 25% 50% 25%;
 }
 
 .windowArea{
@@ -316,16 +341,16 @@ tabs{
     width:100%;
 }
 
-#past_work_window pre p{
+#past_work_window .windowArea pre p{
     margin:0 !important;
 }
 
-#past_work_window pre div{
+#past_work_window .windowArea pre div{
     display:grid;
     grid-template-rows: auto auto;
 }
 
- #past_work_window pre img{
+#past_work_window .windowArea pre img{
     width:8vh;
     display: block;
     margin-left: auto;
@@ -627,6 +652,7 @@ ul li:hover>ul {
 
 .window-options{
     width:100%;
+    border: 1px solid #808080;
 }
 
 

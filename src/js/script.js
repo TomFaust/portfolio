@@ -87,7 +87,7 @@ function createWindow(target,done = null,layoutName = "default"){
         let close = windowDiv.getElementsByClassName("controls-close")[0]
         close.addEventListener("click", () => closeTab(windowName,tabName))
         let maximize = windowDiv.getElementsByClassName("controls-maximize")[0]
-        maximize.addEventListener("click", () => maximizeWindow(target))
+        maximize.addEventListener("click", () => maximizeWindow(maximize,target))
 
         windowDiv.addEventListener("click",clickTab)
 
@@ -145,7 +145,7 @@ function createWindow(target,done = null,layoutName = "default"){
   xhttp.send("content=" + target);
 }
 
-function maximizeWindow(windowName){
+function maximizeWindow(target,windowName){
 
   let window = document.getElementById(windowName + "_window");
   let bar = window.getElementsByClassName('title-bar')[0]
@@ -158,6 +158,11 @@ function maximizeWindow(windowName){
     window.style.height = window.dataset.height;
     window.style.top = window.dataset.top;
     window.style.left = window.dataset.left;
+    window.style.padding = window.dataset.padding
+    window.style.resize = "both";
+
+    target.ariaLabel = "Maximize";
+
   }else{
     bar.classList.add("maximized");
 
@@ -165,11 +170,17 @@ function maximizeWindow(windowName){
     window.dataset.height = window.style.height;
     window.dataset.top = window.style.top;
     window.dataset.left = window.style.left;
+    window.dataset.padding = window.style.padding
+
+    window.style.resize = "none";
 
     window.style.width = "100%";
     window.style.height = "calc(100% - 30px)";
     window.style.top = 0;
     window.style.left = 0;
+    window.style.padding = 0;
+
+    target.ariaLabel = "Restore";
 
   }
 

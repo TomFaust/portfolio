@@ -35,6 +35,11 @@ function switchCursors(cursor){
               cursor: url('assets/${cursor}Cursor/pointer.cur'), pointer !important;
             }
         `;
+    }else{
+        var styleTag = document.getElementById('customCursorStyle');
+        if (styleTag) {
+            styleTag.textContent = "";
+        }
     }
 
 }

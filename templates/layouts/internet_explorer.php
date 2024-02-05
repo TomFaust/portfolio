@@ -13,6 +13,7 @@
         </div>
     </div>
     <div class="window-options">
+        
         <div class="options">
             <pre class="v-line-out"></pre>
             <div class="item op05">File</div>
@@ -121,6 +122,15 @@
         <?php
             include '../pages/' . $_POST['content'] . '.html';
         ?>
+    </div>
+
+    <div class="infoArea">
+        <pre></pre>
+        <pre></pre>
+        <pre>
+            <img src="assets/icons/world-0.png">
+            <span>Internet</span>
+        </pre>
     </div>
     
     <script src="src/js/browser_windows.js"></script>
