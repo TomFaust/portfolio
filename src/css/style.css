@@ -210,7 +210,7 @@ icons{
     color:white;
     left:0;
     grid-auto-flow: column;
-    grid-template-rows: repeat(auto-fill, 80px);
+    grid-template-rows: repeat(auto-fill, 90px);
 }
 
 .icon label{
@@ -527,7 +527,6 @@ arrow{
 .dropdown li ul li a {
     text-align: left;
     color: black;
-    font-size: 3vh;
     padding-bottom: 15px;
     padding-right: 23px;
     display: block;
@@ -597,7 +596,7 @@ ul li:hover>ul {
 }
   
 #mainMenu{
-    padding:2.5px 5px 2.5px 30px!important
+    padding:2.5px 5px 2.5px 25px!important
 }
 
 #menuSideBar{
@@ -607,7 +606,6 @@ ul li:hover>ul {
     position: absolute;
     left: 0.5vh;
     color: white;
-    font-size: 15px !important;
 }
 
 #menuSideBar p{
@@ -622,7 +620,7 @@ ul li:hover>ul {
 }
 
 #mainMenu .subImg{
-    height:25px;
+    width:35px;
     margin-bottom: -1vh;
 }
 
@@ -743,6 +741,19 @@ ul li:hover>ul {
 
     #speechBubble #middle{
         padding: 5px 10px 7px 10px;
+    }
+
+    #mainMenu .subImg{
+        width:20px;
+    }
+
+    .dropdown li ul li a {
+        padding-bottom: 10px;
+        padding-right: 20px;
+    }
+
+    #mainMenu a ,#menuSideBar p{
+        font-size: 10px !important;
     }
 
     @media only screen and (orientation:landscape){
