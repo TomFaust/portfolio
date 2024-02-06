@@ -1,4 +1,5 @@
-import {browserSwitch} from "./browser_windows.js";
+import {browserSwitch} from "./classes/browser_windows.js";
+import { history } from "./classes/history.js";
 
 let iconContainer = document.querySelector('icons');
 let icons = iconContainer.querySelectorAll(".icon")
@@ -95,7 +96,7 @@ function createWindow(target,done = null,layoutName = "default"){
 
         var randomPercentage = Math.floor(Math.random() * 100) + 1;
         var topPosition = (window.innerHeight - windowDiv.clientHeight) * (randomPercentage / 100);
-        windowDiv.style.top = "calc(" + (topPosition / window.innerHeight * 100) + "% - 30px)";
+        windowDiv.style.top = (topPosition / window.innerHeight * 100) + "%";
 
         randomPercentage = Math.floor(Math.random() * 100);
         var leftPosition = (window.innerWidth - windowDiv.clientWidth) * (randomPercentage / 100);
@@ -132,7 +133,8 @@ function createWindow(target,done = null,layoutName = "default"){
 
         //make window dragable
         dragElement(windowDiv)
-        new browserSwitch(target + "_window");
+        new browserSwitch(windowDiv);
+        new history(windowDiv);
 
         if(done){
           done();
@@ -175,7 +177,7 @@ function maximizeWindow(target,windowName){
     window.style.resize = "none";
 
     window.style.width = "100%";
-    window.style.height = "calc(100% - 30px)";
+    window.style.height = "100%";
     window.style.top = 0;
     window.style.left = 0;
     window.style.padding = 0;

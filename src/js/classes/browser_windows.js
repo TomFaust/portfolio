@@ -1,6 +1,6 @@
-export function browserSwitch(windowName){
-    let root = document.getElementById(windowName);
-    if(root){
+export class browserSwitch{
+
+    constructor(root){
 
         let select = root.getElementsByClassName('address_select')[0];
         let slides = root.querySelectorAll('.browser_screen');
@@ -22,8 +22,6 @@ export function browserSwitch(windowName){
             select.addEventListener('change',(e)=>{
                 let tagret = e.target;
 
-                console.log(slides);
-
                 slides.forEach(slide => {
                     if(slide.dataset.subject === e.target.value){
                         slide.classList.remove('d-none');
@@ -35,5 +33,6 @@ export function browserSwitch(windowName){
             })
 
         }
+    
     }
 }

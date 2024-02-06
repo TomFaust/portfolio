@@ -33,7 +33,7 @@ a:link {
 #container{
     overflow: hidden;
     width:100%;
-    height:100%;
+    height:calc(100% - 30px);
     top:0;
     left:0;
     position:absolute;
@@ -41,6 +41,18 @@ a:link {
 
 .window{
     z-index:2;
+}
+
+.browser_screen{
+    width:100%;
+    min-height: 100%;
+    top: 0;
+    position: absolute;
+}
+
+.browser_screen img{
+    width:100%;
+    height: auto;
 }
 
 #welcome_window{
@@ -55,6 +67,12 @@ a:link {
     font-size: 15px;
 }
 
+.toolbar-button{
+    padding: 0.2rem 0.6rem 0.2rem 0.6rem;
+    margin: 0.1rem;
+}
+
+
 .toolbar-button .icon{
     background-image: url(../../assets/icons/browser/grayscale/browse-ui-icons-grayscale.png);
     background-size: auto 100%;
@@ -62,14 +80,22 @@ a:link {
     width:20px;
 }
 
-.toolbar-button .icon:hover{
+button.toolbar-button:hover:enabled .icon{
     background-image: url(../../assets/icons/browser/regular/browse-ui-icons.png);
+}
+
+div.toolbar-button:hover .icon{
+    background-image: url(../../assets/icons/browser/regular/browse-ui-icons.png);
+}
+
+button.toolbar-button{
+    min-width:55px;
+    box-shadow: none;
 }
 
 .toolbar-button-wrapper{
     display: flex;
     flex-direction: row;
-    padding: 0.1rem 0.6rem 0.2rem 0.6rem;
 }
 
 .toolbar-button-wrapper .svg-wrapper{
@@ -94,7 +120,7 @@ a:link {
 #me{
     position: absolute;
     z-index: 0;
-    bottom:30px;
+    bottom:0px;
     right:0;
     width:200px;
 }
@@ -174,7 +200,7 @@ a:link {
 
 
 icons{
-    height: calc(100% - 30px);
+    height: 100%;
     top:0;
     position:absolute;
     display:grid;
@@ -246,8 +272,8 @@ tabs{
     overflow: hidden;
     display: flex;
     flex-direction: column;
-    min-height: 300px;
-    min-width: 300px;
+    min-height: 200px;
+    min-width: 200px;
     resize:both;
 }
 
@@ -642,7 +668,7 @@ ul li:hover>ul {
 
 #plane_flight{
     position: absolute;
-    bottom:30px;
+    bottom:0px;
 }
 
 .title-bar-icon{

@@ -16,13 +16,13 @@
         
         <div class="options">
             <pre class="v-line-out"></pre>
-            <div class="item op05">File</div>
-            <div class="item op05">Edit</div>
-            <div class="item op05">View</div>
-            <div class="item op05">Go</div>
-            <div class="item op05">Favorites</div>
-            <div class="item op05">Tools</div>
-            <div class="item op05">Help</div>
+            <div class="item ">File</div>
+            <div class="item ">Edit</div>
+            <div class="item ">View</div>
+            <div class="item ">Go</div>
+            <div class="item ">Favorites</div>
+            <div class="item ">Tools</div>
+            <div class="item ">Help</div>
             <div class=" float-right">
                 <img class="browser-bar-image" src="assets/icons/internet_explorer_icon.png">
             </div>
@@ -31,11 +31,11 @@
         <div class="options overflow-hidden">
             <pre class="v-line-out"></pre>
 
-            <div class="toolbar-button-wrapper">
-                <div class="toolbar-button op05">
+            <div class="toolbar-button-wrapper backward">
+                <button class="toolbar-button" disabled>
                     <div class="icon"></div>
                     <span class="label-text">Back</span>
-                </div>
+                </button>
                 <div class="svg-wrapper">
                     <svg width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" style="display:inline-block;vertical-align:middle">
                         <path style="transform:rotate(90deg);transform-origin:center" d="m6 4 4 4-4 4z">
@@ -44,11 +44,11 @@
                 </div>
             </div>
 
-            <div class="toolbar-button-wrapper">
-                <div class="toolbar-button op05">
+            <div class="toolbar-button-wrapper forward">
+                <button class="toolbar-button " disabled>
                     <div class="icon" style="background-position: -20px 0px"></div>
-                    <span class="label-text">Foreward</span>
-                </div>
+                    <span class="label-text">Forward</span>
+                </button>
                 <div class="svg-wrapper">
                     <svg width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" style="display:inline-block;vertical-align:middle">
                         <path style="transform:rotate(90deg);transform-origin:center" d="m6 4 4 4-4 4z">
@@ -58,56 +58,56 @@
             </div>
 
             <div class="toolbar-button-wrapper">
-                <div class="toolbar-button">
+                <button class="toolbar-button">
                     <div class="icon" style="background-position: -40px 0px"></div>
                     <span class="label-text">Stop</span>
-                </div>
+                </button>
             </div>
 
             <div class="toolbar-button-wrapper">
-                <div class="toolbar-button ">
+                <button class="toolbar-button ">
                     <div class="icon" style="background-position: -60px 0px"></div>
                     <span class="label-text">Refresh</span>
-                </div>
+                </button>
             </div>
 
             <div class="toolbar-button-wrapper">
-                <div class="toolbar-button ">
+                <button class="toolbar-button ">
                     <div class="icon" style="background-position: -80px 0px"></div>
                     <span class="label-text">Home</span>
-                </div>
+                </button>
             </div>
 
             <pre class="v-line-in-small"></pre>
 
             <div class="toolbar-button-wrapper">
-                <div class="toolbar-button ">
+                <button class="toolbar-button ">
                     <div class="icon" style="background-position: -100px 0px"></div>
                     <span class="label-text">Search</span>
-                </div>
+                </button>
             </div>
 
             <div class="toolbar-button-wrapper">
-                <div class="toolbar-button ">
+                <button class="toolbar-button ">
                     <div class="icon" style="background-position: -120px 0px"></div>
                     <span class="label-text">Favorites</span>
-                </div>
+                </button>
             </div>
 
             <div class="toolbar-button-wrapper">
-                <div class="toolbar-button ">
+                <button class="toolbar-button ">
                     <div class="icon" style="background-position: -140px 0px"></div>
                     <span class="label-text">History</span>
-                </div>
+                </button>
             </div>
 
             <pre class="v-line-in-small"></pre>
 
             <div class="toolbar-button-wrapper">
-                <div class="toolbar-button ">
+                <button class="toolbar-button ">
                     <div class="icon" style="background-position: -240px 0px"></div>
                     <span class="label-text">Print</span>
-                </div>
+                </button>
             </div>
         </div>
         <hr>
