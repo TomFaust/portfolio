@@ -13,6 +13,11 @@
     width:60%;
 }
 
+#past_work_window{
+    height:75%;
+    width:40%;
+}
+
 
 @media only screen and ((max-width: 600px) or (max-height:600px))    {
 
@@ -31,6 +36,11 @@
             height:35%;
             width:60%;
         }
+
+        #past_work_window{
+            height:75%;
+            width:60%;
+        }
     }
 
     @media only screen and (orientation:portrait){
@@ -46,6 +56,11 @@
 
         #oh_bees_window{
             height:20%;
+            width:90%;
+        }
+
+        #past_work_window{
+            height:75%;
             width:90%;
         }
     }

@@ -681,7 +681,69 @@ ul li:hover>ul {
 }
 
 
+
+#speech span{
+    margin-bottom: 50px;
+}
+
+
+#i_wont_forget_hue_window iframe{
+    height:100%;
+    width:100%;
+    background-color: #282e39;
+}
+
+#speechBubble{
+    position:absolute;
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: auto 1fr auto;
+    visibility: hidden;
+
+    right: 50px;
+    bottom:150px;
+    width:250px;
+    font-size:20px !important;
+}
+
+#speechBubble #top{
+    height: 7px;
+    width:100%;
+    top:0;
+    background-image: url("../../assets/speech_bubble/top.png");
+    background-size: 100% 100%;
+}
+
+#speechBubble #middle{
+    width:100%;
+    background-image: url("../../assets/speech_bubble/middle.png");
+    background-size: 100% 100%;
+    font-family: "Pixelated MS Sans Serif";
+    text-align: center;
+    word-break: break-word;
+    padding:5px 20px 7px 20px;
+}
+
+#speechBubble #bottom{
+    height: 20px;
+    width:100%;
+    background-image: url("../../assets/speech_bubble/bottom.png");
+    background-size: 100% 100%;
+}
+
+
 @media only screen and ((max-width: 600px) or (max-height:600px))    {
+
+    #speechBubble{
+        right: 50px;
+        bottom:100px;
+        width:150px;
+        font-size:10px !important;
+    }
+
+    #speechBubble #middle{
+        padding: 5px 10px 7px 10px;
+    }
 
     @media only screen and (orientation:landscape){
 
@@ -742,14 +804,6 @@ ul li:hover>ul {
             width:1000px;
         }
 
-        #cv_window{
-            width:90% !important;
-            left:5% !important;
-            height:calc(95% - 30px) !important;
-            top: calc(50% - 15px) !important;
-            transform: translate(0%, -50%);
-        } 
-
         iframe {
             width: 142% !important;
             height: 142% !important;
@@ -764,88 +818,4 @@ ul li:hover>ul {
         }
 
     }
-}
-
-@media only screen and ((min-width: 601px) or (min-height:601px))    {
-
-    @media only screen and (orientation:landscape){
-        #speechBubble{
-            right: 50px;
-            bottom:150px;
-            width:250px;
-            font-size:20px !important;
-        }
-
-        #speechBubble #middle{
-            padding:5px 20px 7px 20px;
-        }
-
-        #speech span{
-            margin-bottom: 50px;
-        }
-    }
-
-    @media only screen and (orientation:portrait){
-
-        #speech{
-            width:125px;
-            right: 45px;
-            bottom:110px;
-            font-size:10px !important;
-        }
-
-        #speechBubble{
-            right: 40px;
-            bottom:90px;
-            width:125px;
-            font-size:10px !important;
-        }
-
-        #speechBubble #middle{
-            padding:3px 10px 3px 10px;
-        }
-
-        #speech span{
-            margin-bottom: 25px;
-        }
-    }
-}
-
-
-#i_wont_forget_hue_window iframe{
-    height:100%;
-    width:100%;
-    background-color: #282e39;
-}
-
-#speechBubble{
-    position:absolute;
-    display: grid;
-    grid-template-columns: 100%;
-    grid-template-rows: auto 1fr auto;
-    visibility: hidden;
-}
-
-#speechBubble #top{
-    height: 7px;
-    width:100%;
-    top:0;
-    background-image: url("../../assets/speech_bubble/top.png");
-    background-size: 100% 100%;
-}
-
-#speechBubble #middle{
-    width:100%;
-    background-image: url("../../assets/speech_bubble/middle.png");
-    background-size: 100% 100%;
-    font-family: "Pixelated MS Sans Serif";
-    text-align: center;
-    word-break: break-word;
-}
-
-#speechBubble #bottom{
-    height: 20px;
-    width:100%;
-    background-image: url("../../assets/speech_bubble/bottom.png");
-    background-size: 100% 100%;
 }
