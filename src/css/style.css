@@ -122,7 +122,7 @@ button.toolbar-button{
     z-index: 0;
     bottom:0px;
     right:0;
-    width:200px;
+    width:150px;
 }
 
 #face{
@@ -209,18 +209,17 @@ icons{
     text-align: center;
     color:white;
     left:0;
-    
     grid-auto-flow: column;
-    grid-template-rows: repeat(auto-fill, 95px);
+    grid-template-rows: repeat(auto-fill, 80px);
 }
 
 .icon label{
     display: block;
-    font-size: 15px !important;
+    font-size: 13px !important;
 }
 
 icons img{
-    width:45px;
+    width:35px;
     display: block;
     margin-left: auto;
     margin-right: auto;
@@ -692,14 +691,18 @@ ul li:hover>ul {
         }
 
         icons{
-            grid-template-rows: repeat(auto-fill, 65px);
+            grid-template-rows: repeat(auto-fill, 75px);
+            grid-auto-columns: 100px;
+            padding-left:0;
+            column-gap:0px;
         }
 
         icons img {
-            width: 40px !important;
+            width: 25px !important;
         }
+
         #me{
-            width:200px;
+            width:100px;
         }
 
         #plane_flight{
@@ -707,34 +710,27 @@ ul li:hover>ul {
             width:2000px;
         }
 
-        icons{
-            grid-auto-columns: 100px;
-            padding-left:0;
-        }
-
         .tab .title-bar-controls{
             width: 18px;
         }
 
-        .icon label{
-            display: block;
-            font-size: 15px !important;
-        }
-
     }
-    @media only screen and (orientation:portrait), (pointer: coarse){
+    
+    @media only screen and (orientation:portrait){
 
         .icon label{
             display: block;
-            font-size: 15px !important;
+            font-size: 12px !important;
         }
 
         icons{
-            grid-template-rows: repeat(auto-fill, 95px);
+            grid-template-rows: repeat(auto-fill, 85px);
+            column-gap:0;
+            width:100%;
         }
 
         icons img {
-            width: 50px;
+            width: 30px;
         }
 
         #me{
@@ -744,11 +740,6 @@ ul li:hover>ul {
         #plane_flight{
             right:100px;
             width:1000px;
-        }
-
-        icons{
-            column-gap:0;
-            width:100%;
         }
 
         #cv_window{
@@ -774,52 +765,49 @@ ul li:hover>ul {
 
     }
 }
-@media only screen and (orientation:landscape), (pointer: coarse){
-    #speech{
-        width:250px;
-        right: 90px;
-        bottom:220px;
-        font-size:20px !important;
+
+@media only screen and ((min-width: 601px) or (min-height:601px))    {
+
+    @media only screen and (orientation:landscape){
+        #speechBubble{
+            right: 50px;
+            bottom:150px;
+            width:250px;
+            font-size:20px !important;
+        }
+
+        #speechBubble #middle{
+            padding:5px 20px 7px 20px;
+        }
+
+        #speech span{
+            margin-bottom: 50px;
+        }
     }
 
-    #speechBubble{
-        right: 90px;
-        bottom:220px;
-        width:250px;
-        font-size:20px !important;
-    }
+    @media only screen and (orientation:portrait){
 
-    #speechBubble #middle{
-        padding:5px 20px 7px 20px;
-    }
+        #speech{
+            width:125px;
+            right: 45px;
+            bottom:110px;
+            font-size:10px !important;
+        }
 
-    #speech span{
-        margin-bottom: 50px;
-    }
-}
+        #speechBubble{
+            right: 40px;
+            bottom:90px;
+            width:125px;
+            font-size:10px !important;
+        }
 
-@media only screen and (orientation:portrait), (pointer: coarse){
+        #speechBubble #middle{
+            padding:3px 10px 3px 10px;
+        }
 
-    #speech{
-        width:125px;
-        right: 45px;
-        bottom:110px;
-        font-size:10px !important;
-    }
-
-    #speechBubble{
-        right: 45px;
-        bottom:120px;
-        width:125px;
-        font-size:10px !important;
-    }
-
-    #speechBubble #middle{
-        padding:3px 10px 3px 10px;
-    }
-
-    #speech span{
-        margin-bottom: 25px;
+        #speech span{
+            margin-bottom: 25px;
+        }
     }
 }
 
