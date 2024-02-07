@@ -1,4 +1,4 @@
-export class history{
+export class History{
 
     forward = null;
     backward = null;
@@ -8,15 +8,14 @@ export class history{
         this.forward = window.querySelector(".forward");
         this.backward = window.querySelector(".backward");
 
-        console.log(window.querySelector(".backward"));
+        if(this.forward && this.backward){
+            this.backward.addEventListener('click',()=>{
+                console.log('back');
+            })
 
-        this.backward.addEventListener('click',()=>{
-            console.log('back');
-        })
-
-        this.forward.addEventListener('click',()=>{
-            console.log('forward');
-        })
+            this.forward.addEventListener('click',()=>{
+                console.log('forward');
+            })
+        }
     }
-
 }

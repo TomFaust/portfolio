@@ -12,7 +12,8 @@ let facts = [
     "No, i don't go away!",
     "I have a bachelor's degree in Creative Media and Game Technologies.",
     "If you ever need help finding something... i hope you get it.",
-    "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAGGGGGGGGGHHHHHHH!!!!!!"
+    "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAGGGGGGGGGHHHHHHH!!!!!!",
+    "Flesk"
 ]
   
 const myObject = {

@@ -147,6 +147,4 @@
             <span>My computer</span>
         </pre>
     </div>
-    
-    <script src="src/js/browser_windows.js"></script>
 </div>

@@ -1,7 +1,7 @@
-export class browserSwitch{
+export class BrowserSwitch{
 
     constructor(root){
-
+        
         let select = root.getElementsByClassName('address_select')[0];
         let slides = root.querySelectorAll('.browser_screen');
 
@@ -31,7 +31,6 @@ export class browserSwitch{
                 })
                 
             })
-
         }
     
     }

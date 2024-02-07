@@ -1,5 +1,5 @@
-import {browserSwitch} from "./classes/browser_windows.js";
-import { history } from "./classes/history.js";
+import { BrowserSwitch } from "./classes/browser_windows.js";
+import { History } from "./classes/history.js";
 
 let iconContainer = document.querySelector('icons');
 let icons = iconContainer.querySelectorAll(".icon")
@@ -88,10 +88,12 @@ function createWindow(target,done = null,layoutName = "default"){
         let close = windowDiv.getElementsByClassName("controls-close")[0]
         close.addEventListener("click", () => closeTab(windowName,tabName))
         let maximize = windowDiv.getElementsByClassName("controls-maximize")[0]
-        maximize.addEventListener("click", () => maximizeWindow(maximize,target))
+        if(maximize){
+          maximize.addEventListener("click", () => maximizeWindow(maximize,target))
+        }
+        
 
         windowDiv.addEventListener("click",clickTab)
-
         document.getElementById("container").appendChild(windowDiv)
 
         var randomPercentage = Math.floor(Math.random() * 100) + 1;
@@ -133,8 +135,10 @@ function createWindow(target,done = null,layoutName = "default"){
 
         //make window dragable
         dragElement(windowDiv)
-        new browserSwitch(windowDiv);
-        new history(windowDiv);
+
+
+        new BrowserSwitch(windowDiv);
+        new History(windowDiv);
 
         if(done){
           done();
@@ -249,7 +253,6 @@ function dragElement(elmnt) {
   var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
   if (document.getElementById(elmnt.id + "header")) {
     /* if present, the header is where you move the DIV from:*/
-    console.log(document.getElementById(elmnt.id + "header"));
     document.getElementById(elmnt.id + "header").onmousedown = dragMouseDown;
   } else {
     /* otherwise, move the DIV from anywhere inside the DIV:*/

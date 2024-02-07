@@ -132,6 +132,13 @@
             <span>Internet</span>
         </pre>
     </div>
-    
-    <script src="src/js/browser_windows.js"></script>
 </div>
+
+<script type="module">
+    import { History } from "../../js/classes/history.js";
+    import { BrowserSwitch } from "../../js/classes/browser_windows.js";
+
+    let window = document.getElementsByClassName('displayWindow')[0];
+    new History(window);
+    new BrowserSwitch(window);
+</script>
