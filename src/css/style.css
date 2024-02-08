@@ -211,6 +211,7 @@ icons{
     left:0;
     grid-auto-flow: column;
     grid-template-rows: repeat(auto-fill, 90px);
+    justify-content: start;
 }
 
 .icon label{
