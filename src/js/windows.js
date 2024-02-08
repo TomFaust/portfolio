@@ -92,7 +92,6 @@ function createWindow(target,done = null,layoutName = "default"){
           maximize.addEventListener("click", () => maximizeWindow(maximize,target))
         }
         
-
         windowDiv.addEventListener("click",clickTab)
         document.getElementById("container").appendChild(windowDiv)
 
@@ -104,41 +103,18 @@ function createWindow(target,done = null,layoutName = "default"){
         var leftPosition = (window.innerWidth - windowDiv.clientWidth) * (randomPercentage / 100);
         windowDiv.style.left = leftPosition / window.innerWidth * 100 + "%";
 
-        //add slideshow to about me
-        if(windowName.substring(0, windowName.length - 4) === "about_me"){
-          showSlides(slideIndex)
-
-          windowDiv.getElementsByClassName('next-slide')[0].addEventListener('click',()=>{
-            showSlides(1)
-          })
-
-          windowDiv.getElementsByClassName('previous-slide')[0].addEventListener('click',()=>{
-            showSlides(-1)
-          })
-        }
-
-        if(windowName.substring(0, windowName.length - 4) === "color_picker"){
-          let sliders = document.getElementsByClassName("range")
-
-          for (let index = 0; index < sliders.length; index++) {
-            sliders[index].addEventListener("input",colorSlider)
-          }
-
-          let RGBNumbers = document.getElementsByClassName("RGBInput")
-
-          for (let index = 0; index < RGBNumbers.length; index++) {
-            RGBNumbers[index].addEventListener("input",colorInput)
-          }
-
-          document.getElementById("setColor").addEventListener("click",colorFromButton)
-        }
-
         //make window dragable
         dragElement(windowDiv)
 
-
-        new BrowserSwitch(windowDiv);
-        new History(windowDiv);
+        switch(target){
+          case "social_media":
+            new BrowserSwitch(windowDiv);
+            new History(windowDiv,".address_select",".address_select",".browser_screen","change","linkedin");
+            break;
+          case "past_work":
+            new History(windowDiv);
+            break;
+        }
 
         if(done){
           done();
@@ -309,23 +285,5 @@ function dragElement(elmnt) {
     document.onmouseup = null;
     document.onmousemove = null;
   }
-  
-}
-
-var slideIndex = 1;
-
-function showSlides(n) {
-  var i;
-  var slides = document.getElementsByClassName("mySlides");
-  var dots = document.getElementsByClassName("dot");
-  if (n > slides.length) {slideIndex = 1}
-  if (n < 1) {slideIndex = slides.length}
-  for (i = 0; i < slides.length; i++) {
-      slides[i].style.display = "none";
-  }
-  for (i = 0; i < dots.length; i++) {
-      dots[i].className = dots[i].className.replace(" active", "");
-  }
-  slides[slideIndex-1].style.display = "block";
   
 }

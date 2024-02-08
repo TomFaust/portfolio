@@ -114,7 +114,7 @@
         <div class="options">
             <pre class="v-line-out"></pre>
             <div class="item">Address</div>
-            <select class="address_select pointer">
+            <select id="address_select" class="address_select pointer">
             </select>
         </div>
     </div>
@@ -133,12 +133,3 @@
         </pre>
     </div>
 </div>
-
-<script type="module">
-    import { History } from "../../js/classes/history.js";
-    import { BrowserSwitch } from "../../js/classes/browser_windows.js";
-
-    let window = document.getElementsByClassName('displayWindow')[0];
-    new History(window);
-    new BrowserSwitch(window);
-</script>
