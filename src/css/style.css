@@ -187,7 +187,7 @@ button.toolbar-button{
     margin-bottom:  0.2rem;
 }
 
-#taskbar fieldset{
+#clock{
     position:absolute;
     right: 3px;
     min-width:70px;
@@ -200,6 +200,9 @@ button.toolbar-button{
     align-items:center;
     justify-content:center;
     margin-top:3px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: rgb(128, 128, 128) rgb(255, 255, 255) rgb(255, 255, 255) rgb(128, 128, 128);
 }
 
 
@@ -376,7 +379,24 @@ tabs{
 
 #cv_window object{
     height: 100%;
+    width: 100%;
+}
+
+#altCV{
+    height: 100%;
     width:100%;
+    overflow:scroll;
+    resize: none;
+
+    background-color: #fff;
+    border-radius: 0;
+    box-shadow: inset -1px -1px #fff, inset 1px 1px grey, inset -2px -2px #dfdfdf, inset 2px 2px #0a0a0a;
+    box-sizing: border-box;
+    padding: 3px 4px;
+}
+
+#altCV a{
+    color: #00f !important;
 }
 
 #past_work_window .windowArea pre p{
@@ -441,36 +461,6 @@ tabs{
     box-shadow: none !important;
     background-color: transparent !important;
 }
-
-#altCV{
-    position:absolute;
-    left:10%;
-    top:10%;
-    width: 80%;
-    height:80%;
-    text-align:center;
-    display:grid;
-    grid-template-rows: 40% 7% 12% 10%;
-}
-
-#altCV #cvWarning{
-    font-size: 40px;
-    font-weight: bold;
-}
-
-#altCV p{
-    font-size: 15px;
-}
-
-
-
-#altCV button{
-    font-size: 15px;
-    height:70%;
-    width:70%;
-    margin-left:15%;
-}
-
 
 .openTab{
     box-shadow: inset -1px -1px #fff, inset 1px 1px grey, inset -2px -2px #dfdfdf, inset 2px 2px #0a0a0a;
@@ -688,10 +678,11 @@ ul li:hover>ul {
 
 .window-options{
     width:100%;
-    border: 1px solid #808080;
 }
 
-
+.window-options.border{
+    border: 1px solid #808080;
+}
 
 #speech span{
     margin-bottom: 50px;

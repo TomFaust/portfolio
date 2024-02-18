@@ -12,7 +12,7 @@
             </button>
         </div>
     </div>
-    <div class="window-options">
+    <div class="window-options border">
  
         <div class="options">
             <pre class="v-line-out"></pre>

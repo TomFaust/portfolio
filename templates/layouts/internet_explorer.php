@@ -12,7 +12,7 @@
             </button>
         </div>
     </div>
-    <div class="window-options">
+    <div class="window-options border">
         
         <div class="options">
             <pre class="v-line-out"></pre>
@@ -58,21 +58,21 @@
             </div>
 
             <div class="toolbar-button-wrapper">
-                <button class="toolbar-button">
+                <button class="toolbar-button" disabled>
                     <div class="icon" style="background-position: -40px 0px"></div>
                     <span class="label-text">Stop</span>
                 </button>
             </div>
 
             <div class="toolbar-button-wrapper">
-                <button class="toolbar-button ">
+                <button class="toolbar-button " disabled>
                     <div class="icon" style="background-position: -60px 0px"></div>
                     <span class="label-text">Refresh</span>
                 </button>
             </div>
 
             <div class="toolbar-button-wrapper">
-                <button class="toolbar-button ">
+                <button class="toolbar-button " disabled>
                     <div class="icon" style="background-position: -80px 0px"></div>
                     <span class="label-text">Home</span>
                 </button>
@@ -81,21 +81,21 @@
             <pre class="v-line-in-small"></pre>
 
             <div class="toolbar-button-wrapper">
-                <button class="toolbar-button ">
+                <button class="toolbar-button " disabled>
                     <div class="icon" style="background-position: -100px 0px"></div>
                     <span class="label-text">Search</span>
                 </button>
             </div>
 
             <div class="toolbar-button-wrapper">
-                <button class="toolbar-button ">
+                <button class="toolbar-button " disabled>
                     <div class="icon" style="background-position: -120px 0px"></div>
                     <span class="label-text">Favorites</span>
                 </button>
             </div>
 
             <div class="toolbar-button-wrapper">
-                <button class="toolbar-button ">
+                <button class="toolbar-button " disabled>
                     <div class="icon" style="background-position: -140px 0px"></div>
                     <span class="label-text">History</span>
                 </button>
@@ -104,7 +104,7 @@
             <pre class="v-line-in-small"></pre>
 
             <div class="toolbar-button-wrapper">
-                <button class="toolbar-button ">
+                <button class="toolbar-button " disabled>
                     <div class="icon" style="background-position: -240px 0px"></div>
                     <span class="label-text">Print</span>
                 </button>

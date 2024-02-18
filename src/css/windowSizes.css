@@ -18,6 +18,11 @@
     width:55%;
 }
 
+#cv_window{
+   height: 90%;
+   width:60%;
+}
+
 
 @media only screen and ((max-width: 600px) or (max-height:600px))    {
 
@@ -41,6 +46,11 @@
             height:75%;
             width:60%;
         }
+
+        #cv_window{
+            height: 80%;
+            width:90%;
+         }
     }
 
     @media only screen and (orientation:portrait){
@@ -63,6 +73,11 @@
             height:75%;
             width:90%;
         }
+
+        #cv_window{
+            height: 90%;
+            width:90%;
+         }
     }
 
 
