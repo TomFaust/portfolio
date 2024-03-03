@@ -1,5 +1,6 @@
 import { BrowserSwitch } from "./classes/browser_windows.js";
 import { History } from "./classes/history.js";
+import { Tablist } from "./classes/tablist.js";
 
 let iconContainer = document.querySelector('icons');
 let icons = iconContainer.querySelectorAll(".icon")
@@ -113,6 +114,9 @@ function createWindow(target,done = null,layoutName = "default"){
             break;
           case "past_work":
             new History(windowDiv);
+            break;
+          case "my_properties":
+            new Tablist(windowDiv)
             break;
         }
 

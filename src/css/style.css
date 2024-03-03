@@ -205,14 +205,28 @@ button.toolbar-button{
     border-color: rgb(128, 128, 128) rgb(255, 255, 255) rgb(255, 255, 255) rgb(128, 128, 128);
 }
 
-
-
 .window2 {
     background: silver;
     box-shadow: inset -1% -1vh #0a0a0a, inset 1vh 1vh #dfdfdf, inset -2vh -2vh grey, inset 2vh 2vh #fff;
     padding: 3px;
 }
 
+menu[role=tablist]{
+    z-index:20;
+}
+
+div[role=tabpanel]{
+    height: calc( 100% - 5px);
+    width: calc( 100% - 5px);
+    position: absolute;
+}
+
+.window-body{
+    display: none;
+    height: 100% ;
+    width:100%;
+    position: absolute;
+}
 
 icons{
     height: 100%;
@@ -227,6 +241,10 @@ icons{
     grid-auto-flow: column;
     grid-template-rows: repeat(auto-fill, 90px);
     justify-content: start;
+}
+
+.icon{
+    cursor: pointer;
 }
 
 .icon label{
@@ -342,15 +360,6 @@ tabs{
     resize:vertical;
 }
 
-#past_work_window .windowArea pre{
-    display:grid;
-    grid-template-columns: auto auto;
-    grid-auto-rows:auto;
-    height: 100%;
-    text-align: center;
-    overflow-y:scroll;
-}
-
 #social_media_window .windowArea pre{
     height: 100%;
     position: relative;
@@ -397,22 +406,6 @@ tabs{
 
 #altCV a{
     color: #00f !important;
-}
-
-#past_work_window .windowArea pre p{
-    margin:0 !important;
-}
-
-#past_work_window .windowArea pre div{
-    display:grid;
-    grid-template-rows: auto auto;
-}
-
-#past_work_window .windowArea pre img{
-    width:8vh;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
 }
 
 #meArea{
@@ -686,6 +679,66 @@ ul li:hover>ul {
 
 #speech span{
     margin-bottom: 50px;
+}
+
+#past_work_window .windowArea pre {
+    height: 100%;
+    position: relative;
+}
+
+.filePanel{
+    background: url("../../assets/wvleft.bmp");
+    background-size: 100% 100%;
+    position: absolute;
+    width:33%;
+    height:100%;
+    top:0;
+
+    display:grid;
+    grid-template-rows: 40px 40px 5px auto;
+
+    img{
+        margin-left: 15px;
+        margin-top: 15px;
+        margin-right: 15px;
+        height:32px;
+    }
+
+    p{
+        font-weight: bold;
+        margin-left: 15px;
+        font-size: 16pt !important;
+        margin-top: 10px;
+    }
+}
+
+.rainbowLine{
+    width:100%;
+    height:0.5px;
+
+    display: flex;
+
+    *{
+        height:100%;
+        width:25%;
+    }
+
+    .red{
+        background-color: red;
+    }
+
+    .orange{
+        background-color: orange;
+    }
+
+    .green{
+        background-color: green;
+    }
+
+    .blue{
+        background-color: blue;
+    }
+
 }
 
 

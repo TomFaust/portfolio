@@ -129,7 +129,7 @@
         <div class="options">
             <pre class="v-line-out"></pre>
             <div class="item">Address</div>
-            <select class="address_select pointer">
+            <select class="address_select pointer" disabled>
             </select>
         </div>
     </div>
