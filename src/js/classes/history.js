@@ -14,7 +14,7 @@ export class History{
     interactibles = [];
     holders = [];
 
-    constructor(window,interactibles,holders,screens,action,init = null){
+    constructor(window,interactibles,attribute,holders,screens,action,init = null){
         this.forward = window.querySelector(".forward");
         this.backward = window.querySelector(".backward");
 
@@ -34,7 +34,7 @@ export class History{
             interactible.addEventListener(action,(e)=>{
                 this.history = this.history.slice(0, this.historyPos + 1);
 
-                this.history.push(e.target.value);
+                this.history.push(eval("interactible."+ attribute));
                 this.historyPos++;
 
                 this.backwardButton.disabled = false;
@@ -90,7 +90,7 @@ export class History{
         })
 
         this.screens.forEach(screen => {
-
+            console.log(this.screens)
             if(screen.dataset.subject == this.history[this.historyPos]){
                 screen.classList.remove('d-none');
             }else{

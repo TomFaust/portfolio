@@ -243,7 +243,7 @@ icons{
     justify-content: start;
 }
 
-.icon{
+.pointer{
     cursor: pointer;
 }
 
@@ -376,7 +376,7 @@ tabs{
 }
 
 .d-none{
-    display:none;
+    display:none !important;
 }
 
 #social_media_window .windowArea pre img{
@@ -681,21 +681,48 @@ ul li:hover>ul {
     margin-bottom: 50px;
 }
 
-#past_work_window .windowArea pre {
+#past_work_window .windowArea .pre {
     height: 100%;
     position: relative;
+
+    background: #fff;
+    box-shadow: inset -1px -1px #fff, inset 1px 1px grey, inset -2px -2px #dfdfdf, inset 2px 2px #0a0a0a;
+    display: block;
+    margin: 0;
+    padding: 12px 8px;
 }
 
-.filePanel{
+.fileExplorerGrid{
+    display: grid;
+    grid-template-columns: 200px auto;
+}
+
+.folderPanel{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 80px);
+    grid-auto-flow: column;
+    text-align: center;
+    margin-top: 15px;
+}
+
+.folderIcon img{
+    width:32px;
+    height:32px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.folderIcon label{
+    margin-left:20%;
+    margin-right:20%;
+}
+
+.fileInfoPanel{
     background: url("../../assets/wvleft.bmp");
     background-size: 100% 100%;
-    position: absolute;
-    width:33%;
-    height:100%;
-    top:0;
-
     display:grid;
     grid-template-rows: 40px 40px 5px auto;
+
 
     img{
         margin-left: 15px;

@@ -1,6 +1,7 @@
 import { BrowserSwitch } from "./classes/browser_windows.js";
 import { History } from "./classes/history.js";
 import { Tablist } from "./classes/tablist.js";
+import { FileExplorer } from "./classes/file_explorer.js";
 
 let iconContainer = document.querySelector('icons');
 let icons = iconContainer.querySelectorAll(".icon")
@@ -106,17 +107,17 @@ function createWindow(target,done = null,layoutName = "default"){
 
         //make window dragable
         dragElement(windowDiv)
-
         switch(target){
           case "social_media":
             new BrowserSwitch(windowDiv);
-            new History(windowDiv,".address_select",".address_select",".browser_screen","change","linkedin");
-            break;
-          case "past_work":
-            new History(windowDiv);
+            new History(windowDiv,".address_select","value",".address_select",".browser_screen","change","linkedin");
             break;
           case "my_properties":
             new Tablist(windowDiv)
+            break;
+          case "past_work":
+            new History(windowDiv,".mainIcon","dataset.panel",".address_select",".folderPanel","click","main");
+            new FileExplorer(windowDiv);
             break;
         }
 
