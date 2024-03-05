@@ -116,7 +116,7 @@ function createWindow(target,done = null,layoutName = "default"){
             new Tablist(windowDiv)
             break;
           case "past_work":
-            new History(windowDiv,".mainIcon","dataset.panel",".address_select",".folderPanel","click","main");
+            new History(windowDiv,".clickableIcon","dataset.panel",".address_select",".folderPanel","click","main");
             new FileExplorer(windowDiv);
             break;
         }

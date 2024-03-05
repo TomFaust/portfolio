@@ -82,21 +82,16 @@ export class History{
     }
 
     switchSubject(){
-        console.log(this.history);
-        console.log(this.historyPos);
-
         this.holders.forEach(holder =>{
             holder.value = this.history[this.historyPos];
         })
 
         this.screens.forEach(screen => {
-            console.log(this.screens)
             if(screen.dataset.subject == this.history[this.historyPos]){
                 screen.classList.remove('d-none');
             }else{
                 screen.classList.add('d-none');
             }
-
         })
     }
     

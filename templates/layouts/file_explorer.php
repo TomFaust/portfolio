@@ -29,7 +29,7 @@
             <pre class="v-line-out"></pre>
 
             <div class="toolbar-button-wrapper backward">
-                <button class="toolbar-button">
+                <button class="toolbar-button" disabled>
                     <div class="icon"></div>
                     <span class="label-text">Back</span>
                 </button>
@@ -42,7 +42,7 @@
             </div>
 
             <div class="toolbar-button-wrapper forward">
-                <button class="toolbar-button">
+                <button class="toolbar-button" disabled>
                     <div class="icon" style="background-position: -20px 0px"></div>
                     <span class="label-text">Forward</span>
                 </button>
@@ -55,7 +55,7 @@
             </div>
 
             <div class="toolbar-button-wrapper">
-                <button class="toolbar-button">
+                <button class="toolbar-button" disabled>
                     <div class="icon" style="background-position: -880px 0px"></div>
                     <span class="label-text">Up</span>
                 </button>
@@ -64,21 +64,21 @@
             <pre class="v-line-in-small"></pre>
 
             <div class="toolbar-button-wrapper">
-                <button class="toolbar-button ">
+                <button class="toolbar-button" disabled>
                     <div class="icon" style="background-position: -420px 0px"></div>
                     <span class="label-text">Cut</span>
                 </button>
             </div>
 
             <div class="toolbar-button-wrapper">
-                <button class="toolbar-button ">
+                <button class="toolbar-button " disabled>
                     <div class="icon" style="background-position: -440px 0px"></div>
                     <span class="label-text">Copy</span>
                 </button>
             </div>
 
             <div class="toolbar-button-wrapper">
-                <button class="toolbar-button ">
+                <button class="toolbar-button " disabled>
                     <div class="icon" style="background-position: -460px 0px"></div>
                     <span class="label-text">Paste</span>
                 </button>
@@ -89,7 +89,7 @@
 
 
             <div class="toolbar-button-wrapper">
-                <button class="toolbar-button ">
+                <button class="toolbar-button " disabled>
                     <div class="icon" style="background-position: -480px 0px"></div>
                     <span class="label-text">Undo</span>
                 </button>
@@ -100,14 +100,14 @@
 
 
             <div class="toolbar-button-wrapper">
-                <button class="toolbar-button ">
+                <button class="toolbar-button " disabled>
                     <div class="icon" style="background-position: -520px 0px"></div>
                     <span class="label-text">Delete</span>
                 </button>
             </div>
 
             <div class="toolbar-button-wrapper">
-                <button class="toolbar-button ">
+                <button class="toolbar-button " disabled>
                     <div class="icon" style="background-position: -620px 0px"></div>
                     <span class="label-text">Properties</span>
                 </button>
@@ -117,7 +117,7 @@
             <pre class="v-line-in-small"></pre>
 
             <div class="toolbar-button-wrapper">
-                <button class="toolbar-button ">
+                <button class="toolbar-button " disabled>
                     <div class="icon" style="background-position: -780px 0px"></div>
                     <span class="label-text">Views</span>
                 </button>
