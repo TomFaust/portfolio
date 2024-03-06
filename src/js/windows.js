@@ -3,7 +3,7 @@ import { History } from "./classes/history.js";
 import { Tablist } from "./classes/tablist.js";
 import { FileExplorer } from "./classes/file_explorer.js";
 
-let iconContainer = document.querySelector('icons');
+let iconContainer = document.querySelector('#desktopIcons');
 let icons = iconContainer.querySelectorAll(".icon")
 
 icons.forEach((icon)=>{
