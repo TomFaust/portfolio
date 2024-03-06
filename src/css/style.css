@@ -882,7 +882,7 @@ ul li:hover>ul {
 
         #desktopIcons{
             grid-template-rows: repeat(auto-fill, 85px);
-            column-gap:0;
+            column-gap:20px;
             width:100%;
         }
 
