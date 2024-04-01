@@ -13,22 +13,22 @@ body, html{
 a:link {
     text-decoration: none;
     color:white;
-  }
+}
   
-  a:visited {
+a:visited {
     text-decoration: none;
     color:white;
-  }
-  
-  a:hover {
+}
+
+a:hover {
     text-decoration: none;
     color:white;
-  }
-  
-  a:active {
+}
+
+a:active {
     text-decoration: none;
     color:white;
-  }
+}
 
 #container{
     overflow: hidden;
@@ -55,24 +55,11 @@ a:link {
     height: auto;
 }
 
-#welcome_window{
-    width:250px;
-    position:absolute;
-    top:50% !important;
-    left:50% !important;
-    transform: translate(-50%,-60%);
-}
-
-#welcome_window p, #welcome_window button{
-    font-size: 15px;
-}
-
 .toolbar-button{
     padding: 0.2rem 0.6rem 0.2rem 0.6rem;
     margin: 0.1rem;
     border: solid 1px #c0c0c0;
 }
-
 
 .toolbar-button .icon{
     background-image: url(../../assets/icons/browser/grayscale/browse-ui-icons-grayscale.png);
@@ -216,8 +203,8 @@ menu[role=tablist]{
 }
 
 div[role=tabpanel]{
-    height: calc( 100% - 5px);
-    width: calc( 100% - 5px);
+    height:100%;
+    width:100%;
     position: absolute;
 }
 
@@ -241,6 +228,7 @@ div[role=tabpanel]{
     grid-auto-flow: column;
     grid-template-rows: repeat(auto-fill, 90px);
     justify-content: start;
+    user-select: none;
 }
 
 .pointer{
@@ -250,6 +238,7 @@ div[role=tabpanel]{
 .icon label{
     display: block;
     font-size: 13px !important;
+    user-select: none;
 }
 
 #desktopIcons img{
@@ -258,6 +247,33 @@ div[role=tabpanel]{
     margin-left: auto;
     margin-right: auto;
     margin-bottom:5px;
+}
+
+.selectionEffect{
+    position: absolute;
+    width:35px;
+    height:35px;
+    mask-image: var(--icon-image);
+    -webkit-mask-image: var(--icon-image);
+    opacity:0.5;
+    background: navy;   
+    mask-repeat: no-repeat;
+    mask-size: 100% 100%;
+    top:0;
+    left:50%;
+    transform: translate(-50%, 0%);
+    display: none;
+    user-select: none;
+}
+
+.selectedLabel{
+    border-style: dotted;
+    border-width: 1px;
+    border-color: transparent;
+}
+
+.iconImage{
+    position: relative;
 }
 
 tabs{
@@ -341,9 +357,51 @@ tabs{
     margin-top: 2px;
 }
 
+#welcome_window{
+    width:250px;
+    position:absolute;
+    top:50% !important;
+    left:50% !important;
+    transform: translate(-50%,-60%);
+}
+
+#welcome_window p, #welcome_window button{
+    font-size: 15px;
+}
+
+#my_properties_window .windowArea{
+    display:grid;
+    grid-template-rows: 36px auto;
+}
+
 #contact_window .windowArea{
     background-image: url(../../assets/contactPage.png);
     background-size: 100% 100%;
+}
+
+#social_media_window .windowArea pre{
+    height: 100%;
+    position: relative;
+}
+
+#social_media_window .windowArea pre img{
+    width:100%;
+    position: absolute;
+    left:0;
+    top: 0;
+}
+
+#cv_window object{
+    height: 100%;
+    width: 100%;
+}
+
+#about_me_window h1{
+    font-size: 1rem !important;
+}
+
+#about_me_window button{
+    float: right;
 }
 
 #contactForm{
@@ -360,11 +418,6 @@ tabs{
     resize:vertical;
 }
 
-#social_media_window .windowArea pre{
-    height: 100%;
-    position: relative;
-}
-
 .pre_inset{
     height: calc( 100% - 5px);
     width: calc( 100% - 5px);
@@ -377,18 +430,6 @@ tabs{
 
 .d-none{
     display:none !important;
-}
-
-#social_media_window .windowArea pre img{
-    width:100%;
-    position: absolute;
-    left:0;
-    top: 0;
-}
-
-#cv_window object{
-    height: 100%;
-    width: 100%;
 }
 
 #altCV{
@@ -408,23 +449,6 @@ tabs{
     color: #00f !important;
 }
 
-#meArea{
-    display:grid;
-    grid-template-columns: auto auto;
-    height:60vh;
-}
-#meArea img{
- height:100%;
-}
-
-
-#about_me_window h1{
-    font-size: 1rem !important;
-}
-
-#about_me_window button{
-    float: right;
-}
 
 #slides{
     overflow-y: scroll;
@@ -454,6 +478,24 @@ tabs{
     box-shadow: none !important;
     background-color: transparent !important;
 }
+
+#past_work_window .windowArea .pre {
+    height: 100%;
+    position: relative;
+
+    background: #fff;
+    box-shadow: inset -1px -1px #fff, inset 1px 1px grey, inset -2px -2px #dfdfdf, inset 2px 2px #0a0a0a;
+    display: block;
+    margin: 0;
+    padding: 12px 8px;
+}
+
+#i_wont_forget_hue_window iframe{
+    height:100%;
+    width:100%;
+    background-color: #282e39;
+}
+
 
 .openTab{
     box-shadow: inset -1px -1px #fff, inset 1px 1px grey, inset -2px -2px #dfdfdf, inset 2px 2px #0a0a0a;
@@ -681,17 +723,6 @@ ul li:hover>ul {
     margin-bottom: 50px;
 }
 
-#past_work_window .windowArea .pre {
-    height: 100%;
-    position: relative;
-
-    background: #fff;
-    box-shadow: inset -1px -1px #fff, inset 1px 1px grey, inset -2px -2px #dfdfdf, inset 2px 2px #0a0a0a;
-    display: block;
-    margin: 0;
-    padding: 12px 8px;
-}
-
 .fileExplorerGrid{
     display: grid;
     grid-template-columns: 200px auto;
@@ -769,10 +800,13 @@ ul li:hover>ul {
 }
 
 
-#i_wont_forget_hue_window iframe{
+#meArea{
+    display:grid;
+    grid-template-columns: auto auto;
+    height:60vh;
+}
+#meArea img{
     height:100%;
-    width:100%;
-    background-color: #282e39;
 }
 
 #speechBubble{
