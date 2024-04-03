@@ -9,37 +9,58 @@ icons.forEach((icon)=>{
       
       clickable.addEventListener("dblclick",function(event){
         openMe(event);
-        clickable.getElementsByClassName('selectionEffect')[0].style.display = "none";
+        removeMask(clickable)
+      });
 
-        let label = clickable.getElementsByTagName('label')[0];
-        label.style.background = "";
-        label.style.borderColor = "transparent";
+      clickable.addEventListener("touchstart", (e) =>{
+        tapHandler(e,clickable)
       });
 
       clickable.addEventListener("click",function(){
-        clickable.getElementsByClassName('selectionEffect')[0].style.display = "block";
-        
-        let label = clickable.getElementsByTagName('label')[0];
-        label.style.background = "navy";
-        label.style.borderColor = "white";
+        addMask(clickable)
       })  
 
       document.addEventListener('click', function(event) {
         // Remove the highlight class from the element if the click is outside of it
         if (!clickable.contains(event.target)) {
-          clickable.getElementsByClassName('selectionEffect')[0].style.display = "none";
-
-          let label = clickable.getElementsByTagName('label')[0];
-          label.style.background = "";
-          label.style.borderColor = "transparent";
+          removeMask(clickable)
         }
       });
 
     }
 })
 
-if(!localStorage.hasOwnProperty('ok_welcome')){
+var tapedTwice = false;
 
+function tapHandler(event,clickable) {
+    if(!tapedTwice) {
+        tapedTwice = true;
+        setTimeout( function() { tapedTwice = false; }, 300 );
+        return false;
+    }
+    event.preventDefault();
+
+    //action on double tap goes below
+    openMe(event);
+    removeMask(clickable)
+ }
+
+function addMask(clickable){
+  clickable.getElementsByClassName('selectionEffect')[0].style.display = "block";
+        
+  let label = clickable.getElementsByTagName('label')[0];
+  label.style.background = "navy";
+  label.style.borderColor = "white";
+}
+
+function removeMask(clickable){
+  clickable.getElementsByClassName('selectionEffect')[0].style.display = "none";
+  let label = clickable.getElementsByTagName('label')[0];
+  label.style.background = "";
+  label.style.borderColor = "transparent";
+}
+
+if(!localStorage.hasOwnProperty('ok_welcome')){
   new ProgramWindow('welcome',(self) => {
     document.getElementById("welcome_ok").addEventListener("click",function(){
       self.closeTab()

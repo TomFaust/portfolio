@@ -90,7 +90,7 @@ export class ProgramWindow{
                 self.windowDiv.style.left = leftPosition / window.innerWidth * 100 + "%";
         
                 //make window dragable
-                self.dragElement(self.windowDiv)
+                self.dragElement(self.windowDiv,titleBar)
                 switch(target){
                 case "social_media":
                     new BrowserSwitch(self.windowDiv);
@@ -198,68 +198,111 @@ export class ProgramWindow{
     }
 
     
-    dragElement(elmnt) {
-
+    dragElement(elmnt,titleBar) {
         var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
-        if (document.getElementById(elmnt.id + "header")) {
-          /* if present, the header is where you move the DIV from:*/
-          document.getElementById(elmnt.id + "header").onmousedown = dragMouseDown;
-        } else {
-          /* otherwise, move the DIV from anywhere inside the DIV:*/
-          elmnt.onmousedown = dragMouseDown;
-        }
-      
+
+        // Mouse event listeners
+        titleBar.onmousedown = dragMouseDown;
+
+        // Touch event listeners
+        titleBar.addEventListener("touchstart", touchstartHandler, { passive: false });
+
         function dragMouseDown(e) {
-      
-          if(!e.target.classList.contains('maximized')){
+            if (!e.target.classList.contains('maximized')) {
+                e = e || window.event;
+                e.preventDefault();
+                // get the mouse cursor position at startup:
+                pos3 = e.clientX;
+                pos4 = e.clientY;
+                document.onmouseup = closeDragElement;
+                // call a function whenever the cursor moves:
+                document.onmousemove = elementDrag;
+
+                let windows = document.getElementsByClassName("displayWindow")
+
+                for (let index = 0; index < windows.length; index++) {
+                    windows[index].style.zIndex = 10
+                }
+
+                e.target.closest(".window").style.zIndex = 11;
+            }
+        }
+
+        function touchstartHandler(e) {
+            if (!e.target.classList.contains('maximized')) {
+                var touch = e.changedTouches[0];
+                pos3 = touch.clientX;
+                pos4 = touch.clientY;
+                document.addEventListener("touchend", touchendHandler, { passive: false });
+                document.addEventListener("touchmove", touchmoveHandler, { passive: false });
+
+                let windows = document.getElementsByClassName("displayWindow")
+
+                for (let index = 0; index < windows.length; index++) {
+                    windows[index].style.zIndex = 10
+                }
+
+                e.target.closest(".window").style.zIndex = 11;
+            }
+        }
+
+        function touchmoveHandler(e) {
+            e.preventDefault();
+
+            var touch = e.changedTouches[0];
+
+            // Get the dimensions of the container
+            var containerWidth = elmnt.parentElement.clientWidth;
+            var containerHeight = elmnt.parentElement.clientHeight;
+
+            // Calculate the new cursor position
+            pos1 = pos3 - touch.clientX;
+            pos2 = pos4 - touch.clientY;
+            pos3 = touch.clientX;
+            pos4 = touch.clientY;
+
+            // Calculate the new position in percentages
+            var topPercentage = ((elmnt.offsetTop - pos2) / containerHeight) * 100;
+            var leftPercentage = ((elmnt.offsetLeft - pos1) / containerWidth) * 100;
+
+            // Set the element's new position
+            elmnt.style.top = topPercentage + "%";
+            elmnt.style.left = leftPercentage + "%";
+        }
+
+        function touchendHandler() {
+            document.removeEventListener("touchend", touchendHandler);
+            document.removeEventListener("touchmove", touchmoveHandler);
+        }
+
+        function elementDrag(e) {
             e = e || window.event;
             e.preventDefault();
-            // get the mouse cursor position at startup:
+
+            // Get the dimensions of the container
+            var containerWidth = elmnt.parentElement.clientWidth;
+            var containerHeight = elmnt.parentElement.clientHeight;
+
+            // Calculate the new cursor position
+            pos1 = pos3 - e.clientX;
+            pos2 = pos4 - e.clientY;
             pos3 = e.clientX;
             pos4 = e.clientY;
-            document.onmouseup = closeDragElement;
-            // call a function whenever the cursor moves:
-            document.onmousemove = elementDrag;
-      
-            let windows = document.getElementsByClassName("displayWindow")
-      
-            for (let index = 0; index < windows.length; index++) {
-              windows[index].style.zIndex = 10
-            }
-            
-            e.target.closest(".window").style.zIndex = 11;
-          }
+
+            // Calculate the new position in percentages
+            var topPercentage = ((elmnt.offsetTop - pos2) / containerHeight) * 100;
+            var leftPercentage = ((elmnt.offsetLeft - pos1) / containerWidth) * 100;
+
+            // Set the element's new position
+            elmnt.style.top = topPercentage + "%";
+            elmnt.style.left = leftPercentage + "%";
         }
-      
-        function elementDrag(e) {
-          e = e || window.event;
-          e.preventDefault();
-      
-          // Get the dimensions of the container
-          var containerWidth = elmnt.parentElement.clientWidth;
-          var containerHeight = elmnt.parentElement.clientHeight;
-      
-          // Calculate the new cursor position
-          pos1 = pos3 - e.clientX;
-          pos2 = pos4 - e.clientY;
-          pos3 = e.clientX;
-          pos4 = e.clientY;
-      
-          // Calculate the new position in percentages
-          var topPercentage = ((elmnt.offsetTop - pos2) / containerHeight) * 100;
-          var leftPercentage = ((elmnt.offsetLeft - pos1) / containerWidth) * 100;
-      
-          // Set the element's new position
-          elmnt.style.top = topPercentage + "%";
-          elmnt.style.left = leftPercentage + "%";
-        }
-      
+
         function closeDragElement() {
-          /* stop moving when mouse button is released:*/
-          document.onmouseup = null;
-          document.onmousemove = null;
+            /* stop moving when mouse button is released:*/
+            document.onmouseup = null;
+            document.onmousemove = null;
         }
-        
-      }
+    }
     
 }
