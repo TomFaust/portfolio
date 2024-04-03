@@ -892,6 +892,11 @@ ul li:hover>ul {
             width: 25px !important;
         }
 
+        .selectionEffect{
+            width:25px !important;
+            height:25px !important;
+        }
+
         #me{
             width:100px;
         }
@@ -922,6 +927,11 @@ ul li:hover>ul {
 
         #desktopIcons img {
             width: 30px;
+        }
+
+        .selectionEffect{
+            width:30px !important;
+            height:30px !important;
         }
 
         #me{
