@@ -4,7 +4,9 @@ let iconContainer = document.querySelector('#desktopIcons');
 let icons = iconContainer.querySelectorAll(".icon")
 
 icons.forEach((icon)=>{
-    let clickable = icon.getElementsByClassName('clickable')[0];
+  
+    let clickable = icon.querySelector('.clickable');
+    
     if(clickable && clickable.id){
       
       clickable.addEventListener("dblclick",function(event){
@@ -28,6 +30,7 @@ icons.forEach((icon)=>{
       });
 
     }
+    
 })
 
 var tapedTwice = false;
@@ -46,16 +49,16 @@ function tapHandler(event,clickable) {
  }
 
 function addMask(clickable){
-  clickable.getElementsByClassName('selectionEffect')[0].style.display = "block";
+  clickable.querySelector('.selectionEffect').style.display = "block";
         
-  let label = clickable.getElementsByTagName('label')[0];
+  let label = clickable.querySelector('label');
   label.style.background = "navy";
   label.style.borderColor = "white";
 }
 
 function removeMask(clickable){
-  clickable.getElementsByClassName('selectionEffect')[0].style.display = "none";
-  let label = clickable.getElementsByTagName('label')[0];
+  clickable.querySelector('.selectionEffect').style.display = "none";
+  let label = clickable.querySelector('label');
   label.style.background = "";
   label.style.borderColor = "transparent";
 }
@@ -72,7 +75,6 @@ if(!localStorage.hasOwnProperty('ok_welcome')){
 function openMe(event){
     let element = document.getElementById(event.target.closest(".clickable").id + "_tab")
     let closestDiv = event.target.closest(".clickable");
-
-    new ProgramWindow(closestDiv.id,"",closestDiv.dataset.window)
+    new ProgramWindow(closestDiv.id,"",closestDiv.dataset.window,closestDiv.dataset.windowIcon)
 }
 

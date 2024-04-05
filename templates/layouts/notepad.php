@@ -1,7 +1,7 @@
 <div class="window displayWindow">
     <div class="title-bar">
         <div class="title-bar-text">
-            <img class="title-bar-icon" src="assets/icons/notepad-5.png"> Notepad - 
+            <img class="title-bar-icon"> Notepad - 
         </div>
         <div class="title-bar-controls">
             <button class="controls-minimize pointer" aria-label="Minimize">
@@ -14,10 +14,10 @@
     </div>
     <div class="window-options">
         <div class="options">
-            <div class="item ">File</div>
-            <div class="item ">Edit</div>
-            <div class="item ">Search</div>
-            <div class="item ">Help</div>
+            <div class="item "><u>F</u>ile</div>
+            <div class="item "><u>E</u>dit</div>
+            <div class="item "><u>S</u>earch</div>
+            <div class="item "><u>H</u>elp</div>
         </div>
     </div>
     <div class="windowArea">

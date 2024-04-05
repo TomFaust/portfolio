@@ -4,8 +4,8 @@
 }
 
 #i_wont_forget_hue_window{
-    height:350px;
-    width:250px;
+    height:250px;
+    width:400px;
 }
 
 #oh_bees_window{
@@ -27,7 +27,6 @@
     height:500px;
     width:500px;
 }
-
 
 @media only screen and ((max-width: 600px) or (max-height:600px))    {
 

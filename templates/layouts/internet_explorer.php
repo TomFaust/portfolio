@@ -1,7 +1,7 @@
 <div class="window displayWindow">
     <div class="title-bar">
         <div class="title-bar-text">
-            <img class="title-bar-icon" src="assets/icons/internet_explorer.png">
+            <img class="title-bar-icon">
         </div>
         <div class="title-bar-controls">
             <button class="controls-minimize pointer" aria-label="Minimize">
@@ -16,15 +16,15 @@
         
         <div class="options">
             <pre class="v-line-out"></pre>
-            <div class="item ">File</div>
-            <div class="item ">Edit</div>
-            <div class="item ">View</div>
-            <div class="item ">Go</div>
-            <div class="item ">Favorites</div>
-            <div class="item ">Tools</div>
-            <div class="item ">Help</div>
+            <div class="item "><u>F</u>ile</div>
+            <div class="item "><u>E</u>dit</div>
+            <div class="item "><u>V</u>iew</div>
+            <div class="item "><u>G</u>o</div>
+            <div class="item "><u>F</u>avorites</div>
+            <div class="item "><u>T</u>ools</div>
+            <div class="item "><u>H</u>elp</div>
             <div class=" float-right">
-                <img class="browser-bar-image" src="assets/icons/internet_explorer_icon.png">
+                <img class="browser-bar-image" src="assets/icons/browser/internet_explorer_icon.png">
             </div>
         </div>
         <hr>

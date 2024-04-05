@@ -9,37 +9,33 @@ export class ProgramWindow{
     windowDiv = null;
     pos1 = 0; pos2 = 0; pos3 = 0; pos4 = 0;
 
-    constructor(id,done = null,layoutName = 'default'){
+    constructor(id,done = null,layoutName = 'default',windowIcon = null){
         this.tab = document.createElement('div');
         this.windowDiv = document.createElement('div');
 
-        this.createTab(id)
-        this.createWindow(id,done, layoutName)
+        this.createTab(id,windowIcon)
+        this.createWindow(id,done, layoutName,windowIcon)
     }
 
-    createTab(tab_id){
+    createTab(tab_id,windowIcon){
         this.tab.classList.add("window")
         this.tab.id = tab_id + "_tab"
         this.tab.classList.add("tab")
         this.tab.classList.add("openTab")
         this.tab.classList.add("title-bar")
         this.tab.addEventListener("click",() => this.toggleWindow())
-      
-        let close = document.createElement("button")
-        close.setAttribute("aria-label","Close")
-        close.addEventListener("click",() => this.closeTab())
-        
-        let div = document.createElement("div")
-        div.classList.add("title-bar-controls")
-        div.appendChild(close)
-      
+
+        if(windowIcon){
+            let icon = document.createElement("img")
+            icon.src = "../../assets/icons/" + windowIcon;
+            this.tab.appendChild(icon)
+        }
         this.tab.innerHTML += "<span>" + tab_id + "</span>"
-        this.tab.appendChild(div)
         
         document.getElementsByTagName("tabs")[0].appendChild(this.tab)
     }
 
-    createWindow(target,done = null,layoutName = "default"){
+    createWindow(target,done,layoutName = "default",windowIcon){
 
         layoutName = "templates/layouts/" + layoutName + ".php";
       
@@ -59,21 +55,26 @@ export class ProgramWindow{
         
                 self.windowDiv.id = tabName
         
-                let titleBar = self.windowDiv.getElementsByClassName('title-bar')[0]
+                let titleBar = self.windowDiv.querySelector('.title-bar')
                 titleBar.id = tabName + "header"
+
+                if(windowIcon){
+                    let titleBarIcon = self.windowDiv.querySelector(".title-bar-icon");
+                    titleBarIcon.src = "../assets/icons/" + windowIcon;
+                }
         
-                let titleBarText = self.windowDiv.getElementsByClassName("title-bar-text")[0]
+                let titleBarText = self.windowDiv.querySelector(".title-bar-text")
                 let name = windowName.substring(0, windowName.length - 4)
                 titleBarText.innerHTML += name
         
                 //title bar controls
-                let minimize = self.windowDiv.getElementsByClassName("controls-minimize")[0]
+                let minimize = self.windowDiv.querySelector(".controls-minimize")
                 minimize.addEventListener("click",() => self.toggleWindow())
 
-                let close = self.windowDiv.getElementsByClassName("controls-close")[0]
+                let close = self.windowDiv.querySelector(".controls-close")
                 close.addEventListener("click", () => self.closeTab())
 
-                let maximize = self.windowDiv.getElementsByClassName("controls-maximize")[0]
+                let maximize = self.windowDiv.querySelector(".controls-maximize")
                 if(maximize){
                     maximize.addEventListener("click", () => self.maximizeWindow(maximize))
                 }

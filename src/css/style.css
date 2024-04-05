@@ -280,7 +280,7 @@ tabs{
     height:100%;
     width:100%;
     display: flex;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
 }
 
 .silver{
@@ -297,13 +297,19 @@ tabs{
     max-width:150px;
     flex-basis: 0;
     display: grid;
-    grid-template-columns: 1fr auto;
+    grid-template-columns: auto 1fr;
+    overflow-x: hidden;
 }
 
 .tab span{
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+}
+
+.tab img{
+    height:16px;
+    margin-right:5px;
 }
 
 #oh_bees_iframe{
@@ -374,11 +380,6 @@ tabs{
     grid-template-rows: 36px auto;
 }
 
-#contact_window .windowArea{
-    background-image: url(../../assets/contactPage.png);
-    background-size: 100% 100%;
-}
-
 #social_media_window .windowArea pre{
     height: 100%;
     position: relative;
@@ -404,18 +405,8 @@ tabs{
     float: right;
 }
 
-#contactForm{
-   /* display: grid;*/
-    display: none;
-    
-}
-
 .overflow-hidden{
     overflow: hidden;
-}
-
-#contactForm textarea{
-    resize:vertical;
 }
 
 .pre_inset{
@@ -463,21 +454,6 @@ tabs{
     height:100%;
 }
 
-#contactTree{
-    position: absolute;
-    left:29.5%;
-    top:34.7%;
-    width:65%;
-    height:40%;
-}
-
-#contact_window ul{
-    width:100%;
-    height:100%;
-    font-size: 110% !important;
-    box-shadow: none !important;
-    background-color: transparent !important;
-}
 
 #past_work_window .windowArea .pre {
     height: 100%;
