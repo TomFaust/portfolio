@@ -41,7 +41,7 @@ export class ProgramWindow{
 
         if(windowIcon){
             let icon = document.createElement("img")
-            icon.src = "/assets/icons/" + windowIcon;
+            icon.src = "assets/icons/" + windowIcon;
             this.tab.appendChild(icon)
         }
         this.tab.innerHTML += "<span>" + tab_id + "</span>"
