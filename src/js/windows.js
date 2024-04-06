@@ -1,4 +1,5 @@
 import { ProgramWindow } from "./classes/program_window.js";
+import { MaskIcon } from "./classes/mask_icon.js";
 
 let iconContainer = document.querySelector('#desktopIcons');
 let icons = iconContainer.querySelectorAll(".icon")
@@ -8,28 +9,13 @@ icons.forEach((icon)=>{
     let clickable = icon.querySelector('.clickable');
     
     if(clickable && clickable.id){
-      
-      clickable.addEventListener("dblclick",function(event){
-        openMe(event);
-        removeMask(clickable)
-      });
-
-      clickable.addEventListener("touchstart", (e) =>{
-        tapHandler(e,clickable)
-      });
-
-      clickable.addEventListener("click",function(){
-        addMask(clickable)
-      })  
-
-      document.addEventListener('click', function(event) {
-        // Remove the highlight class from the element if the click is outside of it
-        if (!clickable.contains(event.target)) {
-          removeMask(clickable)
-        }
-      });
-
+      clickable.addEventListener("dblclick",openMe);
+      new MaskIcon(clickable);
     }
+
+    clickable.addEventListener("touchstart", (e) =>{
+      tapHandler(e,clickable)
+    });
     
 })
 
@@ -45,22 +31,6 @@ function tapHandler(event,clickable) {
 
     //action on double tap goes below
     openMe(event);
-    removeMask(clickable)
- }
-
-function addMask(clickable){
-  clickable.querySelector('.selectionEffect').style.display = "block";
-        
-  let label = clickable.querySelector('label');
-  label.style.background = "navy";
-  label.style.borderColor = "white";
-}
-
-function removeMask(clickable){
-  clickable.querySelector('.selectionEffect').style.display = "none";
-  let label = clickable.querySelector('label');
-  label.style.background = "";
-  label.style.borderColor = "transparent";
 }
 
 if(!localStorage.hasOwnProperty('ok_welcome')){

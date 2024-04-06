@@ -116,7 +116,7 @@ export class ProgramWindow{
                     new Tablist(self.windowDiv)
                     break;
                 case "past_work":
-                    new History(self.windowDiv,".clickableIcon","dataset.panel",".address_select",".folderPanel","click","main");
+                    new History(self.windowDiv,".clickableIcon","dataset.panel",".address_select",".folderPanel","dblclick","main");
                     new FileExplorer(self.windowDiv);
                     break;
                 }

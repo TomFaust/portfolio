@@ -1,3 +1,5 @@
+import { MaskIcon } from "./mask_icon.js";
+
 export class FileExplorer{
 
     constructor(root){
@@ -19,8 +21,9 @@ export class FileExplorer{
                 option.value = icon.dataset.panel;
 
                 select.appendChild(option);
+                new MaskIcon(icon)
 
-                icon.addEventListener('click',(e)=>{
+                icon.addEventListener('dblclick',(e)=>{
 
                     panels.forEach(panel => {
                         if(panel.dataset.subject === icon.dataset.panel){
