@@ -9,12 +9,26 @@ export class ProgramWindow{
     windowDiv = null;
     pos1 = 0; pos2 = 0; pos3 = 0; pos4 = 0;
 
-    constructor(id,done = null,layoutName = 'default',windowIcon = null){
-        this.tab = document.createElement('div');
-        this.windowDiv = document.createElement('div');
+    constructor(id,done = null,layoutName = 'default',windowIcon = null, canDuplicate = 0){
 
-        this.createTab(id,windowIcon)
-        this.createWindow(id,done, layoutName,windowIcon)
+        let existingTab = document.getElementById(id + "_tab");
+        let existingWindow = document.getElementById(id + "_window");
+
+
+        if (existingWindow && existingTab && !canDuplicate){
+            if(existingWindow.style.display == "none"){
+                this.toggleWindow(existingWindow,existingTab);
+            }else{
+                this.setOnTop(existingWindow)
+            }
+        }else{
+            this.tab = document.createElement('div');
+            this.windowDiv = document.createElement('div');
+
+            this.createTab(id,windowIcon)
+            this.createWindow(id,done, layoutName,windowIcon)
+            this.setOnTop()
+        }
     }
 
     createTab(tab_id,windowIcon){
@@ -27,7 +41,7 @@ export class ProgramWindow{
 
         if(windowIcon){
             let icon = document.createElement("img")
-            icon.src = "../../assets/icons/" + windowIcon;
+            icon.src = "/assets/icons/" + windowIcon;
             this.tab.appendChild(icon)
         }
         this.tab.innerHTML += "<span>" + tab_id + "</span>"
@@ -56,7 +70,6 @@ export class ProgramWindow{
                 self.windowDiv.id = tabName
         
                 let titleBar = self.windowDiv.querySelector('.title-bar')
-                titleBar.id = tabName + "header"
 
                 if(windowIcon){
                     let titleBarIcon = self.windowDiv.querySelector(".title-bar-icon");
@@ -91,7 +104,7 @@ export class ProgramWindow{
                 self.windowDiv.style.left = leftPosition / window.innerWidth * 100 + "%";
         
                 //make window dragable
-                self.dragElement(self.windowDiv,titleBar)
+                self.dragElement(self.windowDiv,titleBar,self)
                 switch(target){
                 case "social_media":
                     new BrowserSwitch(self.windowDiv);
@@ -158,29 +171,53 @@ export class ProgramWindow{
     
     }
 
-    toggleWindow(){
-      
-        if(this.windowDiv.style.display == "none"){
+    toggleWindow(existingWindow = null, existingTab = null){
 
-            //tab is closed, open it
-            this.windowDiv.style.display = "";
+        let windowDiv = this.windowDiv;
+        let tab = this.tab;
 
-            //position window above all others
-            let windows = document.getElementsByClassName("displayWindow")
-            for (let index = 0; index < windows.length; index++) {
-                windows[index].style.zIndex = 10;
-            }
+        if(existingWindow && existingTab){
+            windowDiv = existingWindow;
+            tab = existingTab;
+        }
 
-            this.windowDiv.style.zIndex  = 11;
-            this.tab.classList.remove("closedTab");
-            this.tab.classList.add("openTab");
+        if(windowDiv.style.display == "none"){
+            setOnTop(windowDiv)
+            tab.classList.remove("closedTab");
+            tab.classList.add("openTab");
         }else{
             //tab is open, close it
-            this.windowDiv.style.display = "none";
-            this.tab.classList.remove("openTab");
-            this.tab.classList.add("closedTab");
+            windowDiv.style.display = "none";
+            tab.classList.remove("openTab");
+            tab.classList.add("closedTab");
+        }  
+    }
+
+    setOnTop(targetWindow = null){
+
+        let windowDiv = this.windowDiv
+
+        if(targetWindow){
+            windowDiv = targetWindow
         }
-        
+
+        windowDiv.style.display = "";
+
+        //position window above all others
+        let windows = document.getElementsByClassName("displayWindow")
+        for (let index = 0; index < windows.length; index++) {
+            windows[index].style.zIndex = 10;
+            let titleBar = windows[index].querySelector('.title-bar')
+            if(titleBar){
+                titleBar.classList.add("inactive");
+            }
+        }
+
+        windowDiv.style.zIndex  = 11;
+        let titleBar = windowDiv.querySelector('.title-bar')
+        if(titleBar){
+            titleBar.classList.remove("inactive");
+        }
     }
 
     closeTab(){
@@ -199,7 +236,7 @@ export class ProgramWindow{
     }
 
     
-    dragElement(elmnt,titleBar) {
+    dragElement(elmnt,titleBar,self) {
         var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
 
         // Mouse event listeners
@@ -219,13 +256,7 @@ export class ProgramWindow{
                 // call a function whenever the cursor moves:
                 document.onmousemove = elementDrag;
 
-                let windows = document.getElementsByClassName("displayWindow")
-
-                for (let index = 0; index < windows.length; index++) {
-                    windows[index].style.zIndex = 10
-                }
-
-                e.target.closest(".window").style.zIndex = 11;
+                self.setOnTop();
             }
         }
 
@@ -237,13 +268,7 @@ export class ProgramWindow{
                 document.addEventListener("touchend", touchendHandler, { passive: false });
                 document.addEventListener("touchmove", touchmoveHandler, { passive: false });
 
-                let windows = document.getElementsByClassName("displayWindow")
-
-                for (let index = 0; index < windows.length; index++) {
-                    windows[index].style.zIndex = 10
-                }
-
-                e.target.closest(".window").style.zIndex = 11;
+                self.setOnTop();
             }
         }
 

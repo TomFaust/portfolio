@@ -75,6 +75,12 @@ if(!localStorage.hasOwnProperty('ok_welcome')){
 function openMe(event){
     let element = document.getElementById(event.target.closest(".clickable").id + "_tab")
     let closestDiv = event.target.closest(".clickable");
-    new ProgramWindow(closestDiv.id,"",closestDiv.dataset.window,closestDiv.dataset.windowIcon)
+    new ProgramWindow(
+      closestDiv.id,
+      "",
+      closestDiv.dataset.window? closestDiv.dataset.window: undefined,
+      closestDiv.dataset.windowIcon? closestDiv.dataset.windowIcon: undefined,
+      closestDiv.dataset.canDuplicate? +closestDiv.dataset.canDuplicate: undefined
+    )
 }
 

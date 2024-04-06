@@ -7,8 +7,6 @@ export class Tablist{
         this.tabs = tabWindow.querySelectorAll('li[role="tab"]');
         this.pages = tabWindow.querySelectorAll('div.window-body');
 
-        console.log(this.pages)
-
         this.tabs[0].setAttribute('aria-selected','true')
         this.pages[0].style.display = "block"
 
