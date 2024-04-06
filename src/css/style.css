@@ -48,24 +48,23 @@ a:active {
     min-height: 100%;
     top: 0;
     position: absolute;
-}
-
-.browser_screen img{
-    width:100%;
-    height: auto;
+    img{
+        width:100%;
+        height: auto;
+    }
 }
 
 .toolbar-button{
     padding: 0.2rem 0.6rem 0.2rem 0.6rem;
     margin: 0.1rem;
     border: solid 1px #c0c0c0;
-}
 
-.toolbar-button .icon{
-    background-image: url(../../assets/icons/browser/grayscale/browse-ui-icons-grayscale.png);
-    background-size: auto 100%;
-    height:20px;
-    width:20px;
+    .icon{
+        background-image: url(../../assets/icons/browser/grayscale/browse-ui-icons-grayscale.png);
+        background-size: auto 100%;
+        height:20px;
+        width:20px;
+    }    
 }
 
 button.toolbar-button:hover:enabled .icon{
@@ -85,8 +84,6 @@ div.toolbar-button:hover .icon{
     box-sizing:border-box;
 }
 
-
-
 button.toolbar-button{
     min-width:55px;
     box-shadow: none;
@@ -95,25 +92,17 @@ button.toolbar-button{
 .toolbar-button-wrapper{
     display: flex;
     flex-direction: row;
-}
+    .svg-wrapper{
+        width:15px;
 
-.toolbar-button-wrapper .svg-wrapper{
-    width:15px;
-}
-
-.toolbar-button-wrapper svg{
-    margin: 0;
-    position: absolute;
-    top: 50%;
-    -ms-transform: translateY(-50%);
-    transform: translateY(-50%);
-}
-
-.options .toolbar-button{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    position: relative;
+        svg{
+            margin: 0;
+            position: absolute;
+            top: 50%;
+            -ms-transform: translateY(-50%);
+            transform: translateY(-50%);
+        }
+    }
 }
 
 #me{
@@ -556,27 +545,44 @@ arrow{
     width:100%;
 }
 
+.iconWithArrow{
+    display: grid;
+    grid-auto-flow: column;
+}
+
+.iconWithArrow svg{
+    margin-top: 3px;
+}
+
 .options {
     display: flex;
     padding: 0rem 0.2rem 0rem 0.2rem;
     position: relative;
     white-space: nowrap;
-}
 
-.options .float-right {
-    position: absolute;
-    right: 0;
-    height: 100%;
-}
+    .toolbar-button{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        position: relative;
+    }
 
-.options .browser-bar-image{
-    position: absolute;
-    right: 0;
-    height:100%;
-}
+    .float-right {
+        position: absolute;
+        right: 0;
+        height: 100%;
+    }
 
-.options .item{
-    padding: 0.3rem 0.5rem 0.3rem 0.5rem;
+    .browser-bar-image{
+        position: absolute;
+        right: 0;
+        height:100%;
+    }
+
+    .item{
+        padding: 0.3rem 0.5rem 0.3rem 0.5rem;
+    }
+    
 }
 
 .op05{
@@ -612,7 +618,21 @@ ul li:hover>ul {
 }
   
 #mainMenu{
-    padding:2.5px 5px 2.5px 25px!important
+    padding:2.5px 5px 2.5px 25px!important;
+
+    .subImg{
+        width:35px;
+        margin-bottom: -1vh;
+    }
+
+    a{
+        font-size: 12px !important;
+    }
+
+    .mainImg{
+        height:5vh;
+        margin-bottom: -1.5vh;
+    }
 }
 
 #menuSideBar{
@@ -622,31 +642,17 @@ ul li:hover>ul {
     position: absolute;
     left: 0.5vh;
     color: white;
-}
 
-#menuSideBar p{
-    padding:0;
-    bottom:0;
-    text-orientation: mixed;
-    writing-mode: vertical-lr;
-    transform: rotate(180deg);
-    position: absolute;
-    margin-left: 5px;
-    margin-bottom: 5px
-}
-
-#mainMenu .subImg{
-    width:35px;
-    margin-bottom: -1vh;
-}
-
-#mainMenu a{
-    font-size: 12px !important;
-}
-
-#mainMenu .mainImg{
-    height:5vh;
-    margin-bottom: -1.5vh;
+    p{
+        padding:0;
+        bottom:0;
+        text-orientation: mixed;
+        writing-mode: vertical-lr;
+        transform: rotate(180deg);
+        position: absolute;
+        margin-left: 5px;
+        margin-bottom: 5px
+    }
 }
 
 #file{
@@ -666,11 +672,11 @@ ul li:hover>ul {
     width:100%;
     margin-top:3vh;
     margin-bottom:3vh;
-}
 
-#RGBSliders input[type=text]{
-    width:80%;
-    margin-left:20%;
+    input[type=text]{
+        width:80%;
+        margin-left:20%;
+    }
 }
 
 .slider-area{
@@ -725,7 +731,6 @@ ul li:hover>ul {
     margin-left: auto;
     margin-right: auto;
 }
-
 .folderIcon label{
     margin-left:20%;
     margin-right:20%;
@@ -782,17 +787,18 @@ ul li:hover>ul {
 
 }
 
-
 #meArea{
     display:grid;
     grid-template-columns: auto auto;
     height:60vh;
-}
-#meArea img{
-    height:100%;
-}
+    
+    img{
+        height:100%;
+    }
+} 
 
 #speechBubble{
+
     position:absolute;
     display: grid;
     grid-template-columns: 100%;
@@ -803,31 +809,57 @@ ul li:hover>ul {
     bottom:150px;
     width:250px;
     font-size:20px !important;
+
+    #top{
+        height: 7px;
+        width:100%;
+        top:0;
+        background-image: url("../../assets/speech_bubble/top.png");
+        background-size: 100% 100%;
+    }
+
+    #middle{
+        width:100%;
+        background-image: url("../../assets/speech_bubble/middle.png");
+        background-size: 100% 100%;
+        font-family: "Pixelated MS Sans Serif";
+        text-align: center;
+        word-break: break-word;
+        padding:5px 20px 7px 20px;
+    }
+
+    #bottom{
+        height: 20px;
+        width:100%;
+        background-image: url("../../assets/speech_bubble/bottom.png");
+        background-size: 100% 100%;
+    }
 }
 
-#speechBubble #top{
-    height: 7px;
-    width:100%;
-    top:0;
-    background-image: url("../../assets/speech_bubble/top.png");
-    background-size: 100% 100%;
-}
+#contact_window{
+    pre{
+        overflow-x: scroll;
+        height:100%;
+    }
 
-#speechBubble #middle{
-    width:100%;
-    background-image: url("../../assets/speech_bubble/middle.png");
-    background-size: 100% 100%;
-    font-family: "Pixelated MS Sans Serif";
-    text-align: center;
-    word-break: break-word;
-    padding:5px 20px 7px 20px;
-}
+    .windowArea{
+        display: grid;
+        grid-auto-flow: column;
+        grid-template-columns: 200px auto;
+        margin-top:4px;
+        grid-gap:3px;
+    }
 
-#speechBubble #bottom{
-    height: 20px;
-    width:100%;
-    background-image: url("../../assets/speech_bubble/bottom.png");
-    background-size: 100% 100%;
+    .searchInput{
+        margin-left:5px;
+        margin-bottom:4px;
+    }
+
+    .contactList{
+        display:grid;
+        grid-auto-flow: row;
+        grid-template-rows: auto 1fr;
+    }
 }
 
 

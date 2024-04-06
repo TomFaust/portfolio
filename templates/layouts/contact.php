@@ -24,15 +24,16 @@
             
             <div class="toolbar-button-wrapper">
                 <button class="toolbar-button" disabled>
-                    <div class="icon" style="background-position: -1300px 0px"></div>
+                    <div class="iconWithArrow">
+                        <div class="icon" style="background-position: -1300px 0px"></div>
+                        <svg width="12" height="12" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" style="display:inline-block;vertical-align:middle">
+                            <path style="transform:rotate(90deg);transform-origin:center" d="m6 4 4 4-4 4z">
+                            </path>
+                        </svg>
+                    </div>
+                    
                     <span class="label-text">New</span>
                 </button>
-                <div class="svg-wrapper">
-                    <svg width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" style="display:inline-block;vertical-align:middle">
-                        <path style="transform:rotate(90deg);transform-origin:center" d="m6 4 4 4-4 4z">
-                        </path>
-                    </svg>
-                </div>
             </div>
 
             <div class="toolbar-button-wrapper">
@@ -65,7 +66,13 @@
 
             <div class="toolbar-button-wrapper">
                 <button class="toolbar-button" disabled>
+                <div class="iconWithArrow">
                     <div class="icon" style="background-position: -1260px 0px"></div>
+                        <svg width="12" height="12" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" style="display:inline-block;vertical-align:middle">
+                            <path style="transform:rotate(90deg);transform-origin:center" d="m6 4 4 4-4 4z">
+                            </path>
+                        </svg>
+                    </div>
                     <span class="label-text">Action</span>
                 </button>
             </div>
