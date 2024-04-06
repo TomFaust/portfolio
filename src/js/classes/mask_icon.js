@@ -34,7 +34,7 @@ export class MaskIcon{
         this.clickable.querySelector('.selectionEffect').style.display = "block";
         let label = this.clickable.querySelector('label');
 
-        if(window.getComputedStyle(label).getPropertyValue("color") !== "rgb(255, 255, 255)"){
+        if(window.getComputedStyle(label).getPropertyValue("color") == null){
             this.initialColor = window.getComputedStyle(label).getPropertyValue("color");
         }
 
