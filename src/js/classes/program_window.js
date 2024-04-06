@@ -182,7 +182,7 @@ export class ProgramWindow{
         }
 
         if(windowDiv.style.display == "none"){
-            setOnTop(windowDiv)
+            this.setOnTop(windowDiv)
             tab.classList.remove("closedTab");
             tab.classList.add("openTab");
         }else{
