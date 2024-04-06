@@ -92,7 +92,9 @@ export class ProgramWindow{
                     maximize.addEventListener("click", () => self.maximizeWindow(maximize))
                 }
                 
-                self.windowDiv.addEventListener("click",self.clickTab)
+                self.windowDiv.addEventListener("click",(e) =>{
+                    self.setOnTop()
+                })
                 document.getElementById("container").appendChild(self.windowDiv)
         
                 var randomPercentage = Math.floor(Math.random() * 100) + 1;
@@ -172,7 +174,6 @@ export class ProgramWindow{
     }
 
     toggleWindow(existingWindow = null, existingTab = null){
-
         let windowDiv = this.windowDiv;
         let tab = this.tab;
 
@@ -182,9 +183,11 @@ export class ProgramWindow{
         }
 
         if(windowDiv.style.display == "none"){
-            this.setOnTop(windowDiv)
+            windowDiv.style.display = ""; 
             tab.classList.remove("closedTab");
             tab.classList.add("openTab");
+
+            this.setOnTop(windowDiv)
         }else{
             //tab is open, close it
             windowDiv.style.display = "none";
@@ -200,8 +203,6 @@ export class ProgramWindow{
         if(targetWindow){
             windowDiv = targetWindow
         }
-
-        windowDiv.style.display = "";
 
         //position window above all others
         let windows = document.getElementsByClassName("displayWindow")
@@ -246,6 +247,7 @@ export class ProgramWindow{
         titleBar.addEventListener("touchstart", touchstartHandler, { passive: false });
 
         function dragMouseDown(e) {
+            self.setOnTop();
             if (!e.target.classList.contains('maximized')) {
                 e = e || window.event;
                 e.preventDefault();
@@ -255,8 +257,6 @@ export class ProgramWindow{
                 document.onmouseup = closeDragElement;
                 // call a function whenever the cursor moves:
                 document.onmousemove = elementDrag;
-
-                self.setOnTop();
             }
         }
 
@@ -267,8 +267,6 @@ export class ProgramWindow{
                 pos4 = touch.clientY;
                 document.addEventListener("touchend", touchendHandler, { passive: false });
                 document.addEventListener("touchmove", touchmoveHandler, { passive: false });
-
-                self.setOnTop();
             }
         }
 
