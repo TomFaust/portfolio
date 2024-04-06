@@ -95,6 +95,7 @@ export class ProgramWindow{
                 self.windowDiv.addEventListener("click",(e) =>{
                     self.setOnTop()
                 })
+
                 document.getElementById("container").appendChild(self.windowDiv)
         
                 var randomPercentage = Math.floor(Math.random() * 100) + 1;
@@ -199,22 +200,28 @@ export class ProgramWindow{
     setOnTop(targetWindow = null){
 
         let windowDiv = this.windowDiv
-
         if(targetWindow){
             windowDiv = targetWindow
         }
 
-        //position window above all others
-        let windows = document.getElementsByClassName("displayWindow")
+        let parent = windowDiv.parentNode;
+
+        let windows = Array.from(document.getElementsByClassName("displayWindow"))
+        windows.sort((a, b) => {
+            const zIndexA = parseInt(window.getComputedStyle(a).zIndex);
+            const zIndexB = parseInt(window.getComputedStyle(b).zIndex);
+            return zIndexA - zIndexB;
+        });
+
         for (let index = 0; index < windows.length; index++) {
-            windows[index].style.zIndex = 10;
+            windows[index].style.zIndex = index;
             let titleBar = windows[index].querySelector('.title-bar')
             if(titleBar){
                 titleBar.classList.add("inactive");
             }
         }
 
-        windowDiv.style.zIndex  = 11;
+        windowDiv.style.zIndex = windows.length;
         let titleBar = windowDiv.querySelector('.title-bar')
         if(titleBar){
             titleBar.classList.remove("inactive");
@@ -248,7 +255,7 @@ export class ProgramWindow{
 
         function dragMouseDown(e) {
             self.setOnTop();
-            if (!e.target.closest('.maximized')) {
+            if (!e.target.closest('.maximized') && !e.target.closest(".title-bar-controls")) {
                 e = e || window.event;
                 e.preventDefault();
                 // get the mouse cursor position at startup:
@@ -261,7 +268,8 @@ export class ProgramWindow{
         }
 
         function touchstartHandler(e) {
-            if (!e.target.classList.contains('maximized')) {
+            self.setOnTop();
+            if (!e.target.closest('.maximized') && !e.target.closest(".title-bar-controls")) {
                 var touch = e.changedTouches[0];
                 pos3 = touch.clientX;
                 pos4 = touch.clientY;

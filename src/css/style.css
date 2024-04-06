@@ -560,6 +560,7 @@ arrow{
     display: flex;
     padding: 0rem 0.2rem 0rem 0.2rem;
     position: relative;
+    white-space: nowrap;
 }
 
 .options .float-right {
