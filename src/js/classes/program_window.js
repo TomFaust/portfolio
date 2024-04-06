@@ -248,7 +248,7 @@ export class ProgramWindow{
 
         function dragMouseDown(e) {
             self.setOnTop();
-            if (!e.target.classList.contains('maximized')) {
+            if (!e.target.closest('.maximized')) {
                 e = e || window.event;
                 e.preventDefault();
                 // get the mouse cursor position at startup:

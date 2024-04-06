@@ -19,6 +19,21 @@ icons.forEach((icon)=>{
     
 })
 
+// setInterval(function () {
+
+//   let clickable = icons[3].querySelector('.clickable');
+//   let element = document.getElementById(clickable.closest(".clickable").id + "_tab")
+//   let closestDiv = clickable.closest(".clickable");
+//   new ProgramWindow(
+//     closestDiv.id,
+//     "",
+//     closestDiv.dataset.window? closestDiv.dataset.window: undefined,
+//     closestDiv.dataset.windowIcon? closestDiv.dataset.windowIcon: undefined,
+//     closestDiv.dataset.canDuplicate? +closestDiv.dataset.canDuplicate: undefined
+//   )
+
+// }, 100);
+
 var tapedTwice = false;
 
 function tapHandler(event,clickable) {
@@ -43,14 +58,14 @@ if(!localStorage.hasOwnProperty('ok_welcome')){
 }
 
 function openMe(event){
-    let element = document.getElementById(event.target.closest(".clickable").id + "_tab")
-    let closestDiv = event.target.closest(".clickable");
-    new ProgramWindow(
-      closestDiv.id,
-      "",
-      closestDiv.dataset.window? closestDiv.dataset.window: undefined,
-      closestDiv.dataset.windowIcon? closestDiv.dataset.windowIcon: undefined,
-      closestDiv.dataset.canDuplicate? +closestDiv.dataset.canDuplicate: undefined
-    )
+  let element = document.getElementById(event.target.closest(".clickable").id + "_tab")
+  let closestDiv = event.target.closest(".clickable");
+  new ProgramWindow(
+    closestDiv.id,
+    "",
+    closestDiv.dataset.window? closestDiv.dataset.window: undefined,
+    closestDiv.dataset.windowIcon? closestDiv.dataset.windowIcon: undefined,
+    closestDiv.dataset.canDuplicate? +closestDiv.dataset.canDuplicate: undefined
+  )
 }
 

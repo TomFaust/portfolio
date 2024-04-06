@@ -7,7 +7,12 @@ export class FileExplorer{
         let icons = root.querySelectorAll('.clickableIcon');
         let panels = root.querySelectorAll('.folderPanel');
         let select = root.querySelector('.address_select');
-        
+        let folderIcons = root.querySelectorAll('.folderIcon');
+
+        folderIcons.forEach(folderIcon =>{
+            new MaskIcon(folderIcon)
+        })
+
         if(icons && panels){
             let option = document.createElement('option');
                 option.innerText = "C:/portfolio/past_work/";
@@ -21,7 +26,6 @@ export class FileExplorer{
                 option.value = icon.dataset.panel;
 
                 select.appendChild(option);
-                new MaskIcon(icon)
 
                 icon.addEventListener('dblclick',(e)=>{
 
