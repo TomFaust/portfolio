@@ -198,7 +198,6 @@ div[role=tabpanel]{
 }
 
 .window-body{
-    display: none;
     height: 100% ;
     width:100%;
     position: absolute;
@@ -322,28 +321,23 @@ tabs{
     resize:both;
 }
 
-.infoArea pre{
-    background-color: #c0c0c0;
-    padding: 2px 2px;
-    font-family: "Pixelated MS Sans Serif",Arial;
-    box-shadow: -0.5px -0.5px #fff, inset 0.5px 0.5px grey, inset -1px -1px #dfdfdf, inset 1px 1px #0a0a0a;
-    grid-template-columns: auto auto;
-    display: flex;
+.status-bar{
+
+    img{
+        height: 0.8rem;
+        margin: 0.1rem 0.2rem 0.1rem 0rem;
+    }
+
+    .grid{
+        display: grid;
+        grid-auto-flow: column;
+        height:100%;
+        width:100%;
+        grid-template-columns: auto 1fr;
+    }
+    
 }
 
-.infoArea pre img{
-    height: 0.8rem;
-    margin: 0.1rem 0.4rem 0.1rem 0.1rem
-}
-
-.infoArea pre span{
-    margin-top: 0.1rem;
-}
-
-.infoArea{
-    display: grid;
-    grid-template-columns: 25% 50% 25%;
-}
 
 .windowArea{
     width:calc(100% - 0.5px);
@@ -365,9 +359,11 @@ tabs{
     font-size: 15px;
 }
 
-#my_properties_window .windowArea{
-    display:grid;
-    grid-template-rows: 36px auto;
+#my_properties_window{ 
+    .windowArea{
+        display:grid;
+        grid-template-rows: auto 1fr;
+    }
 }
 
 #social_media_window .windowArea pre{
@@ -419,10 +415,6 @@ tabs{
     overflow:scroll;
     resize: none;
 
-    background-color: #fff;
-    border-radius: 0;
-    box-shadow: inset -1px -1px #fff, inset 1px 1px grey, inset -2px -2px #dfdfdf, inset 2px 2px #0a0a0a;
-    box-sizing: border-box;
     padding: 3px 4px;
 }
 
@@ -476,7 +468,7 @@ tabs{
 }
 
 body {
-  font-family: sans-serif;
+  font-family: "Pixelated MS Sans Serif",Arial;
   margin: 0;
 }
 
@@ -837,9 +829,35 @@ ul li:hover>ul {
 }
 
 #contact_window{
-    pre{
+
+    .sunken-panel{
         overflow-x: scroll;
+
+        table{
+            min-width: 100%;
+        }
+    }
+
+    #contantGroups{
         height:100%;
+    }
+
+    #searchContacts{
+        width:150px;
+    }
+
+    .tree-view{
+        height: 100%;
+
+        img{
+            height: 0.8rem;
+            margin-right: 0.2rem;
+            transform: translate(0,0.1rem);
+        }
+    }
+
+    .searchInput label{
+        white-space: nowrap;
     }
 
     .windowArea{
@@ -861,7 +879,6 @@ ul li:hover>ul {
         grid-template-rows: auto 1fr;
     }
 }
-
 
 @media only screen and ((max-width: 600px) or (max-height:600px))    {
 
@@ -928,6 +945,17 @@ ul li:hover>ul {
     }
     
     @media only screen and (orientation:portrait){
+
+        #my_properties_window{ 
+        
+            .menu-slim{
+                display:block !important;
+            }
+    
+            .menu-regular{
+                display:none !important;
+            }
+        }
 
         .icon label{
             display: block;

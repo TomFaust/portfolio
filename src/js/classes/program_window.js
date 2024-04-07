@@ -2,6 +2,7 @@ import { BrowserSwitch } from "./browser_windows.js";
 import { History } from "./history.js";
 import { Tablist } from "./tablist.js";
 import { FileExplorer } from "./file_explorer.js";
+import { InteractiveTable } from "./interactive_table.js";
 
 export class ProgramWindow{
 
@@ -109,17 +110,21 @@ export class ProgramWindow{
                 //make window dragable
                 self.dragElement(self.windowDiv,titleBar,self)
                 switch(target){
-                case "social_media":
-                    new BrowserSwitch(self.windowDiv);
-                    new History(self.windowDiv,".address_select","value",".address_select",".browser_screen","change","linkedin");
-                    break;
-                case "my_properties":
-                    new Tablist(self.windowDiv)
-                    break;
-                case "past_work":
-                    new History(self.windowDiv,".clickableIcon","dataset.panel",".address_select",".folderPanel","dblclick","main");
-                    new FileExplorer(self.windowDiv);
-                    break;
+                    case "social_media":
+                        new BrowserSwitch(self.windowDiv);
+                        new History(self.windowDiv,".address_select","value",".address_select",".browser_screen","change","linkedin");
+                        break;
+                    case "my_properties":
+                        new Tablist(self.windowDiv,'li[role="tab"]','div.window-body','aria-selected')
+                        break;
+                    case "past_work":
+                        new History(self.windowDiv,".clickableIcon","dataset.panel",".address_select",".folderPanel","dblclick","main");
+                        new FileExplorer(self.windowDiv);
+                        break;
+                    case "contact":
+                        new InteractiveTable(self.windowDiv)
+                        new Tablist(self.windowDiv,'li.contantGroup','div.contacts')
+                        break;
                 }
         
                 if(done){

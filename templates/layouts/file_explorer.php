@@ -138,13 +138,14 @@
             include '../pages/' . $_POST['content'] . '.html';
         ?>
     </div>
-
-    <div class="infoArea">
-        <pre><span>3 object(s)</span></pre>
-        <pre></pre>
-        <pre>
-            <img src="assets/icons/computer_explorer-2.png">
-            <span>My computer</span>
-        </pre>
+    <div class="status-bar">
+        <p class="status-bar-field">3 object(s)</p>
+        <p class="status-bar-field"></p>
+        <span class="status-bar-field"> 
+            <span class="grid">
+                <img src="assets/icons/computer_explorer-2.png">
+                <span>My computer</span>
+            </div>
+        </span>
     </div>
 </div>

@@ -124,12 +124,14 @@
         ?>
     </div>
 
-    <div class="infoArea">
-        <pre></pre>
-        <pre></pre>
-        <pre>
-            <img src="assets/icons/world-0.png">
-            <span>Internet</span>
-        </pre>
+    <div class="status-bar">
+        <p class="status-bar-field"></p>
+        <p class="status-bar-field"></p>
+        <span class="status-bar-field"> 
+            <span class="grid">
+                <img src="assets/icons/world-0.png">
+                <span>Internet</span>
+            </div>
+        </span>
     </div>
 </div>
