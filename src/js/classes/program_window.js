@@ -125,7 +125,7 @@ export class ProgramWindow{
                     case "contact":
                         new InteractiveTable(self.windowDiv)
                         new Tablist(self.windowDiv,'li.contantGroup','div.contacts')
-                        new Search()
+                        new Search(['social','direct'],{ valueNames: ['name','link','quick']},"#searchContacts")
                         break;
                 }
         

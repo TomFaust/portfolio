@@ -2,12 +2,28 @@ import List from 'list.js';
 
 export class Search{
 
-    list = null
+    lists = []
+    searchInput = null;
 
-    constructor(){
+    constructor(lists = [], options = [],searchInput){
 
-        this.list = new List()
+        this.searchInput = document.querySelector(searchInput);
 
+        lists.forEach((list) =>{
+            
+            this.lists.push(new List(list,options))
+        })
+
+        this.searchInput.addEventListener('input',(e) =>{
+            this.searchLists(e.target.value)
+        })
+
+    }
+
+    searchLists(searchValue){
+        this.lists.forEach((list) =>{
+            list.search(searchValue)
+        })
     }
 
 }
