@@ -551,6 +551,7 @@ arrow{
     padding: 0rem 0.2rem 0rem 0.2rem;
     position: relative;
     white-space: nowrap;
+    overflow-x: hidden;
 
     .toolbar-button{
         display: flex;
@@ -863,7 +864,7 @@ ul li:hover>ul {
     .windowArea{
         display: grid;
         grid-auto-flow: column;
-        grid-template-columns: 200px auto;
+        grid-template-columns: 150px auto;
         margin-top:4px;
         grid-gap:3px;
     }
@@ -878,6 +879,14 @@ ul li:hover>ul {
         grid-auto-flow: row;
         grid-template-rows: auto 1fr;
     }
+}
+
+.fieldset{
+    border-image: url("data:image/svg+xml;charset=utf-8,%3Csvg width='5' height='5' fill='gray' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M0 0h5v5H0V2h2v1h1V2H0' fill='%23fff'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M0 0h4v4H0V1h1v2h2V1H0'/%3E%3C/svg%3E") 2;
+
+    border-width: 2px;
+    border-style: groove;
+    border-color: rgb(192, 192, 192);
 }
 
 @media only screen and ((max-width: 600px) or (max-height:600px))    {
@@ -997,6 +1006,17 @@ ul li:hover>ul {
 
         .tab .title-bar-controls{
             width: 20px;
+        }
+
+        #contact_window{
+            .field-row{
+                display: block;
+
+                input{
+                    margin-left:0;
+                    margin-top:5px
+                }
+            }
         }
 
     }

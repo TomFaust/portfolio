@@ -20,7 +20,7 @@
             <div class="item "><u>T</u>ools</div>
             <div class="item "><u>H</u>elp</div>
         </div>
-        <fieldset class="options">
+        <div class="options fieldset">
             
             <div class="toolbar-button-wrapper">
                 <button class="toolbar-button" disabled>
@@ -76,7 +76,7 @@
                     <span class="label-text">Action</span>
                 </button>
             </div>
-    </fieldset>
+        </div>
     </div>
     <div class="windowArea">
     <?php

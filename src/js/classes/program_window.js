@@ -3,6 +3,7 @@ import { History } from "./history.js";
 import { Tablist } from "./tablist.js";
 import { FileExplorer } from "./file_explorer.js";
 import { InteractiveTable } from "./interactive_table.js";
+import { Search } from "./search.js";
 
 export class ProgramWindow{
 
@@ -124,6 +125,7 @@ export class ProgramWindow{
                     case "contact":
                         new InteractiveTable(self.windowDiv)
                         new Tablist(self.windowDiv,'li.contantGroup','div.contacts')
+                        new Search()
                         break;
                 }
         
