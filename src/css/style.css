@@ -864,7 +864,7 @@ ul li:hover>ul {
     .windowArea{
         display: grid;
         grid-auto-flow: column;
-        grid-template-columns: 150px auto;
+        grid-template-columns: 130px auto;
         margin-top:4px;
         grid-gap:3px;
     }

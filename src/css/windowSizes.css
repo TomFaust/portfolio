@@ -67,6 +67,11 @@
             width:530px;
         }
 
+        #contact_window{
+            height:300px;
+            width:550px;
+        }
+
     }
 
     @media only screen and (orientation:portrait){
@@ -98,6 +103,11 @@
         
         #my_properties_window{
             height:500px;
+            width:350px;
+        }
+
+        #contact_window{
+            height:400px;
             width:350px;
         }
 
