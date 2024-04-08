@@ -2,7 +2,6 @@ import { DoubletapHandler } from "./doubletap_handler.js";
 
 export class MaskIcon{
 
-    tapedTwice = false;
     clickable = null;
     initialColor = null;
     mask = null;

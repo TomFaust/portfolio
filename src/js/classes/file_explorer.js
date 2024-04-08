@@ -3,8 +3,6 @@ import { DoubletapHandler } from "./doubletap_handler.js";
 
 export class FileExplorer{
 
-    tapedTwice = false;
-
     icons;
     panels;
     select;

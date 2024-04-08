@@ -1,5 +1,7 @@
 export class DoubletapHandler{
 
+    tapedTwice = false;
+
     constructor(element, tapFunction){
         element.addEventListener("touchstart", (e) => {this.tapHandler(e,tapFunction)});
     }
