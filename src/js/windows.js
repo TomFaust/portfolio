@@ -10,7 +10,7 @@ icons.forEach((icon)=>{
     let clickable = icon.querySelector('.clickable');
     
     if(clickable && clickable.id){
-      clickable.addEventListener("dblclick",openMe);
+      clickable.addEventListener("dblclick", () => {openMe(clickable)});
       new MaskIcon(clickable);
     }
 
