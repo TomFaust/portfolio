@@ -3,6 +3,7 @@ let speech = document.getElementById('speechBubble');
 
 let facts = [
     "Press the left mouse button to click on icons.",
+    "Double click/tap icons to open them, just like on a real pc",
     "I am not a real person, just an image.",
     "Press the right mouse button...for nothing. Why would i make the right mouse button do something special?",
     "Hover your mouse over the start button for some fun features!",
