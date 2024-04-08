@@ -28,8 +28,8 @@
         <div class="options overflow-hidden">
             <pre class="v-line-out"></pre>
 
-            <div class="toolbar-button-wrapper backward">
-                <button class="toolbar-button" disabled>
+            <div class="toolbar-button-wrapper">
+                <button class="toolbar-button backward" disabled>
                     <div class="icon"></div>
                     <span class="label-text">Back</span>
                 </button>
@@ -41,8 +41,8 @@
                 </div>
             </div>
 
-            <div class="toolbar-button-wrapper forward">
-                <button class="toolbar-button" disabled>
+            <div class="toolbar-button-wrapper">
+                <button class="toolbar-button forward" disabled>
                     <div class="icon" style="background-position: -20px 0px"></div>
                     <span class="label-text">Forward</span>
                 </button>

@@ -18,18 +18,18 @@ export class MaskIcon{
               this.removeMask();
             }
         });
-        this.clickable.addEventListener("touchstart", () => {this.tapHandler});
+        this.clickable.addEventListener("touchstart", (e) => {this.tapHandler(e)});
         
     }
 
     tapHandler(event) {
-        if(!tapedTwice) {
+        if(!this.tapedTwice) {
             this.tapedTwice = true;
-            setTimeout( function() { tapedTwice = false; }, 300 );
+            setTimeout( () => { this.tapedTwice = false; }, 300 );
             return false;
         }
         event.preventDefault();
-        removeMask();
+        this.removeMask();
     }
 
     createMask(){

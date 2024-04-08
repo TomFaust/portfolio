@@ -2,47 +2,68 @@ import { MaskIcon } from "./mask_icon.js";
 
 export class FileExplorer{
 
+    tapedTwice = false;
+
+    icons;
+    panels;
+    select;
+    foldericons;
+
     constructor(root){
         
-        let icons = root.querySelectorAll('.clickableIcon');
-        let panels = root.querySelectorAll('.folderPanel');
-        let select = root.querySelector('.address_select');
-        let folderIcons = root.querySelectorAll('.folderIcon');
+        this.icons = root.querySelectorAll('.clickableIcon');
+        this.panels = root.querySelectorAll('.folderPanel');
+        this.select = root.querySelector('.address_select');
+        this.folderIcons = root.querySelectorAll('.folderIcon');
 
-        folderIcons.forEach(folderIcon =>{
+        this.folderIcons.forEach(folderIcon =>{
             new MaskIcon(folderIcon)
         })
 
-        if(icons && panels){
+        if(this.icons && this.panels){
             let option = document.createElement('option');
                 option.innerText = "C:/portfolio/past_work/";
                 option.value = "main";
-                select.appendChild(option);
+                this.select.appendChild(option);
 
-            icons.forEach(icon =>{
+            this.icons.forEach(icon =>{
 
                 let option = document.createElement('option');
                 option.innerText = "C:/portfolio/past_work/" + icon.dataset.panel;
                 option.value = icon.dataset.panel;
-
-                select.appendChild(option);
+                this.select.appendChild(option);
 
                 icon.addEventListener('dblclick',(e)=>{
-
-                    panels.forEach(panel => {
-                        if(panel.dataset.subject === icon.dataset.panel){
-                            select.value = icon.dataset.panel;
-                            panel.classList.remove('d-none');
-                        }else{
-                            panel.classList.add('d-none');
-                        }
-                    })
-
+                    this.swapPanels(icon)
                 },true);
+
+                icon.addEventListener("touchstart", (e) => {this.tapHandler(e,icon)});
+                
             })
 
-            select.value = "main"
+            this.select.value = "main"
         }
-    
+        
+    }
+
+    tapHandler(event,icon) {
+        if(!this.tapedTwice) {
+            this.tapedTwice = true;
+            setTimeout( () => { this.tapedTwice = false; }, 300 );
+            return false;
+        }
+        event.preventDefault();
+        this.swapPanels(icon)
+    }
+
+    swapPanels(icon){
+        this.panels.forEach(panel => {
+            if(panel.dataset.subject === icon.dataset.panel){
+                this.select.value = icon.dataset.panel;
+                panel.classList.remove('d-none');
+            }else{
+                panel.classList.add('d-none');
+            }
+        })
     }
 }

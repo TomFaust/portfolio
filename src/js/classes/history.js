@@ -3,9 +3,6 @@ export class History{
     forward = null;
     backward = null;
 
-    backwardButton = null;
-    forwardButton = null;
-
     screens = [];
 
     history = [];
@@ -17,9 +14,6 @@ export class History{
     constructor(window,interactibles,attribute,holders,screens,action,init = null){
         this.forward = window.querySelector(".forward");
         this.backward = window.querySelector(".backward");
-
-        this.forwardButton = this.forward.querySelector("button");
-        this.backwardButton = this.backward.querySelector("button");
 
         this.interactibles = window.querySelectorAll(interactibles);
         this.holders = window.querySelectorAll(holders);
@@ -37,10 +31,15 @@ export class History{
                 this.history.push(eval("interactible."+ attribute));
                 this.historyPos++;
 
-                this.backwardButton.disabled = false;
-                this.forwardButton.disabled = true;
+                this.backward.disabled = false;
+                this.forward.disabled = true;
             })
+
+            if(action === "dblclick"){
+                interactible.addEventListener("touchstart", (e) => {this.tapHandler(e,attribute,interactible)});
+            }
         })
+
 
         this.backward.addEventListener('click',()=>{
             this.Backward();
@@ -51,16 +50,35 @@ export class History{
         })
     }
 
+    tapHandler(event,attribute,interactible) {
+        if(!this.tapedTwice) {
+            this.tapedTwice = true;
+            setTimeout( () => { this.tapedTwice = false; }, 300 );
+            return false;
+        }
+        event.preventDefault();
+
+        //-----------------------------------------------------------
+
+        this.history = this.history.slice(0, this.historyPos + 1);
+
+        this.history.push(eval("interactible."+ attribute));
+        this.historyPos++;
+
+        this.backward.disabled = false;
+        this.forward.disabled = true;
+    }
+
     Backward(){
 
-        this.forwardButton.disabled = false;
+        this.forward.disabled = false;
 
         if(this.historyPos > 0){
             this.historyPos--;
             if(this.historyPos < 1){
-                this.backwardButton.disabled = true;
+                this.backward.disabled = true;
             }else{
-                this.backwardButton.disabled = false;
+                this.backward.disabled = false;
             }
         }
         this.switchSubject();
@@ -68,14 +86,14 @@ export class History{
 
     Forward(){
 
-        this.backwardButton.disabled = false;
+        this.backward.disabled = false;
 
         if(this.historyPos < this.history.length - 1){
             this.historyPos++;
             if(this.historyPos == this.history.length - 1){
-                this.forwardButton.disabled = true;
+                this.forward.disabled = true;
             }else{
-                this.forwardButton.disabled = false;
+                this.forward.disabled = false;
             }
         }
         this.switchSubject();

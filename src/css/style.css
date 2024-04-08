@@ -67,6 +67,10 @@ a:active {
     }    
 }
 
+button.toolbar-button:enabled{
+    cursor: pointer;
+}
+
 button.toolbar-button:hover:enabled .icon{
     background-image: url(../../assets/icons/browser/regular/browse-ui-icons.png);
 }
@@ -915,6 +919,11 @@ ul li:hover>ul {
         font-size: 10px !important;
     }
 
+    #desktopIcons img, .folderIcon img, .selectionEffect {
+        width: 30px !important;
+        height:30px !important;
+    }
+
     @media only screen and (orientation:landscape){
 
         .icon label{
@@ -927,15 +936,6 @@ ul li:hover>ul {
             grid-auto-columns: 100px;
             padding-left:20px;
             column-gap:0px;
-        }
-
-        #desktopIcons img {
-            width: 25px !important;
-        }
-
-        .selectionEffect{
-            width:25px !important;
-            height:25px !important;
         }
 
         #me{
@@ -975,15 +975,6 @@ ul li:hover>ul {
             grid-template-rows: repeat(auto-fill, 85px);
             column-gap:20px;
             width:100%;
-        }
-
-        #desktopIcons img {
-            width: 30px;
-        }
-
-        .selectionEffect{
-            width:30px !important;
-            height:30px !important;
         }
 
         #me{
