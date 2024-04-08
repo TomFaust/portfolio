@@ -11,29 +11,10 @@ icons.forEach((icon)=>{
     
     if(clickable && clickable.id){
       clickable.addEventListener("dblclick", () => {openMe(clickable)});
+      new DoubletapHandler(clickable,()=>{ openMe(clickable); })
       new MaskIcon(clickable);
     }
-
-    new DoubletapHandler(clickable,()=>{ openMe(clickable); })
-
-    
 })
-
-// setInterval(function () {
-
-//   let clickable = icons[3].querySelector('.clickable');
-//   let element = document.getElementById(clickable.closest(".clickable").id + "_tab")
-//   let closestDiv = clickable.closest(".clickable");
-//   new ProgramWindow(
-//     closestDiv.id,
-//     "",
-//     closestDiv.dataset.window? closestDiv.dataset.window: undefined,
-//     closestDiv.dataset.windowIcon? closestDiv.dataset.windowIcon: undefined,
-//     closestDiv.dataset.canDuplicate? +closestDiv.dataset.canDuplicate: undefined
-//   )
-
-// }, 100);
-
 
 if(!localStorage.hasOwnProperty('ok_welcome')){
   new ProgramWindow('welcome',(self) => {
