@@ -1,3 +1,5 @@
+import { DoubletapHandler } from "./doubletap_handler.js";
+
 export class History{
 
     forward = null;
@@ -36,7 +38,17 @@ export class History{
             })
 
             if(action === "dblclick"){
-                interactible.addEventListener("touchstart", (e) => {this.tapHandler(e,attribute,interactible)});
+                new DoubletapHandler(interactible, () =>{
+
+                    this.history = this.history.slice(0, this.historyPos + 1);
+
+                    this.history.push(eval("interactible."+ attribute));
+                    this.historyPos++;
+            
+                    this.backward.disabled = false;
+                    this.forward.disabled = true;
+
+                })
             }
         })
 
@@ -48,25 +60,6 @@ export class History{
         this.forward.addEventListener('click',()=>{
             this.Forward();
         })
-    }
-
-    tapHandler(event,attribute,interactible) {
-        if(!this.tapedTwice) {
-            this.tapedTwice = true;
-            setTimeout( () => { this.tapedTwice = false; }, 300 );
-            return false;
-        }
-        event.preventDefault();
-
-        //-----------------------------------------------------------
-
-        this.history = this.history.slice(0, this.historyPos + 1);
-
-        this.history.push(eval("interactible."+ attribute));
-        this.historyPos++;
-
-        this.backward.disabled = false;
-        this.forward.disabled = true;
     }
 
     Backward(){

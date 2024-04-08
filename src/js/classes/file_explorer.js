@@ -1,4 +1,5 @@
 import { MaskIcon } from "./mask_icon.js";
+import { DoubletapHandler } from "./doubletap_handler.js";
 
 export class FileExplorer{
 
@@ -8,6 +9,7 @@ export class FileExplorer{
     panels;
     select;
     foldericons;
+    programs;
 
     constructor(root){
         
@@ -15,6 +17,7 @@ export class FileExplorer{
         this.panels = root.querySelectorAll('.folderPanel');
         this.select = root.querySelector('.address_select');
         this.folderIcons = root.querySelectorAll('.folderIcon');
+        this.programs = root.querySelectorAll('.openingIcon');
 
         this.folderIcons.forEach(folderIcon =>{
             new MaskIcon(folderIcon)
@@ -37,23 +40,18 @@ export class FileExplorer{
                     this.swapPanels(icon)
                 },true);
 
-                icon.addEventListener("touchstart", (e) => {this.tapHandler(e,icon)});
-                
+                new DoubletapHandler(icon,() =>{this.swapPanels(icon)})
+
+            })
+            
+            this.programs.forEach(program =>{
+                program.addEventListener('dblclick', () =>{ window.open(program.dataset.url)  })
+                new DoubletapHandler(program,() =>{ window.open(program.dataset.url) })
             })
 
             this.select.value = "main"
         }
         
-    }
-
-    tapHandler(event,icon) {
-        if(!this.tapedTwice) {
-            this.tapedTwice = true;
-            setTimeout( () => { this.tapedTwice = false; }, 300 );
-            return false;
-        }
-        event.preventDefault();
-        this.swapPanels(icon)
     }
 
     swapPanels(icon){

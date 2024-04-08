@@ -1,3 +1,5 @@
+import { DoubletapHandler } from "./doubletap_handler.js";
+
 export class MaskIcon{
 
     tapedTwice = false;
@@ -18,18 +20,9 @@ export class MaskIcon{
               this.removeMask();
             }
         });
-        this.clickable.addEventListener("touchstart", (e) => {this.tapHandler(e)});
-        
-    }
+  
+        new DoubletapHandler(this.clickable,()=>{ this.removeMask(); })
 
-    tapHandler(event) {
-        if(!this.tapedTwice) {
-            this.tapedTwice = true;
-            setTimeout( () => { this.tapedTwice = false; }, 300 );
-            return false;
-        }
-        event.preventDefault();
-        this.removeMask();
     }
 
     createMask(){
@@ -47,7 +40,6 @@ export class MaskIcon{
         }
 
     }
-
 
     addMask(){
 

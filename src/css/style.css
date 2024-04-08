@@ -713,9 +713,9 @@ ul li:hover>ul {
     display: grid;
     grid-template-columns: repeat(auto-fill, 80px);
     grid-auto-rows: min-content;
-    grid-auto-flow: column;
     text-align: center;
     margin-top: 15px;
+    grid-gap: 30px 0;
 }
 
 .folderIcon{
@@ -893,7 +893,11 @@ ul li:hover>ul {
     border-color: rgb(192, 192, 192);
 }
 
-@media only screen and ((max-width: 600px) or (max-height:600px))    {
+@media only screen and ((max-width: 600px) or (max-height:600px)){
+
+    .displayWindow{
+        resize:none;
+    }
 
     #speechBubble{
         right: 50px;
@@ -1008,6 +1012,10 @@ ul li:hover>ul {
                     margin-top:5px
                 }
             }
+        }
+
+        .fileExplorerGrid {
+            grid-template-columns: 130px auto;
         }
 
     }
