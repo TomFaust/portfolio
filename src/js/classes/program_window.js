@@ -75,7 +75,7 @@ export class ProgramWindow{
 
                 if(windowIcon){
                     let titleBarIcon = self.windowDiv.querySelector(".title-bar-icon");
-                    titleBarIcon.src = "../assets/icons/" + windowIcon;
+                    titleBarIcon.src = "assets/icons/" + windowIcon;
                 }
         
                 let titleBarText = self.windowDiv.querySelector(".title-bar-text")
