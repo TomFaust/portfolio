@@ -134,7 +134,7 @@ export class ProgramWindow{
                 }     
             }
         };  
-        xhttp.open("POST", layoutName + "?content=" + target, true);
+        xhttp.open("GET", layoutName + "?content=" + target, true);
         xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         xhttp.send();
       }
