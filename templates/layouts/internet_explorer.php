@@ -120,7 +120,7 @@
     </div>
     <div class="windowArea">
         <?php
-            include '../pages/' . $_POST['content'] . '.html';
+            include '/pages/' . $_GET['content'] . '.html';
         ?>
     </div>
 
