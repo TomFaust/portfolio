@@ -33,6 +33,11 @@
     width:550px;
 }
 
+#welcome_window{
+    height:400px;
+    width:550px;
+}
+
 @media only screen and ((max-width: 600px) or (max-height:600px))    {
 
     @media only screen and (orientation:landscape){
