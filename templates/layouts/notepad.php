@@ -22,7 +22,7 @@
     </div>
     <div class="windowArea">
     <?php
-            include '/pages/' . $_GET['content'] . '.html';
+            include '../pages/' . $_GET['content'] . '.html';
         ?>
     </div>
 </div>

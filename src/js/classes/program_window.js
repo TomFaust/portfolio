@@ -53,8 +53,8 @@ export class ProgramWindow{
 
     createWindow(target,done,layoutName = "default",windowIcon){
 
-        layoutName = "../templates/layouts/" + layoutName + ".php";
-        
+        layoutName = "templates/layouts/" + layoutName + ".php";
+
       
         var self = this;
 
