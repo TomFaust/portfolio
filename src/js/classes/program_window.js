@@ -62,7 +62,7 @@ export class ProgramWindow{
         }
         this.tab.innerHTML += "<span>" + tab_id + "</span>"
         
-        document.getElementsByTagName("tabs")[0].appendChild(this.tab)
+        document.getElementByid("tabs").appendChild(this.tab)
     }
 
     createWindow(target,done,layoutName = "default",windowIcon){

@@ -266,7 +266,7 @@ div[role=tabpanel]{
     position: relative;
 }
 
-tabs{
+#tabs{
     height:100%;
     width:100%;
     display: flex;
