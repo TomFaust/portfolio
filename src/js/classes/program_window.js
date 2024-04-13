@@ -4,6 +4,7 @@ import { Tablist } from "./tablist.js";
 import { FileExplorer } from "./file_explorer.js";
 import { InteractiveTable } from "./interactive_table.js";
 import { Search } from "./search.js";
+import { WelcomeFeatures } from "./welcome_features.js";
 
 export class ProgramWindow{
 
@@ -128,14 +129,17 @@ export class ProgramWindow{
                 document.getElementById("container").appendChild(self.windowDiv)
         
 
+
                 var randomPercentage = Math.floor(Math.random() * 100) + 1;
-                var topPosition = (window.innerHeight - self. windowDiv.clientHeight) * (randomPercentage / 100);
+                var topPosition = (window.innerHeight - self.windowDiv.clientHeight) * (randomPercentage / 100);
                 self.windowDiv.style.top = (topPosition / window.innerHeight * 100) + "%";
         
                 randomPercentage = Math.floor(Math.random() * 100);
                 var leftPosition = (window.innerWidth - self.windowDiv.clientWidth) * (randomPercentage / 100);
                 self.windowDiv.style.left = leftPosition / window.innerWidth * 100 + "%";
         
+
+
 
                 //make window dragable
                 self.dragElement(self.windowDiv,titleBar,self)
@@ -157,6 +161,9 @@ export class ProgramWindow{
                         new InteractiveTable(self.windowDiv)
                         new Tablist(self.windowDiv,'li.contantGroup','div.contacts')
                         new Search(['social','direct'],{ valueNames: ['name','link','quick']},"#searchContacts")
+                        break;
+                    case "welcome": 
+                        new WelcomeFeatures()
                         break;
                 }
         

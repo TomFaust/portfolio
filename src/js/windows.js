@@ -29,7 +29,7 @@ if(!localStorage.hasOwnProperty('ok_welcome')){
       })
     },
     "default",
-    "",
+    "windows-0.png",
     0,
     0,
     0,
@@ -37,14 +37,12 @@ if(!localStorage.hasOwnProperty('ok_welcome')){
 }
 
 function openMe(clickable){
-  let element = document.getElementById(clickable.closest(".clickable").id + "_tab")
-  let closestDiv = clickable.closest(".clickable");
   new ProgramWindow(
-    closestDiv.id,
+    clickable.id,
     "",
-    closestDiv.dataset.window? closestDiv.dataset.window: undefined,
-    closestDiv.dataset.windowIcon? closestDiv.dataset.windowIcon: undefined,
-    closestDiv.dataset.canDuplicate? +closestDiv.dataset.canDuplicate: undefined
+    clickable.dataset.window? clickable.dataset.window: undefined,
+    clickable.dataset.windowIcon? clickable.dataset.windowIcon: undefined,
+    clickable.dataset.canDuplicate? +clickable.dataset.canDuplicate: undefined
   )
 }
 
