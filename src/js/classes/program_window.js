@@ -15,12 +15,16 @@ export class ProgramWindow{
 
     constructor(id, done = null, layoutName = 'default', windowIcon = null, canDuplicate = 0, canMinimize = 1, canMaximize = 1){
 
+        //create each window and tab first, so they can be referenced anywhere in the class
         let existingTab = document.getElementById(id + "_tab");
         let existingWindow = document.getElementById(id + "_window");
 
+        //some windows should not have these options
         this.canMaximize = canMaximize
         this.canMinimize = canMinimize
 
+        //some windows can have multiple instances for authenticity
+        //if duplication is not allowed, attempt to open the already active window
         if (existingWindow && existingTab && !canDuplicate){
             if(existingWindow.style.display == "none"){
                 this.toggleWindow(existingWindow,existingTab);
@@ -38,16 +42,19 @@ export class ProgramWindow{
     }
 
     createTab(tab_id,windowIcon){
+        //create the tab and add necessary classes
         this.tab.classList.add("window")
         this.tab.id = tab_id + "_tab"
         this.tab.classList.add("tab")
         this.tab.classList.add("openTab")
         this.tab.classList.add("title-bar")
 
+        //prevent minimizing by clicking the tab if needed
         if(this.canMinimize){
             this.tab.addEventListener("click",() => this.toggleWindow())
         }
 
+        //add an icon to the tab if it was provided
         if(windowIcon){
             let icon = document.createElement("img")
             icon.src = "assets/icons/" + windowIcon;
@@ -64,6 +71,7 @@ export class ProgramWindow{
 
         var self = this;
 
+        //Make a get reguest to the layout of the window which includes the name of the content file
         var xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
@@ -89,7 +97,7 @@ export class ProgramWindow{
                 let name = windowName.substring(0, windowName.length - 4)
                 titleBarText.innerHTML += name
         
-                //title bar controls 
+                //check if miniminze is enabled, remove the button if its not
                 let minimize = self.windowDiv.querySelector(".controls-minimize")
                 if(self.canMinimize){
                     minimize.addEventListener("click",() => self.toggleWindow())
@@ -97,9 +105,11 @@ export class ProgramWindow{
                     minimize.remove()
                 }
 
+                //close is always enabled
                 let close = self.windowDiv.querySelector(".controls-close")
                 close.addEventListener("click", () => self.closeTab())
 
+                //check if maximize is enabled, remove the button if its not
                 let maximize = self.windowDiv.querySelector(".controls-maximize")
                 if(self.canMaximize){
                     if(maximize){
@@ -109,12 +119,15 @@ export class ProgramWindow{
                     maximize.remove()
                 }
                 
+                //place the window on top of all other windows if its clicked anywhere
                 self.windowDiv.addEventListener("click",(e) =>{
                     self.setOnTop()
                 })
 
+                //add the created window onto the page
                 document.getElementById("container").appendChild(self.windowDiv)
         
+
                 var randomPercentage = Math.floor(Math.random() * 100) + 1;
                 var topPosition = (window.innerHeight - self. windowDiv.clientHeight) * (randomPercentage / 100);
                 self.windowDiv.style.top = (topPosition / window.innerHeight * 100) + "%";
@@ -123,8 +136,11 @@ export class ProgramWindow{
                 var leftPosition = (window.innerWidth - self.windowDiv.clientWidth) * (randomPercentage / 100);
                 self.windowDiv.style.left = leftPosition / window.innerWidth * 100 + "%";
         
+
                 //make window dragable
                 self.dragElement(self.windowDiv,titleBar,self)
+
+                //window specific functions
                 switch(target){
                     case "social_media":
                         new BrowserSwitch(self.windowDiv);
@@ -156,10 +172,13 @@ export class ProgramWindow{
         
     maximizeWindow(target){
 
+        //get the titlebar of the window
         let bar = this.windowDiv.getElementsByClassName('title-bar')[0]
     
+        //check if its maximized
         if(bar.classList.contains("maximized")){
         
+            //make it regular again
             bar.classList.remove("maximized");
         
             this.windowDiv.style.width = this.windowDiv.dataset.width;
@@ -172,6 +191,8 @@ export class ProgramWindow{
             target.ariaLabel = "Maximize";
         
         }else{
+
+            //make it maximized
             bar.classList.add("maximized");
         
             this.windowDiv.dataset.width = this.windowDiv.style.width;
@@ -195,14 +216,18 @@ export class ProgramWindow{
     }
 
     toggleWindow(existingWindow = null, existingTab = null){
+
+        //take the current window and tab as default
         let windowDiv = this.windowDiv;
         let tab = this.tab;
 
+        //in case a window can be duplicated this entiee class only exists to set the already open window on top
         if(existingWindow && existingTab){
             windowDiv = existingWindow;
             tab = existingTab;
         }
 
+        //if the window is not currently displated
         if(windowDiv.style.display == "none"){
             windowDiv.style.display = ""; 
             tab.classList.remove("closedTab");
@@ -210,59 +235,56 @@ export class ProgramWindow{
 
             this.setOnTop(windowDiv)
         }else{
-            //tab is open, close it
+            //if the window is displayed
             windowDiv.style.display = "none";
             tab.classList.remove("openTab");
             tab.classList.add("closedTab");
         }  
     }
 
+    //takes an open window and makes it the one with the highest zIndex
     setOnTop(targetWindow = null){
 
+        //again, if a window cannot be duplicated and an instance already exists, this class just puts that window on top
         let windowDiv = this.windowDiv
         if(targetWindow){
             windowDiv = targetWindow
         }
 
-        let parent = windowDiv.parentNode;
-
+        //get all active display windows
         let windows = Array.from(document.getElementsByClassName("displayWindow"))
+
+        //sort them by their zIndex
         windows.sort((a, b) => {
             const zIndexA = parseInt(window.getComputedStyle(a).zIndex);
             const zIndexB = parseInt(window.getComputedStyle(b).zIndex);
             return zIndexA - zIndexB;
         });
 
+        //set the zIndex of each element is sequence, in case they had none
         for (let index = 0; index < windows.length; index++) {
             windows[index].style.zIndex = index;
+
+            //make the title bar of each window inactive
             let titleBar = windows[index].querySelector('.title-bar')
             if(titleBar){
                 titleBar.classList.add("inactive");
             }
         }
 
+        //give the current window a zIndex higher than any and set its title bar to active
         windowDiv.style.zIndex = windows.length;
         let titleBar = windowDiv.querySelector('.title-bar')
         if(titleBar){
             titleBar.classList.remove("inactive");
         }
+
     }
 
     closeTab(){
         this.tab.remove()
         this.windowDiv.remove()
     }
-
-    clickTab(e){
-        let windows = document.getElementsByClassName("displayWindow")
-      
-        for (let index = 0; index < windows.length; index++) {
-            windows[index].style.zIndex = 10
-        }
-        
-        e.target.closest(".window").style.zIndex = 11
-    }
-
     
     dragElement(elmnt,titleBar,self) {
         var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
