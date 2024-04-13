@@ -34,7 +34,7 @@
 }
 
 #welcome_window{
-    height:400px;
+    height:350px;
     width:550px;
 }
 
@@ -76,6 +76,10 @@
             height:300px;
             width:550px;
         }
+        #welcome_window{
+            height: 280px;
+            width: 450px;
+        }
 
     }
 
@@ -112,6 +116,11 @@
         }
 
         #contact_window{
+            height:400px;
+            width:350px;
+        }
+
+        #welcome_window{
             height:400px;
             width:350px;
         }

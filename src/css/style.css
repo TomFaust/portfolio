@@ -43,6 +43,10 @@ a:active {
     z-index:2;
 }
 
+.underline{
+    text-decoration: underline;
+}
+
 .browser_screen{
     width:100%;
     min-height: 100%;
@@ -348,15 +352,15 @@ tabs{
     .windowArea{
         background-image: url('../../assets/clouds_bg.png');
         display: grid;
-        grid-template-rows: 80px auto 40px;
-        background-size: 100% auto;
+        grid-template-rows: 90px auto 40px;
+        background-size: cover;
     }
 
     .header{
         position: relative;
         img{
-            width:150px;
-            margin-left: 40px;
+            width:125px;
+            margin-left: 30px;
             margin-top: 20px;
         }
 
@@ -374,6 +378,61 @@ tabs{
         display:grid;
         grid-auto-flow: column;
         grid-template-columns: 220px auto;
+
+        .explore{
+            display:grid;
+            grid-auto-rows: max-content;
+
+            .exploreButton, .exploreContent{
+                border-bottom: solid 1px gray;
+                position: relative;
+            }
+
+            div:nth-child(2) .colorBox{
+                background-color: rgb(0, 183, 255);
+            }
+
+            div:nth-child(3) .colorBox{
+                background-color: rgb(255, 51, 0)
+            }
+
+            div:nth-child(4) .colorBox{
+                background-color: greenyellow
+            }
+
+            div:nth-child(5) .colorBox{
+                background-color: yellow;
+            }
+
+            .colorBox{
+                position: absolute;
+                left:0;
+                top:0;
+                height:100%;
+                width:6px;
+                background-color: black;
+            }
+
+            > div:first-child{
+                background-color: #0a0a0a;
+                color: white;
+                padding:5px;
+                padding-left:20px
+            }
+
+            > div:not(:first-child) { 
+                font-size: 1.2em;
+                padding:5px;
+                padding-left:20px
+            }
+
+        }
+        
+
+        .explore div{
+            width: 100%;
+        }
+
     }
 
     .footer{
@@ -383,6 +442,10 @@ tabs{
         grid-auto-flow: column;
         grid-template-columns: 1fr auto;
         height:min-content;
+
+        input[type=checkbox]:checked+label:after{
+            top:inherit !important;
+        }
     }
 }
 

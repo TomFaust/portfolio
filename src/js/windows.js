@@ -17,15 +17,23 @@ icons.forEach((icon)=>{
 })
 
 if(!localStorage.hasOwnProperty('ok_welcome')){
-  new ProgramWindow('welcome',(self) => {
-    let showEachTime = document.getElementById('showEachTime');
-    document.getElementById("welcome_ok").addEventListener("click",function(){
-      self.closeTab()
-      if(!showEachTime.checked){
-        localStorage.setItem('ok_welcome',1)
-      }
-    })
-  })
+  new ProgramWindow(
+    'welcome',
+    (self) => {
+      let showEachTime = document.getElementById('showEachTime');
+      document.getElementById("welcome_ok").addEventListener("click",function(){
+        self.closeTab()
+        if(!showEachTime.checked){
+          localStorage.setItem('ok_welcome',1)
+        }
+      })
+    },
+    "default",
+    "",
+    0,
+    0,
+    0,
+  )
 }
 
 function openMe(clickable){

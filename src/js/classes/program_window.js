@@ -10,12 +10,16 @@ export class ProgramWindow{
     tab = null;
     windowDiv = null;
     pos1 = 0; pos2 = 0; pos3 = 0; pos4 = 0;
+    canMinimize;
+    canMaximize;
 
-    constructor(id,done = null,layoutName = 'default',windowIcon = null, canDuplicate = 0){
+    constructor(id, done = null, layoutName = 'default', windowIcon = null, canDuplicate = 0, canMinimize = 1, canMaximize = 1){
 
         let existingTab = document.getElementById(id + "_tab");
         let existingWindow = document.getElementById(id + "_window");
 
+        this.canMaximize = canMaximize
+        this.canMinimize = canMinimize
 
         if (existingWindow && existingTab && !canDuplicate){
             if(existingWindow.style.display == "none"){
@@ -39,7 +43,10 @@ export class ProgramWindow{
         this.tab.classList.add("tab")
         this.tab.classList.add("openTab")
         this.tab.classList.add("title-bar")
-        this.tab.addEventListener("click",() => this.toggleWindow())
+
+        if(this.canMinimize){
+            this.tab.addEventListener("click",() => this.toggleWindow())
+        }
 
         if(windowIcon){
             let icon = document.createElement("img")
@@ -55,7 +62,6 @@ export class ProgramWindow{
 
         layoutName = "templates/layouts/" + layoutName + ".php";
 
-      
         var self = this;
 
         var xhttp = new XMLHttpRequest();
@@ -83,16 +89,24 @@ export class ProgramWindow{
                 let name = windowName.substring(0, windowName.length - 4)
                 titleBarText.innerHTML += name
         
-                //title bar controls
+                //title bar controls 
                 let minimize = self.windowDiv.querySelector(".controls-minimize")
-                minimize.addEventListener("click",() => self.toggleWindow())
+                if(self.canMinimize){
+                    minimize.addEventListener("click",() => self.toggleWindow())
+                }else{
+                    minimize.remove()
+                }
 
                 let close = self.windowDiv.querySelector(".controls-close")
                 close.addEventListener("click", () => self.closeTab())
 
                 let maximize = self.windowDiv.querySelector(".controls-maximize")
-                if(maximize){
-                    maximize.addEventListener("click", () => self.maximizeWindow(maximize))
+                if(self.canMaximize){
+                    if(maximize){
+                        maximize.addEventListener("click", () => self.maximizeWindow(maximize))
+                    }
+                }else{
+                    maximize.remove()
                 }
                 
                 self.windowDiv.addEventListener("click",(e) =>{
@@ -138,10 +152,8 @@ export class ProgramWindow{
         xhttp.open("GET", layoutName + "?content=" + target, true);
         xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         xhttp.send();
-      }
-      
-
-      
+    }
+        
     maximizeWindow(target){
 
         let bar = this.windowDiv.getElementsByClassName('title-bar')[0]
