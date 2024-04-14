@@ -21,22 +21,8 @@
         </div>
     </div>
     <div class="windowArea">
-    <!-- <?php
+    <?php
             include '../pages/' . $_GET['content'] . '.html';
-        ?> -->
-        <object data="assets/CV.pdf" type="application/pdf" >
-
-<div id="altCV" class="sunken-panel">
-  <span>
-    Dear reader,
-    <br><br>
-    It appears there was an error embedding the PDF file.<br>
-    To View my CV, use a non-mobile device, or click the link below.
-    <br><br>
-    <a href="assets/CV.pdf" download>Download CV</a>
-  </span>
-</div>
-
-</object>
+        ?>
     </div>
 </div>
