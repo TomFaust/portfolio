@@ -7,7 +7,7 @@ export class WelcomeFeatures{
         buttons[0].addEventListener('click',()=>{})
         buttons[1].addEventListener('click',this.openContact)
         buttons[2].addEventListener('click',this.openAll)
-        buttons[4].addEventListener('click',()=>{})
+        buttons[3].addEventListener('click',()=>{})
     }
 
     openAll(){

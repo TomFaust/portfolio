@@ -119,9 +119,31 @@
         </div>
     </div>
     <div class="windowArea">
-        <?php
+        <!-- <?php
             include '../pages/' . $_GET['content'] . '.html';
-        ?>
+        ?> -->
+        
+        <pre>
+            <div class="pre_inset pointer">
+                <div class="browser_screen" data-subject="linkedin" data-url="https://www.linkedin.com/in/tom-faust-66516ba6/">
+                    <img 
+                    src="assets/social_media/screencapture-linkedin-in-tom-faust-66516ba6-2023-10-25-21_20_50.png">
+                </div>
+                
+                <div class="browser_screen d-none" style="background-color: #0d1117;" data-subject="github" data-url="https://github.com/TomFaust/">
+                    <img src="assets/social_media/screencapture-github-TomFaust-2023-10-25-21_19_41.png">
+                </div>
+                
+                <div class="browser_screen d-none" data-subject="facebook" data-url="https://www.facebook.com/tom.faust.1656/">
+                    <img src="assets/social_media/screencapture-facebook-tom-faust-1656-2023-10-25-21_23_02.png">
+                </div>
+            
+                <div class="browser_screen d-none" data-subject="instagram" data-url="https://www.instagram.com/tom_sage_faust/" >
+                    <img src="assets/social_media/screencapture-instagram-tom-sage-faust-2023-10-25-21_21_52.png">
+                </div>
+            </div>
+        </pre>
+
     </div>
 
     <div class="status-bar">

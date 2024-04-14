@@ -739,18 +739,6 @@ ul li:hover>ul {
     display:none;
 }
 
-#RGBSliders{
-    position:relative;
-    width:100%;
-    margin-top:12px;
-    margin-bottom:12px;
-
-    input[type=text]{
-        width:80%;
-        margin-left:20%;
-    }
-}
-
 .slider-area{
     display:grid;
     width:100%;

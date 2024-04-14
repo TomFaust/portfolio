@@ -14,7 +14,7 @@ export class ProgramWindow{
     canMinimize;
     canMaximize;
 
-    constructor(id, done = null, layoutName = 'default', windowIcon = null, canDuplicate = 0, canMinimize = 1, canMaximize = 1){
+    constructor(id, done = null, layoutName = 'default', windowIcon = null, canDuplicate = 0, canMinimize = 1, canMaximize = 1, placeRandom = 1){
 
         //create each window and tab first, so they can be referenced anywhere in the class
         let existingTab = document.getElementById(id + "_tab");
@@ -130,15 +130,14 @@ export class ProgramWindow{
         
 
 
-                var randomPercentage = Math.floor(Math.random() * 100) + 1;
-                var topPosition = (window.innerHeight - self.windowDiv.clientHeight) * (randomPercentage / 100);
+                let randomPercentage = Math.floor(Math.random() * 100) + 1;
+                let topPosition = (window.innerHeight - self.windowDiv.clientHeight) * (randomPercentage / 100);
                 self.windowDiv.style.top = (topPosition / window.innerHeight * 100) + "%";
         
                 randomPercentage = Math.floor(Math.random() * 100);
-                var leftPosition = (window.innerWidth - self.windowDiv.clientWidth) * (randomPercentage / 100);
+                let leftPosition = (window.innerWidth - self.windowDiv.clientWidth) * (randomPercentage / 100);
                 self.windowDiv.style.left = leftPosition / window.innerWidth * 100 + "%";
         
-
 
 
                 //make window dragable

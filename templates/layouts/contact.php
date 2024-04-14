@@ -79,8 +79,81 @@
         </div>
     </div>
     <div class="windowArea">
-    <?php
+    <!-- <?php
             include '../pages/' . $_GET['content'] . '.html';
-        ?>
+        ?> -->
+        <div id="contantGroups">
+    <ul class="tree-view">
+        <li>
+          <details open>
+            <summary>
+                <img src="assets/icons/window/open_folder.png">
+                Contacts
+            </summary>
+            <ul>
+              <li class="contantGroup pointer"><img src="assets/icons/desktop/social_media.png">Social Media</li>
+              <li class="contantGroup pointer"><img src="assets/icons/network_cool_two_pcs-0.png">Direct</li>
+            </ul>
+          </details>
+        </li>
+      </ul>
+</div>
+
+<div class="contactList">
+    <div class="searchInput">
+        <div class="field-row">
+            <label for="searchContacts">Type name or select from list:</label>
+            <input id="searchContacts" type="text" />
+          </div>
+    </div>
+
+    <div id="social" class="sunken-panel contacts">
+        <table class="interactive">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Link</th>
+              <th>Quick response?</th>
+            </tr>
+          </thead>
+          <tbody class="list">
+            <tr >
+              <td class="name">Facebook</td>
+              <td class="link"><span onclick="window.open('https://www.facebook.com/tom.faust.1656/')">https://www.facebook.com/tom.faust.1656/</span></td>
+              <td class="quick">No</td>
+            </tr>
+            <tr>
+                <td class="name">Instagram</td>
+                <td class="link"><span onclick="window.open('https://www.instagram.com/tom_sage_faust/')">https://www.instagram.com/tom_sage_faust/</span></td>
+                <td class="quick">No</td>
+            </tr>
+            <tr>
+                <td class="name">LinkedIn</td>
+                <td class="link"><span onclick="window.open('https://www.linkedin.com/in/tom-faust-66516ba6/')">https://www.linkedin.com/in/tom-faust-66516ba6/</span></td>
+                <td class="quick">No</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div id="direct" class="sunken-panel contacts">
+        <table class="interactive">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Link</th>
+              <th>Quick response?</th>
+            </tr>
+          </thead>
+          <tbody class="list">
+            <tr>
+              <td class="name">Email</td>
+              <td class="link"><span onclick="window.open('mailto:tom.faust@hotmail.com')">tom.faust@hotmail.com</span></td>
+              <td class="quick">Yes</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+</div>
     </div>
 </div>
