@@ -33,6 +33,11 @@
     width:550px;
 }
 
+#about_me_window{
+    height:450px;
+    width:550px;
+}
+
 #welcome_window{
     height:350px;
     width:500px;
@@ -76,6 +81,12 @@
             height:300px;
             width:550px;
         }
+
+        #about_me_window{
+            height:300px;
+            width:550px;
+        }
+
         #welcome_window{
             height: 300px;
             width: 450px;
@@ -116,6 +127,11 @@
         }
 
         #contact_window{
+            height:400px;
+            width:350px;
+        }
+
+        #about_me_window{
             height:400px;
             width:350px;
         }

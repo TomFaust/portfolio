@@ -152,6 +152,10 @@ export class ProgramWindow{
                     case "my_properties":
                         new Tablist(self.windowDiv,'li[role="tab"]','div.window-body','aria-selected')
                         break;
+                    case "about_me":
+                        new Tablist(self.windowDiv,'li[role="tab"]','ul.tree-view','aria-selected')
+                        new Tablist(self.windowDiv,'.tree-view li a','.main div','aria-selected')
+                        break;
                     case "past_work":
                         new History(self.windowDiv,".clickableIcon","dataset.panel",".address_select",".folderPanel","dblclick","main");
                         new FileExplorer(self.windowDiv);

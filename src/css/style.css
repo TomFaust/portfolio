@@ -66,6 +66,12 @@ a:active {
     .icon{
         background-image: url(../../public_html/assets/icons/browser/grayscale/browse-ui-icons-grayscale.png);
         background-size: auto 100%;
+
+        background-repeat: no-repeat;
+        -o-background-size: auto 100%;
+        -moz-background-size: auto 100%;
+        -webkit-background-size: auto 100%;
+
         height:20px;
         width:20px;
     }    
@@ -339,13 +345,11 @@ div[role=tabpanel]{
     
 }
 
-
 .windowArea{
     width:calc(100% - 0.5px);
     height:calc(100% - 1px);
     padding:1px;
     overflow: hidden;
-    margin-top: 2px;
 }
 
 #welcome_window{
@@ -354,6 +358,11 @@ div[role=tabpanel]{
         display: grid;
         grid-template-rows: 80px auto 40px;
         background-size: cover;
+
+        background-repeat: no-repeat;
+        -o-background-size: cover;
+        -moz-background-size: cover;
+        -webkit-background-size: cover;
     }
 
     .header{
@@ -453,6 +462,54 @@ div[role=tabpanel]{
             top:inherit !important;
         }
     }
+}
+
+#about_me_window{
+
+
+    hr{
+        margin: 0px;
+    }
+    
+    .content{
+        display: grid;
+        grid-template-columns: 250px max-content auto;
+        height: 100%;
+        width: 100%;
+
+        .sidebar{
+            padding-top: 10px;
+            display: grid;
+            grid-template-rows: max-content auto;
+            ul{
+                overflow-x: scroll;
+            }
+        }
+
+        .devider{
+            height: 100%;
+            margin-left: 5px;
+            margin-right: 5px;
+            border-image: url(data:image/svg+xml;charset=utf-8,%3Csvg width=%275%27 height=%275%27 fill=%27gray%27 xmlns=%27http://www.w3.org/2000/svg%27%3E%3Cpath fill-rule=%27evenodd%27 clip-rule=%27evenodd%27 d=%27M0 0h5v5H0V2h2v1h1V2H0%27 fill=%27%23fff%27/%3E%3Cpath fill-rule=%27evenodd%27 clip-rule=%27evenodd%27 d=%27M0 0h4v4H0V1h1v2h2V1H0%27/%3E%3C/svg%3E) 2;
+            border-left: 2px groove rgb(192, 192, 192);
+        }
+
+        .main{
+            overflow-y:scroll;
+        }
+    }
+
+    .tree-view{
+        height: calc(100% - 16px);
+        width: calc(100% - 16px);
+        margin:8px;
+        padding: 2px;
+    }
+    
+    ul.tree-view li, ul.tree-view ul{
+        margin: 0;
+    }
+
 }
 
 
@@ -575,8 +632,13 @@ body {
   list-style: none;
   width: 60px;
   height:24px;
+  
   background-image: url("../../public_html/assets/start.png");
-  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  -o-background-size: cover;
+  -moz-background-size: cover;
+  -webkit-background-size: cover;
+
   box-shadow: inset -1px -1px #504d4d, inset 1px 1px #dfdfdf, inset -2px -2px grey, inset 2px 2px #fff;
 }
 
@@ -875,13 +937,19 @@ ul li:hover>ul {
         width:100%;
         top:0;
         background-image: url("../../public_html/assets/speech_bubble/top.png");
-        background-size: 100% 100%;
+        background-repeat: no-repeat;
+        -o-background-size: cover;
+        -moz-background-size: cover;
+        -webkit-background-size: cover;
     }
 
     #middle{
         width:100%;
         background-image: url("../../public_html/assets/speech_bubble/middle.png");
-        background-size: 100% 100%;
+        background-repeat: no-repeat;
+        -o-background-size: cover;
+        -moz-background-size: cover;
+        -webkit-background-size: cover;
         font-family: "Pixelated MS Sans Serif";
         text-align: center;
         word-break: break-word;
@@ -892,9 +960,19 @@ ul li:hover>ul {
         height: 20px;
         width:100%;
         background-image: url("../../public_html/assets/speech_bubble/bottom.png");
-        background-size: 100% 100%;
+        background-repeat: no-repeat;
+        -o-background-size: cover;
+        -moz-background-size: cover;
+        -webkit-background-size: cover;
     }
 }
+
+.tree-view img{
+        height: 0.8rem;
+        margin-right: 0.2rem;
+        transform: translate(0,0.1rem);
+}
+
 
 #contact_window{
 
@@ -916,12 +994,6 @@ ul li:hover>ul {
 
     .tree-view{
         height: 100%;
-
-        img{
-            height: 0.8rem;
-            margin-right: 0.2rem;
-            transform: translate(0,0.1rem);
-        }
     }
 
     .searchInput label{
@@ -932,7 +1004,6 @@ ul li:hover>ul {
         display: grid;
         grid-auto-flow: column;
         grid-template-columns: 130px auto;
-        margin-top:4px;
         grid-gap:3px;
     }
 
