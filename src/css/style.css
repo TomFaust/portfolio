@@ -538,14 +538,6 @@ div[role=tabpanel]{
     width: 100%;
 }
 
-#about_me_window h1{
-    font-size: 1rem !important;
-}
-
-#about_me_window button{
-    float: right;
-}
-
 .overflow-hidden{
     overflow: hidden;
 }
@@ -938,9 +930,10 @@ ul li:hover>ul {
         top:0;
         background-image: url("../../public_html/assets/speech_bubble/top.png");
         background-repeat: no-repeat;
-        -o-background-size: cover;
-        -moz-background-size: cover;
-        -webkit-background-size: cover;
+        background-size: 100% 100%;
+        -o-background-size: 100% 100%;
+        -moz-background-size: 100% 100%;
+        -webkit-background-size: 100% 100%;
     }
 
     #middle{
@@ -1134,6 +1127,12 @@ ul li:hover>ul {
 
         .fileExplorerGrid {
             grid-template-columns: 130px auto;
+        }
+
+        #about_me_window{
+            .content{
+                grid-template-columns: 150px max-content auto;
+            }
         }
 
     }
