@@ -39,8 +39,8 @@ a:active {
     position:absolute;
 }
 
-.window{
-    z-index:2;
+.hidden{
+    display: none;
 }
 
 .underline{
@@ -117,14 +117,6 @@ button.toolbar-button{
             transform: translateY(-50%);
         }
     }
-}
-
-#me{
-    position: absolute;
-    z-index: 0;
-    bottom:0px;
-    right:0;
-    width:150px;
 }
 
 #taskbar{
@@ -466,7 +458,6 @@ div[role=tabpanel]{
 
 #about_me_window{
 
-
     hr{
         margin: 0px;
     }
@@ -482,7 +473,7 @@ div[role=tabpanel]{
             display: grid;
             grid-template-rows: max-content auto;
             ul{
-                overflow-x: scroll;
+                overflow: scroll;
             }
         }
 
@@ -490,12 +481,33 @@ div[role=tabpanel]{
             height: 100%;
             margin-left: 5px;
             margin-right: 5px;
-            border-image: url(data:image/svg+xml;charset=utf-8,%3Csvg width=%275%27 height=%275%27 fill=%27gray%27 xmlns=%27http://www.w3.org/2000/svg%27%3E%3Cpath fill-rule=%27evenodd%27 clip-rule=%27evenodd%27 d=%27M0 0h5v5H0V2h2v1h1V2H0%27 fill=%27%23fff%27/%3E%3Cpath fill-rule=%27evenodd%27 clip-rule=%27evenodd%27 d=%27M0 0h4v4H0V1h1v2h2V1H0%27/%3E%3C/svg%3E) 2;
+            border-image: url('data:image/svg+xml;charset=utf-8,%3Csvg width=%275%27 height=%275%27 fill=%27gray%27 xmlns=%27http://www.w3.org/2000/svg%27%3E%3Cpath fill-rule=%27evenodd%27 clip-rule=%27evenodd%27 d=%27M0 0h5v5H0V2h2v1h1V2H0%27 fill=%27%23fff%27/%3E%3Cpath fill-rule=%27evenodd%27 clip-rule=%27evenodd%27 d=%27M0 0h4v4H0V1h1v2h2V1H0%27/%3E%3C/svg%3E') 2;
             border-left: 2px groove rgb(192, 192, 192);
         }
 
         .main{
+
             overflow-y:scroll;
+
+            div{
+                padding: 0.5rem;
+                min-height:100%;
+                width:100%;
+            }
+
+            a{
+                color:#00f !important;
+            }
+
+            #me-welcome{
+                background-image: url("../../public_html/assets/grey_clouds.png");
+                background-size: 100% auto;
+                background-repeat: no-repeat;
+                -o-background-size: 100% auto;
+                -moz-background-size: 100% auto;
+                -webkit-background-size: 100% auto;
+            }
+
         }
     }
 
@@ -791,12 +803,6 @@ ul li:hover>ul {
 
 #file{
     display:none;
-}sse
-
-.slider-area{
-    display:grid;
-    width:100%;
-    grid-template-columns: 5% 80% 15%;
 }
 
 #plane_flight{
@@ -899,65 +905,6 @@ ul li:hover>ul {
         background-color: blue;
     }
 
-}
-
-#meArea{
-    display:grid;
-    grid-template-columns: auto auto;
-    height:60vh;
-    
-    img{
-        height:100%;
-    }
-} 
-
-#speechBubble{
-
-    position:absolute;
-    display: grid;
-    grid-template-columns: 100%;
-    grid-template-rows: auto 1fr auto;
-    visibility: hidden;
-
-    right: 50px;
-    bottom:150px;
-    width:250px;
-    font-size:20px !important;
-
-    #top{
-        height: 7px;
-        width:100%;
-        top:0;
-        background-image: url("../../public_html/assets/speech_bubble/top.png");
-        background-repeat: no-repeat;
-        background-size: 100% 100%;
-        -o-background-size: 100% 100%;
-        -moz-background-size: 100% 100%;
-        -webkit-background-size: 100% 100%;
-    }
-
-    #middle{
-        width:100%;
-        background-image: url("../../public_html/assets/speech_bubble/middle.png");
-        background-repeat: no-repeat;
-        -o-background-size: cover;
-        -moz-background-size: cover;
-        -webkit-background-size: cover;
-        font-family: "Pixelated MS Sans Serif";
-        text-align: center;
-        word-break: break-word;
-        padding:5px 20px 7px 20px;
-    }
-
-    #bottom{
-        height: 20px;
-        width:100%;
-        background-image: url("../../public_html/assets/speech_bubble/bottom.png");
-        background-repeat: no-repeat;
-        -o-background-size: cover;
-        -moz-background-size: cover;
-        -webkit-background-size: cover;
-    }
 }
 
 .tree-view img{

@@ -1,0 +1,56 @@
+#me{
+    position: absolute;
+    z-index: 0;
+    bottom:0px;
+    right:0;
+    width:150px;
+}
+
+#speechBubble{
+
+    position:absolute;
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: auto 1fr auto;
+    visibility: hidden;
+
+    right: 50px;
+    bottom:150px;
+    width:250px;
+    font-size:20px !important;
+
+    #top{
+        height: 7px;
+        width:100%;
+        top:0;
+        background-image: url("../../public_html/assets/speech_bubble/top.png");
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+        -o-background-size: 100% 100%;
+        -moz-background-size: 100% 100%;
+        -webkit-background-size: 100% 100%;
+    }
+
+    #middle{
+        width:100%;
+        background-image: url("../../public_html/assets/speech_bubble/middle.png");
+        background-repeat: no-repeat;
+        -o-background-size: cover;
+        -moz-background-size: cover;
+        -webkit-background-size: cover;
+        font-family: "Pixelated MS Sans Serif";
+        text-align: center;
+        word-break: break-word;
+        padding:5px 20px 7px 20px;
+    }
+
+    #bottom{
+        height: 20px;
+        width:100%;
+        background-image: url("../../public_html/assets/speech_bubble/bottom.png");
+        background-repeat: no-repeat;
+        -o-background-size: cover;
+        -moz-background-size: cover;
+        -webkit-background-size: cover;
+    }
+}
